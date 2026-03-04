@@ -56,7 +56,14 @@ node_modules/
 __pycache__/
 *.pyc
 .env
+.env.*
 secrets/
+private_keys/
+ssh_keys/
+*.pem
+*.key
+*.p12
+*.pfx
 EOF
         
         # 初始提交
@@ -66,6 +73,45 @@ EOF
     else
         log "Backup repository already exists"
     fi
+}
+
+# 脱敏敏感信息
+sanitize_json_file() {
+    local input_file="$1"
+    local output_file="$2"
+    
+    if [[ ! -f "$input_file" ]]; then
+        return 1
+    fi
+    
+    # 定义需要脱敏的敏感字段模式
+    local sensitive_patterns=(
+        "secret"
+        "token" 
+        "password"
+        "key"
+        "private"
+        "webhook"
+        "api_key"
+        "access_token"
+        "refresh_token"
+        "client_secret"
+        "bot_token"
+        "app_secret"
+    )
+    
+    # 复制原文件
+    cp "$input_file" "$output_file"
+    
+    # 对每个敏感模式进行脱敏
+    for pattern in "${sensitive_patterns[@]}"; do
+        # 使用sed替换包含敏感词的字段值，保留字段名但替换值
+        sed -i.bak -E "s/(\"[^\"]*${pattern}[^\"]*\"[[:space:]]*:[[:space:]]*\")([^\"]+)(\")/\1***REDACTED***\3/gi" "$output_file"
+        # 清理备份文件
+        rm -f "${output_file}.bak"
+    done
+    
+    log "Sanitized sensitive information in $(basename "$output_file")"
 }
 
 # 复制文件到备份目录
@@ -83,14 +129,22 @@ copy_files() {
         rsync -av --delete --exclude='.git' "$WORKSPACE_DIR/" "$backup_dir/workspace/" || log "Warning: Failed to backup workspace"
     fi
     
-    # 备份配置文件
-    log "Backing up configuration files"
+    # 备份配置文件（脱敏处理）
+    log "Backing up configuration files with sanitization"
     if [[ -f "$OPENCLAW_HOME/openclaw.json" ]]; then
-        cp "$OPENCLAW_HOME/openclaw.json" "$backup_dir/config/" || log "Warning: Failed to backup openclaw.json"
+        if sanitize_json_file "$OPENCLAW_HOME/openclaw.json" "$backup_dir/config/openclaw.json"; then
+            log "✓ Sanitized openclaw.json"
+        else
+            log "Warning: Failed to backup openclaw.json"
+        fi
     fi
     
     if [[ -f "$OPENCLAW_HOME/config.json" ]]; then
-        cp "$OPENCLAW_HOME/config.json" "$backup_dir/config/" || log "Warning: Failed to backup config.json"
+        if sanitize_json_file "$OPENCLAW_HOME/config.json" "$backup_dir/config/config.json"; then
+            log "✓ Sanitized config.json"
+        else
+            log "Warning: Failed to backup config.json"
+        fi
     fi
     
     # 备份脚本目录

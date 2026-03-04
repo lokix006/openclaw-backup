@@ -80,7 +80,7 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "allowlist",
-      "botToken": "8512381238:AAFBVWe5QenSRq19dwYXaLDSFXhKTej4pds",
+      "botToken": "***REDACTED***",
       "allowFrom": [
         1970522964
       ],
@@ -93,16 +93,16 @@
         {
           "accountId": "feishu-loki",
           "appId": "cli_a90a158106f8deef",
-          "appSecret": "RZqdgczHanckP9MARZwhZbPhWeRqjD3x",
+          "appSecret": "***REDACTED***",
           "connectionMode": "webhook",
-          "verificationToken": "lOwLGZOXEsIkXtz59OpZPcyaIg6UrTzW",
-          "webhookPath": "/feishu/events/loki",
+          "verificationToken": "***REDACTED***",
+          "webhookPath": "***REDACTED***",
           "domain": "lark",
           "groupPolicy": "allowlist",
           "groupAllowFrom": [
             "oc_b452f345f468823e32023baa4037d2d5"
           ],
-          "webhookHost": "0.0.0.0",
+          "webhookHost": "***REDACTED***",
           "webhookPort": 3000
         }
       ]
@@ -114,7 +114,7 @@
     "bind": "loopback",
     "auth": {
       "mode": "token",
-      "token": "6b075591c91235189d7247b18b722a54e33262176e1b7ff5"
+      "token": "***REDACTED***"
     },
     "tailscale": {
       "mode": "off",
