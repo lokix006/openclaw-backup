@@ -1,0 +1,9 @@
+# OpenClaw 备份忽略文件
+*.log
+*.tmp
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.env
+secrets/
