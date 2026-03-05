@@ -1,0 +1,91 @@
+# OpenClaw 安全巡检通知配置
+# 支持用户、群组、多目标发送
+
+notification:
+  # 是否启用通知
+  enabled: true
+  
+  # 通知渠道
+  channel: feishu
+  
+  # 通知级别过滤 (info/warning/critical)
+  # info: 所有信息都发送
+  # warning: 只发送警告和严重问题
+  # critical: 只发送严重问题
+  level: info
+  
+  # 发送目标配置
+  targets:
+    # 主要接收人（总是发送）
+    primary:
+      - type: user
+        id: ou_570aeb8842a1cbbc0313861d2b5c128f  # Loki X
+        name: "Loki X"
+        description: "系统管理员"
+      - type: chat
+        id: oc_b452f345f468823e32023baa4037d2d5
+        name: "主要通知群"
+        description: "主要通知接收群组"
+    
+    # 警告级别接收人（warning及以上）
+    warning:
+      - type: user  
+        id: ou_570aeb8842a1cbbc0313861d2b5c128f
+        name: "Loki X"
+      # - type: chat
+      #   id: oc_xxxxxxxxxxxx
+      #   name: "IT运维群"
+    
+    # 严重问题接收人（critical级别）
+    critical:
+      - type: user
+        id: ou_570aeb8842a1cbbc0313861d2b5c128f
+        name: "Loki X"
+      # - type: chat
+      #   id: oc_xxxxxxxxxxxx  
+      #   name: "紧急响应群"
+      # - type: user
+      #   id: ou_xxxxxxxxxxxx
+      #   name: "安全管理员"
+
+  # 通知内容配置
+  content:
+    # 是否包含详细系统指标
+    include_metrics: true
+    # 是否包含警告详情
+    include_warnings: true
+    # 最大显示警告数量
+    max_warnings: 3
+    # 是否包含Skills审计结果
+    include_skills_audit: true
+
+  # 发送频率控制
+  frequency:
+    # 重复通知抑制（小时）
+    suppress_duplicate_hours: 12
+    # 最大重试次数
+    max_retries: 3
+    # 重试间隔（秒）
+    retry_interval: 300
+
+# 示例配置说明
+examples:
+  user_target:
+    type: user
+    id: "ou_xxxxxxxxxxxxxxxxxxxxxxxxx"  # 用户的open_id
+    name: "用户显示名"
+    
+  chat_target:
+    type: chat
+    id: "oc_xxxxxxxxxxxxxxxxxxxxxxxxx"  # 群聊的chat_id
+    name: "群聊名称"
+    
+  # 获取用户ID的方法：
+  # 1. 在飞书中查看用户资料
+  # 2. 使用飞书开放平台API
+  # 3. 在OpenClaw日志中查看消息元数据
+  
+  # 获取群聊ID的方法：
+  # 1. 将OpenClaw机器人添加到群聊
+  # 2. 在群中@机器人，查看日志获取chat_id
+  # 3. 使用飞书开放平台API查询

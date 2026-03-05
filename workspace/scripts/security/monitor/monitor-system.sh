@@ -236,9 +236,11 @@ check_system_logs() {
     # 检查系统日志(如果可访问)
     if [[ -f /var/log/syslog ]]; then
         error_count=$(grep -i error /var/log/syslog | grep "$(date '+%b %d')" | wc -l 2>/dev/null || echo "0")
+        error_count=$(echo "$error_count" | tr -d '\n\r')
         report "✓ 今日系统错误日志: $error_count 条"
     elif [[ -f /var/log/messages ]]; then
         error_count=$(grep -i error /var/log/messages | grep "$(date '+%b %d')" | wc -l 2>/dev/null || echo "0")
+        error_count=$(echo "$error_count" | tr -d '\n\r')
         report "✓ 今日系统错误日志: $error_count 条"
     else
         report "ℹ 无法访问系统日志文件"
@@ -345,6 +347,128 @@ generate_summary() {
     report "============"
 }
 
+# 发送飞书通知
+send_feishu_notification() {
+    local report_file="$1"
+    
+    # 检查通知配置
+    local config_parser="$WORKSPACE_DIR/scripts/security/parse-notification-config.sh"
+    if [[ ! -f "$config_parser" ]]; then
+        log "Warning: Notification config parser not found, using default settings"
+        local user_id="ou_570aeb8842a1cbbc0313861d2b5c128f"
+    else
+        # 检查通知是否启用
+        if ! "$config_parser" enabled | grep -q "true"; then
+            log "Notifications disabled in configuration, skipping"
+            return 0
+        fi
+    fi
+    
+    # 生成通知内容
+    local notification_file="/tmp/openclaw-notification-$(date +%Y%m%d).txt"
+    
+    # 创建简洁的通知消息
+    cat > "$notification_file" << EOF
+🛡️ OpenClaw 安全巡检报告
+
+📅 $(date '+%Y年%m月%d日 %H:%M')
+🖥️ 主机: $(hostname)
+
+EOF
+    
+    # 提取关键信息
+    local warning_count
+    local critical_count
+    warning_count=$(grep -c "WARNING" "$report_file" 2>/dev/null || echo "0")
+    critical_count=$(grep -c "CRITICAL" "$report_file" 2>/dev/null || echo "0")
+    
+    # 确定通知级别
+    local notification_level="info"
+    if [[ $critical_count -gt 0 ]]; then
+        notification_level="critical"
+    elif [[ $warning_count -gt 0 ]]; then
+        notification_level="warning"
+    fi
+    
+    # 获取通知目标列表
+    local targets_list=""
+    local target_script="$WORKSPACE_DIR/scripts/security/get-notification-targets.sh"
+    if [[ -f "$target_script" ]]; then
+        targets_list=$("$target_script" "$notification_level")
+        if [[ -z "$targets_list" ]]; then
+            log "Warning: No notification targets configured for level $notification_level"
+            return 0
+        fi
+        log "Notification level: $notification_level, targets: $(echo "$targets_list" | wc -l)"
+    else
+        targets_list="user:ou_570aeb8842a1cbbc0313861d2b5c128f"
+        log "Using default notification target"
+    fi
+    
+    # 添加状态摘要
+    if [[ $critical_count -gt 0 ]]; then
+        echo "🚨 状态: 发现 $critical_count 个严重问题" >> "$notification_file"
+    elif [[ $warning_count -gt 0 ]]; then
+        echo "⚠️ 状态: 发现 $warning_count 个警告" >> "$notification_file"
+    else
+        echo "✅ 状态: 系统正常" >> "$notification_file"
+    fi
+    
+    echo "" >> "$notification_file"
+    
+    # 添加关键指标
+    echo "📊 系统指标:" >> "$notification_file"
+    
+    # 系统负载
+    local load_avg
+    load_avg=$(uptime | awk -F'load average:' '{print $2}' | sed 's/^[ \t]*//' | cut -d',' -f1)
+    echo "• 负载: $load_avg" >> "$notification_file"
+    
+    # 内存使用
+    local memory_pct
+    memory_pct=$(free | grep Mem | awk '{printf "%.0f%%", ($3/$2)*100}' 2>/dev/null || echo "N/A")
+    echo "• 内存: $memory_pct" >> "$notification_file"
+    
+    # 磁盘使用
+    local disk_pct
+    disk_pct=$(df / | tail -1 | awk '{print $5}' || echo "N/A")
+    echo "• 磁盘: $disk_pct" >> "$notification_file"
+    
+    # OpenClaw进程状态
+    if pgrep -f openclaw > /dev/null; then
+        echo "• OpenClaw: 运行中 ✅" >> "$notification_file"
+    else
+        echo "• OpenClaw: 未运行 ❌" >> "$notification_file"
+    fi
+    
+    # 如果有警告，添加前3个警告
+    if [[ $warning_count -gt 0 ]]; then
+        echo "" >> "$notification_file"
+        echo "⚠️ 主要警告:" >> "$notification_file"
+        grep "WARNING" "$report_file" 2>/dev/null | head -3 | sed 's/⚠ WARNING: /• /' >> "$notification_file"
+    fi
+    
+    # 如果有严重问题，添加所有严重问题
+    if [[ $critical_count -gt 0 ]]; then
+        echo "" >> "$notification_file"
+        echo "🚨 严重问题:" >> "$notification_file"
+        grep "CRITICAL" "$report_file" 2>/dev/null | sed 's/❌ CRITICAL: /• /' >> "$notification_file"
+    fi
+    
+    # 添加报告文件位置
+    echo "" >> "$notification_file"
+    echo "📄 详细报告: $report_file" >> "$notification_file"
+    
+    # 保存通知文件路径供外部使用
+    echo "$notification_file" > "/tmp/openclaw-notification-path.txt"
+    
+    # 保存目标列表供外部使用
+    local targets_file="/tmp/openclaw-notification-targets-$(date +%Y%m%d).txt"
+    echo "$targets_list" > "$targets_file"
+    
+    log "Notification content generated: $notification_file"
+}
+
 # 主函数
 main() {
     log "Starting OpenClaw security audit"
@@ -365,6 +489,9 @@ main() {
     # 生成总结
     generate_summary
     
+    # 生成飞书通知
+    send_feishu_notification "$REPORT_FILE"
+    
     # 输出报告摘要到日志
     log "Security audit completed. Report generated: $REPORT_FILE"
     
@@ -373,6 +500,12 @@ main() {
         echo ""
         echo "=== 巡检摘要 ==="
         tail -10 "$REPORT_FILE"
+    fi
+    
+    # 触发通知发送
+    local notification_sender="$WORKSPACE_DIR/scripts/security/monitor/send-audit-summary.sh"
+    if [[ -f "$notification_sender" ]]; then
+        "$notification_sender" || log "Warning: Failed to trigger notification sender"
     fi
 }
 

@@ -207,6 +207,22 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## File Organization Rules
+
+**Follow the workspace file organization rules in `WORKSPACE_FILE_ORGANIZATION.md`:**
+
+- **Root directory**: Only core config files (8 files max)
+- **reports/**: All analysis reports and reviews, organized by month
+- **outputs/**: Temporary files, drafts, and work products
+- **projects/**: Project-specific documentation
+- **Naming convention**: `[project]-[type]-[date].md` for reports
+- **Auto-cleanup**: Temp files older than 7 days
+
+**Before creating ANY new file, ask yourself:**
+1. What type is it? (report/output/config/project) 
+2. What's its lifecycle? (temp/short-term/permanent)
+3. Where does it belong according to the rules?
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
