@@ -89,9 +89,8 @@
     },
     "feishu": {
       "enabled": true,
-      "accounts": [
-        {
-          "accountId": "feishu-loki",
+      "accounts": {
+        "feishu-loki": {
           "appId": "cli_a90a158106f8deef",
           "appSecret": "***REDACTED***",
           "connectionMode": "webhook",
@@ -105,7 +104,7 @@
           "webhookHost": "***REDACTED***",
           "webhookPort": 3000
         }
-      ]
+      }
     }
   },
   "gateway": {

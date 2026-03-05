@@ -1,5 +1,6 @@
 # HEARTBEAT.md
 
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
-
-# Add tasks below when you want the agent to check something periodically.
+# 检查巡检通知队列
+- [ ] 检查是否有未发送的巡检通知
+- [ ] 验证定时任务执行状态
+- [ ] 确认通知发送到用户和群聊
