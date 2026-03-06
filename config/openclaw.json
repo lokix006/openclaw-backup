@@ -1,12 +1,12 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.2",
-    "lastTouchedAt": "2026-03-03T07:19:11.668Z"
+    "lastTouchedAt": "2026-03-05T04:37:59.843Z"
   },
   "wizard": {
-    "lastRunAt": "2026-03-03T07:13:41.046Z",
+    "lastRunAt": "2026-03-05T04:19:35.532Z",
     "lastRunVersion": "2026.3.2",
-    "lastRunCommand": "doctor",
+    "lastRunCommand": "configure",
     "lastRunMode": "local"
   },
   "auth": {
@@ -20,10 +20,10 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/anthropic/claude-sonnet-4",
+        "primary": "openrouter/x-ai/grok-4",
         "fallbacks": [
-          "openrouter/auto",
-          "openrouter/anthropic/claude-sonnet-4"
+          "openrouter/anthropic/claude-sonnet-4",
+          "openrouter/auto"
         ]
       },
       "models": {
@@ -31,7 +31,8 @@
           "alias": "OpenRouter"
         },
         "openrouter/openrouter/auto": {},
-        "openrouter/anthropic/claude-sonnet-4": {}
+        "openrouter/anthropic/claude-sonnet-4": {},
+        "openrouter/x-ai/grok-4": {}
       },
       "workspace": "/root/.openclaw/workspace",
       "compaction": {
@@ -51,7 +52,7 @@
         "name": "ikoL",
         "workspace": "/root/.openclaw/workspace/ikoL",
         "agentDir": "/root/.openclaw/agents/ikol/agent",
-        "model": "openrouter/anthropic/claude-sonnet-4"
+        "model": "openrouter/x-ai/grok-4"
       }
     ]
   },
@@ -155,8 +156,8 @@
         "resolvedSpec": "@openclaw/feishu@2026.3.2",
         "integrity": "sha512-CpwjmLCS8gpZ5fFCRiEA+1i/L+E73Vhz5//TiwQjWJOtVPZEu44db294g3HUR6nB5L0IEpZgKU/JU69HgYl77w==",
         "shasum": "ad77e27633b480f5c815e1922252a2f07c1765bd",
-        "resolvedAt": "2026-03-03T06:16:38.250Z",
-        "installedAt": "2026-03-03T06:16:39.691Z"
+        "resolvedAt": "2026-03-05T04:37:58.040Z",
+        "installedAt": "2026-03-05T04:37:59.817Z"
       }
     }
   }

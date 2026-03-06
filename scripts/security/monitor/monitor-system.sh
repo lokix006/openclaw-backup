@@ -149,6 +149,7 @@ check_network_connections() {
     # 检查异常外联连接
     local external_connections
     external_connections=$(netstat -tn 2>/dev/null | grep ESTABLISHED | grep -v '127.0.0.1\|::1' | wc -l || echo "0")
+    external_connections=$(echo "$external_connections" | tr -d ' \t\n\r')
     report "✓ 外部连接数量: $external_connections"
     
     if [[ $external_connections -gt 10 ]]; then
@@ -208,6 +209,7 @@ check_recent_skills() {
             if [[ -f "$audit_report" ]]; then
                 local risk_count
                 risk_count=$(grep -c "⚠ 风险" "$audit_report" 2>/dev/null || echo "0")
+                risk_count=$(echo "$risk_count" | tr -d ' \t\n\r')
                 report "✓ 技能审计完成，发现 $risk_count 个风险项"
                 if [[ $risk_count -gt 0 ]]; then
                     report "⚠ 建议查看详细报告: $audit_report"
@@ -253,6 +255,8 @@ check_system_logs() {
         report "✓ OpenClaw日志文件数量: $openclaw_logs"
     fi
     
+    # 确保error_count是纯数字
+    error_count=$(echo "$error_count" | tr -d ' \t\n\r')
     if [[ $error_count -gt 50 ]]; then
         report "⚠ WARNING: 今日错误日志数量较多，建议检查"
     fi
@@ -331,7 +335,9 @@ generate_summary() {
     local warning_count
     local critical_count
     warning_count=$(grep -c "WARNING" "$REPORT_FILE" || echo "0")
+    warning_count=$(echo "$warning_count" | tr -d ' \t\n\r')
     critical_count=$(grep -c "CRITICAL" "$REPORT_FILE" || echo "0")
+    critical_count=$(echo "$critical_count" | tr -d ' \t\n\r')
     
     if [[ $critical_count -gt 0 ]]; then
         report "❌ 发现 $critical_count 个严重问题，需要立即处理"
@@ -380,7 +386,9 @@ EOF
     local warning_count
     local critical_count
     warning_count=$(grep -c "WARNING" "$report_file" 2>/dev/null || echo "0")
+    warning_count=$(echo "$warning_count" | tr -d ' \t\n\r')
     critical_count=$(grep -c "CRITICAL" "$report_file" 2>/dev/null || echo "0")
+    critical_count=$(echo "$critical_count" | tr -d ' \t\n\r')
     
     # 确定通知级别
     local notification_level="info"
@@ -399,7 +407,9 @@ EOF
             log "Warning: No notification targets configured for level $notification_level"
             return 0
         fi
-        log "Notification level: $notification_level, targets: $(echo "$targets_list" | wc -l)"
+        local targets_count
+        targets_count=$(echo "$targets_list" | wc -l | tr -d ' \t\n\r')
+        log "Notification level: $notification_level, targets: $targets_count"
     else
         targets_list="user:ou_570aeb8842a1cbbc0313861d2b5c128f"
         log "Using default notification target"
