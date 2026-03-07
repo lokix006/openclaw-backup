@@ -1,192 +1,192 @@
 {
-   "meta": {
-      "lastTouchedVersion": "2026.3.2",
-      "lastTouchedAt": "2026-03-05T04:37:59.843Z"
-   },
-   "wizard": {
-      "lastRunAt": "2026-03-05T04:19:35.532Z",
-      "lastRunVersion": "2026.3.2",
-      "lastRunCommand": "configure",
-      "lastRunMode": "local"
-   },
-   "auth": {
-      "profiles": {
-         "openrouter:default": {
-            "provider": "openrouter",
-            "mode": "api_key"
-         }
+  "meta": {
+    "lastTouchedVersion": "2026.3.2",
+    "lastTouchedAt": "2026-03-06T17:54:34.103Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-05T04:19:35.532Z",
+    "lastRunVersion": "2026.3.2",
+    "lastRunCommand": "configure",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openrouter:default": {
+        "provider": "openrouter",
+        "mode": "api_key"
       }
-   },
-   "agents": {
-      "defaults": {
-         "model": {
-            "primary": "openrouter/x-ai/grok-4",
-            "fallbacks": [
-               "openrouter/anthropic/claude-sonnet-4",
-               "openrouter/auto"
-            ]
-         },
-         "models": {
-            "openrouter/auto": {
-               "alias": "OpenRouter"
-            },
-            "openrouter/openrouter/auto": {},
-            "openrouter/anthropic/claude-sonnet-4": {},
-            "openrouter/x-ai/grok-4": {}
-         },
-         "workspace": "/root/.openclaw/workspace",
-         "compaction": {
-            "mode": "safeguard"
-         },
-         "maxConcurrent": 4,
-         "subagents": {
-            "maxConcurrent": 8
-         }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/x-ai/grok-4",
+        "fallbacks": [
+          "openrouter/anthropic/claude-sonnet-4",
+          "openrouter/auto"
+        ]
       },
-      "list": [
-         {
-            "id": "main"
-         },
-         {
-            "id": "ikol",
-            "name": "ikoL",
-            "workspace": "/root/.openclaw/workspace/ikoL",
-            "agentDir": "/root/.openclaw/agents/ikol/agent",
-            "model": "openrouter/x-ai/grok-4"
-         },
-         {
-            "id": "claw-wiki",
-            "name": "claw-wiki",
-            "workspace": "/root/.openclaw/workspace/claw-wiki",
-            "agentDir": "/root/.openclaw/agents/claw-wiki/agent",
-            "model": "openrouter/x-ai/grok-4"
-         }
+      "models": {
+        "openrouter/auto": {
+          "alias": "OpenRouter"
+        },
+        "openrouter/openrouter/auto": {},
+        "openrouter/anthropic/claude-sonnet-4": {},
+        "openrouter/x-ai/grok-4": {}
+      },
+      "workspace": "/root/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "ikol",
+        "name": "ikoL",
+        "workspace": "/root/.openclaw/workspace/ikoL",
+        "agentDir": "/root/.openclaw/agents/ikol/agent",
+        "model": "openrouter/x-ai/grok-4"
+      },
+      {
+        "id": "claw-wiki",
+        "name": "claw-wiki",
+        "workspace": "/root/.openclaw/workspace/claw-wiki",
+        "agentDir": "/root/.openclaw/agents/claw-wiki/agent",
+        "model": "openrouter/x-ai/grok-4"
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "ikol",
+      "match": {
+        "channel": "feishu",
+        "accountId": "feishu-loki"
+      }
+    },
+    {
+      "agentId": "claw-wiki",
+      "match": {
+        "channel": "feishu",
+        "accountId": "feishu-wiki"
+      }
+    }
+  ],
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "botToken": "***REDACTED***",
+      "allowFrom": [
+        1970522964
+      ],
+      "groupPolicy": "allowlist",
+      "streaming": "off"
+    },
+    "feishu": {
+      "enabled": true,
+      "accounts": {
+        "feishu-loki": {
+          "appId": "cli_a90a158106f8deef",
+          "appSecret": "***REDACTED***",
+          "connectionMode": "webhook",
+          "verificationToken": "***REDACTED***",
+          "webhookPath": "***REDACTED***",
+          "domain": "lark",
+          "groupPolicy": "allowlist",
+          "groupAllowFrom": [
+            "oc_b452f345f468823e32023baa4037d2d5"
+          ],
+          "webhookHost": "***REDACTED***",
+          "webhookPort": 3000
+        },
+        "feishu-wiki": {
+          "appId": "cli_a920167ea3789ed2",
+          "appSecret": "***REDACTED***",
+          "connectionMode": "webhook",
+          "verificationToken": "***REDACTED***",
+          "webhookPath": "***REDACTED***",
+          "domain": "lark",
+          "groupPolicy": "allowlist",
+          "groupAllowFrom": [
+            "oc_b452f345f468823e32023baa4037d2d5"
+          ],
+          "webhookHost": "***REDACTED***",
+          "webhookPort": 3101
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "***REDACTED***"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
       ]
-   },
-   "bindings": [
-      {
-         "agentId": "ikol",
-         "match": {
-            "channel": "feishu",
-            "accountId": "feishu-loki"
-         }
-      },
-      {
-         "agentId": "claw-wiki",
-         "match": {
-            "channel": "feishu",
-            "accountId": "feishu-wiki"
-         }
-      }
-   ],
-   "messages": {
-      "ackReactionScope": "group-mentions"
-   },
-   "commands": {
-      "native": "auto",
-      "nativeSkills": "auto",
-      "restart": true,
-      "ownerDisplay": "raw"
-   },
-   "session": {
-      "dmScope": "per-channel-peer"
-   },
-   "channels": {
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "entries": {
       "telegram": {
-         "enabled": true,
-         "dmPolicy": "allowlist",
-         "botToken": "***REDACTED***",
-         "allowFrom": [
-            1970522964
-         ],
-         "groupPolicy": "allowlist",
-         "streaming": "off"
+        "enabled": true
       },
       "feishu": {
-         "enabled": true,
-         "accounts": {
-            "feishu-loki": {
-               "appId": "cli_a90a158106f8deef",
-               "appSecret": "***REDACTED***",
-               "connectionMode": "webhook",
-               "verificationToken": "***REDACTED***",
-               "webhookPath": "***REDACTED***",
-               "domain": "lark",
-               "groupPolicy": "allowlist",
-               "groupAllowFrom": [
-                  "oc_b452f345f468823e32023baa4037d2d5"
-               ],
-               "webhookHost": "***REDACTED***",
-               "webhookPort": 3000
-            },
-            "feishu-wiki": {
-               "appId": "cli_a920167ea3789ed2",
-               "appSecret": "***REDACTED***",
-               "connectionMode": "webhook",
-               "verificationToken": "***REDACTED***",
-               "webhookPath": "***REDACTED***",
-               "domain": "lark",
-               "groupPolicy": "allowlist",
-               "groupAllowFrom": [
-                  "oc_b452f345f468823e32023baa4037d2d5"
-               ],
-               "webhookHost": "***REDACTED***",
-               "webhookPort": 3101
-            }
-         }
+        "enabled": true
       }
-   },
-   "gateway": {
-      "port": 18789,
-      "mode": "local",
-      "bind": "loopback",
-      "auth": {
-         "mode": "token",
-         "token": "***REDACTED***"
-      },
-      "tailscale": {
-         "mode": "off",
-         "resetOnExit": false
-      },
-      "nodes": {
-         "denyCommands": [
-            "camera.snap",
-            "camera.clip",
-            "screen.record",
-            "calendar.add",
-            "contacts.add",
-            "reminders.add"
-         ]
+    },
+    "installs": {
+      "feishu": {
+        "source": "npm",
+        "spec": "@openclaw/feishu",
+        "installPath": "/root/.openclaw/extensions/feishu",
+        "version": "2026.3.2",
+        "resolvedName": "@openclaw/feishu",
+        "resolvedVersion": "2026.3.2",
+        "resolvedSpec": "@openclaw/feishu@2026.3.2",
+        "integrity": "sha512-CpwjmLCS8gpZ5fFCRiEA+1i/L+E73Vhz5//TiwQjWJOtVPZEu44db294g3HUR6nB5L0IEpZgKU/JU69HgYl77w==",
+        "shasum": "ad77e27633b480f5c815e1922252a2f07c1765bd",
+        "resolvedAt": "2026-03-06T16:56:28.819Z",
+        "installedAt": "2026-03-06T16:56:30.448Z"
       }
-   },
-   "skills": {
-      "install": {
-         "nodeManager": "npm"
-      }
-   },
-   "plugins": {
-      "entries": {
-         "telegram": {
-            "enabled": true
-         },
-         "feishu": {
-            "enabled": true
-         }
-      },
-      "installs": {
-         "feishu": {
-            "source": "npm",
-            "spec": "@openclaw/feishu",
-            "installPath": "/root/.openclaw/extensions/feishu",
-            "version": "2026.3.2",
-            "resolvedName": "@openclaw/feishu",
-            "resolvedVersion": "2026.3.2",
-            "resolvedSpec": "@openclaw/feishu@2026.3.2",
-            "integrity": "sha512-CpwjmLCS8gpZ5fFCRiEA+1i/L+E73Vhz5//TiwQjWJOtVPZEu44db294g3HUR6nB5L0IEpZgKU/JU69HgYl77w==",
-            "shasum": "ad77e27633b480f5c815e1922252a2f07c1765bd",
-            "resolvedAt": "2026-03-05T04:37:58.040Z",
-            "installedAt": "2026-03-05T04:37:59.817Z"
-         }
-      }
-   }
+    }
+  }
 }
