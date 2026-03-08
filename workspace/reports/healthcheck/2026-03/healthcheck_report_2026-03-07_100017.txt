@@ -1,0 +1,125 @@
+=== Health Check Report - 2026-03-07 10:00:17 ===
+
+Disk Usage:
+/dev/root        290G  125G  165G  44% /
+
+Memory Usage:
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       5.4Gi       2.0Gi        17Mi       8.6Gi       9.9Gi
+Swap:             0B          0B          0B
+
+CPU/Top Processes:
+top - 10:00:18 up 173 days,  6:32,  5 users,  load average: 0.07, 0.06, 0.08
+Tasks: 208 total,   2 running, 206 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :  15706.3 total,   2009.1 free,   5532.4 used,   8772.9 buff/cache     
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.  10173.9 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+1204162 root      20   0 2081188  80696  26240 S   9.1   0.5  50:37.45 promtail
+2793743 moss      20   0 1239556  19196  11740 S   9.1   0.1   0:45.64 moss-ag+
+      1 root      20   0   23272  13220   8228 S   0.0   0.1   6:20.99 systemd
+
+OpenClaw Status:
+[35m[plugins][39m [36mfeishu_doc: Registered feishu_doc, feishu_app_scopes[39m
+[35m[plugins][39m [36mfeishu_chat: Registered feishu_chat tool[39m
+[35m[plugins][39m [36mfeishu_wiki: Registered feishu_wiki tool[39m
+[35m[plugins][39m [36mfeishu_drive: Registered feishu_drive tool[39m
+[35m[plugins][39m [36mfeishu_bitable: Registered bitable tools[39m
+OpenClaw status
+
+Overview
+┌─────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item            │ Value                                                                                             │
+├─────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Dashboard       │ http://127.0.0.1:18789/                                                                           │
+│ OS              │ linux 6.14.0-1012-aws (x64) · node 24.14.0                                                        │
+│ Tailscale       │ off                                                                                               │
+│ Channel         │ stable (default)                                                                                  │
+│ Update          │ pnpm · npm latest 2026.3.2                                                                        │
+│ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · reachable 46ms · auth token · AIL-dev-server01    │
+│                 │ (172.31.26.239) app unknown linux 6.14.0-1012-aws                                                 │
+│ Gateway service │ systemd not installed                                                                             │
+│ Node service    │ systemd not installed                                                                             │
+│ Agents          │ 3 · 2 bootstrap files present · sessions 28 · default main active 2m ago                          │
+│ Memory          │ 0 files · 0 chunks · sources memory · plugin memory-core · vector unknown · fts ready · cache on  │
+│                 │ (0)                                                                                               │
+│ Probes          │ skipped (use --deep)                                                                              │
+│ Events          │ none                                                                                              │
+│ Heartbeat       │ 30m (main), disabled (claw-wiki), disabled (ikol)                                                 │
+│ Sessions        │ 28 active · default x-ai/grok-4 (200k ctx) · 3 stores                                             │
+└─────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Security audit
+Summary: 1 critical · 6 warn · 1 info
+  CRITICAL Extensions exist but plugins.allow is not set
+    Found 1 extension(s) under /root/.openclaw/extensions. Without plugins.allow, any discovered plugin id may load (depending on config and plugin behavior). Nati…
+    Fix: Set plugins.allow to an explicit list of plugin ids you trust.
+  WARN Reverse proxy headers are not trusted
+    gateway.bind is loopback and gateway.trustedProxies is empty. If you expose the Control UI through a reverse proxy, configure trusted proxies so local-client c…
+    Fix: Set gateway.trustedProxies to your proxy IPs or keep the Control UI local-only.
+  WARN Feishu doc create can grant requester permissions
+    channels.feishu tools include "doc"; feishu_doc action "create" can grant document access to the trusted requesting Feishu user.
+    Fix: Disable channels.feishu.tools.doc when not needed, and restrict tool access for untrusted prompts.
+  WARN Some gateway.nodes.denyCommands entries are ineffective
+    gateway.nodes.denyCommands uses exact node command-name matching only (for example `system.run`), not shell-text filtering inside a command payload. - Unknown …
+    Fix: Use exact command names (for example: canvas.present, canvas.hide, canvas.navigate, canvas.eval, canvas.snapshot, canvas.a2ui.push, canvas.a2ui.pushJSONL, canvas.a2ui.reset). If you need broader restrictions, remove risky command IDs from allowCommands/default workflows and tighten tools.exec policy.
+  WARN Some configured models are below recommended tiers
+    Smaller/older models are generally more susceptible to prompt injection and tool misuse. - openrouter/anthropic/claude-sonnet-4 (Below Claude 4.5) @ agents.def…
+    Fix: Use the latest, top-tier model for any bot with tools or untrusted inboxes. Avoid Haiku tiers; prefer GPT-5+ and Claude 4.5+.
+  WARN Extension plugin tools may be reachable under permissive tool policy
+    Enabled extension plugins: .openclaw-install-backups. Permissive tool policy contexts: - default - agents.list.main - agents.list.ikol - agents.list.claw-wiki
+    Fix: Use restrictive profiles (`minimal`/`coding`) or explicit tool allowlists that exclude plugin tools for agents handling untrusted input.
+… +1 more
+Full report: openclaw security audit
+Deep probe: openclaw security audit --deep
+
+Channels
+┌──────────┬─────────┬────────┬───────────────────────────────────────────────────────────────────────────────────────┐
+│ Channel  │ Enabled │ State  │ Detail                                                                                │
+├──────────┼─────────┼────────┼───────────────────────────────────────────────────────────────────────────────────────┤
+│ Telegram │ ON      │ OK     │ token config (8512…4pds · len 46) · accounts 1/1                                      │
+│ Feishu   │ ON      │ OK     │ configured · accounts 2/2                                                             │
+└──────────┴─────────┴────────┴───────────────────────────────────────────────────────────────────────────────────────┘
+
+Sessions
+┌────────────────────────────────────────────────┬────────┬──────────┬──────────────┬─────────────────────────────────┐
+│ Key                                            │ Kind   │ Age      │ Model        │ Tokens                          │
+├────────────────────────────────────────────────┼────────┼──────────┼──────────────┼─────────────────────────────────┤
+│ agent:ikol:cron:6dc015c5-010a-4…               │ direct │ just now │ x-ai/grok-4  │ 17k/256k (7%) · 🗄️ 96% cached   │
+│ agent:ikol:cron:6dc015c5-010a-4…               │ direct │ just now │ x-ai/grok-4  │ 17k/256k (7%) · 🗄️ 96% cached   │
+│ agent:main:main                                │ direct │ 2m ago   │ x-ai/grok-4  │ 61k/256k (24%) · 🗄️ 100% cached │
+│ agent:claw-wiki:feishu:direct:o…               │ direct │ 50m ago  │ x-ai/grok-4  │ 52k/256k (20%) · 🗄️ 100% cached │
+│ agent:ikol:feishu:direct:ou_570…               │ direct │ 3h ago   │ x-ai/grok-4  │ 24k/256k (9%) · 🗄️ 99% cached   │
+│ agent:main:telegram:direct:1970…               │ direct │ 3h ago   │ x-ai/grok-4  │ 29k/256k (11%) · 🗄️ 3% cached   │
+│ agent:ikol:cron:6dc015c5-010a-4…               │ direct │ 6h ago   │ x-ai/grok-4  │ 17k/256k (7%) · 🗄️ 96% cached   │
+│ agent:ikol:cron:6dc015c5-010a-4…               │ direct │ 6h ago   │ x-ai/grok-4  │ 17k/256k (7%) · 🗄️ 97% cached   │
+│ agent:ikol:cron:30e7b335-bb7a-4…               │ direct │ 6h ago   │ x-ai/grok-4  │ 17k/256k (7%) · 🗄️ 196% cached  │
+│ agent:ikol:cron:30e7b335-bb7a-4…               │ direct │ 6h ago   │ x-ai/grok-4  │ 17k/256k (7%) · 🗄️ 196% cached  │
+└────────────────────────────────────────────────┴────────┴──────────┴──────────────┴─────────────────────────────────┘
+
+FAQ: https://docs.openclaw.ai/faq
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+
+Next steps:
+  Need to share?      openclaw status --all
+  Need to debug live? openclaw logs --follow
+  Need to test channels? openclaw status --deep
+
+OpenClaw Health:
+"OK"
+
+OpenClaw Security Audit:
+No risks found.
+
+OpenClaw Update Status:
+OpenClaw update status
+
+┌──────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item     │ Value                                                                                                    │
+├──────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Install  │ pnpm                                                                                                     │
+│ Channel  │ stable (default)                                                                                         │
+│ Update   │ pnpm · npm latest 2026.3.2                                                                               │
+└──────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+

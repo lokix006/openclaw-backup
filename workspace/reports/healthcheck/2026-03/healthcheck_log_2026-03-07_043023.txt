@@ -1,0 +1,2 @@
+No alerts found.
+Report saved to /root/.openclaw/workspace/reports/healthcheck/2026-03/healthcheck_report_2026-03-07_043023.txt
