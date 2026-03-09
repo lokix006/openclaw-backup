@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.7",
-    "lastTouchedAt": "2026-03-09T09:56:45.696Z"
+    "lastTouchedAt": "2026-03-09T10:30:10.174Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-09T02:17:20.282Z",
@@ -65,7 +65,8 @@
         },
         "tools": {
           "deny": [
-            "gateway"
+            "gateway",
+            "exec"
           ],
           "exec": {
             "ask": "on-miss",
@@ -84,6 +85,9 @@
               "echo",
               "openclaw"
             ]
+          },
+          "fs": {
+            "workspaceOnly": true
           }
         }
       },
@@ -92,7 +96,19 @@
         "name": "claw-wiki",
         "workspace": "/root/.openclaw/workspace/claw-wiki",
         "agentDir": "/root/.openclaw/agents/claw-wiki/agent",
-        "model": "openrouter/anthropic/claude-sonnet-4.6"
+        "model": "openrouter/anthropic/claude-sonnet-4.6",
+        "sandbox": {
+          "workspaceRoot": "/root/.openclaw/workspace/claw-wiki"
+        },
+        "tools": {
+          "deny": [
+            "gateway",
+            "exec"
+          ],
+          "fs": {
+            "workspaceOnly": true
+          }
+        }
       }
     ]
   },

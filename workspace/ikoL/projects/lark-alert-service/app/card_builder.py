@@ -1,10 +1,17 @@
 """
-构建 Lark 交互卡片 JSON (V1 格式)
-- 通用字段：alertname / grafana_folder / values / 触发时间 / 状态 / 处理人
-- 动态扩展：labels 中非系统字段（排除 alertname/grafana_folder/im/job/instance 等）
-- 固定链接：Dashboard / Panel / 告警详情 / 静默
+构建 Lark 交互卡片 JSON (V1 格式 + column_set 分栏布局)
+
+布局层次（紧凑版）：
+  Header    — 状态色 + 告警名
+  Links     — 链接工具栏（紧跟 header）
+  Divider
+  Info      — column_set 双列：左=监控值+状态，右=目录/类型/地址等
+  Meta      — 触发时间 · 处理人（灰色背景）
+  Extra     — 动态扩展 labels（有才显示）
+  Details   — 多告警明细（有才显示）
+  Divider
+  Buttons   — 操作按钮
 """
-import json
 from typing import Optional, Dict, Any
 
 STATE_CONFIG = {
@@ -25,8 +32,8 @@ STATE_TRANSITIONS = {
 
 ACTION_LABELS = {
     "processing": "🔧 接管处理",
-    "restored":   "🔄 标记已恢复",
-    "resolved":   "✅ 标记已解决",
+    "restored":   "🔄 已恢复",
+    "resolved":   "✅ 已解决",
     "ignored":    "🔕 忽略",
 }
 
@@ -37,11 +44,34 @@ BTN_TYPES = {
     "ignored":    "danger",
 }
 
-# 不在动态 labels 区显示的系统/已处理字段
 SYSTEM_LABEL_KEYS = {
     "alertname", "grafana_folder", "im", "job", "instance",
     "address", "symbol", "type", "ptype",
 }
+
+
+def _md(content: str, align: str = "left") -> dict:
+    return {"tag": "markdown", "content": content, "text_align": align}
+
+
+def _col(elements: list, weight: int = 1, align: str = "top") -> dict:
+    return {
+        "tag": "column",
+        "width": "weighted",
+        "weight": weight,
+        "vertical_align": align,
+        "elements": elements,
+    }
+
+
+def _col_set(columns: list, flex_mode: str = "none", bg: str = "default", spacing: str = "small") -> dict:
+    return {
+        "tag": "column_set",
+        "flex_mode": flex_mode,
+        "background_style": bg,
+        "horizontal_spacing": spacing,
+        "columns": columns,
+    }
 
 
 def build_alert_card(
@@ -53,58 +83,56 @@ def build_alert_card(
     value_c: Optional[float],
     starts_at: str,
     state: str,
-    # 已知特殊字段
     address: Optional[str] = None,
     symbol: Optional[str] = None,
     alert_type: Optional[str] = None,
     ptype: Optional[str] = None,
     instance: Optional[str] = None,
     handler_name: Optional[str] = None,
-    # 链接
     dashboard_url: Optional[str] = None,
     panel_url: Optional[str] = None,
     silence_url: Optional[str] = None,
     generator_url: Optional[str] = None,
-    # 动态扩展 labels
     extra_labels: Optional[Dict[str, Any]] = None,
+    multi_info: Optional[str] = None,
+    alert_count: int = 1,
 ) -> dict:
     cfg = STATE_CONFIG.get(state, STATE_CONFIG["firing"])
     next_states = STATE_TRANSITIONS.get(state, [])
+    count_suffix = f"({alert_count}条) " if alert_count > 1 else ""
 
-    # ── 头部 ───────────────────────────────────────────────────────────────────
+    # ── Header ────────────────────────────────────────────────────────────────
+    # title: 状态 emoji（大字）/ subtitle: alertname（小一号）
     header = {
         "template": cfg["color"],
         "title": {
             "tag": "plain_text",
-            "content": f"{cfg['emoji']} 告警 | {alertname}",
+            "content": f"{cfg['emoji']} {cfg['label']} {count_suffix}",
+        },
+        "subtitle": {
+            "tag": "plain_text",
+            "content": alertname,
         },
     }
 
     elements = []
 
-    # ── 核心字段 ───────────────────────────────────────────────────────────────
-    def field(label, value):
-        return {
-            "is_short": True,
-            "text": {"tag": "lark_md", "content": f"**{label}**\n{value or '-'}"},
-        }
+    # ── Layer 1: 链接工具栏（紧跟标题）──────────────────────────────────────
+    links = []
+    if dashboard_url:
+        links.append(f"[Dashboard]({dashboard_url})")
+    if panel_url:
+        links.append(f"[Panel]({panel_url})")
+    if generator_url:
+        links.append(f"[告警详情]({generator_url})")
+    if silence_url:
+        links.append(f"[静默]({silence_url})")
+    if links:
+        elements.append(_md("  ·  ".join(links)))
 
-    fields = []
+    elements.append({"tag": "hr"})
 
-    if grafana_folder:
-        fields.append(field("监控目录", grafana_folder))
-    if address:
-        fields.append(field("合约地址", address))
-    if symbol:
-        fields.append(field("币种", symbol))
-    if alert_type:
-        fields.append(field("类型", alert_type))
-    if ptype:
-        fields.append(field("业务类型", ptype))
-    if instance:
-        fields.append(field("实例", instance))
-
-    # Values 通用显示
+    # ── Layer 2: 第一行 — 监控值（左） + 目录/环境信息（右）─────────────────
     value_parts = []
     if value_a is not None:
         value_parts.append(f"A={value_a}")
@@ -112,44 +140,47 @@ def build_alert_card(
         value_parts.append(f"B={value_b}")
     if value_c is not None:
         value_parts.append(f"C={value_c}")
-    if value_parts:
-        fields.append(field("监控值", "  |  ".join(value_parts)))
 
-    fields.append(field("触发时间", starts_at))
-    fields.append(field("状态", cfg["label"]))
-    if handler_name:
-        fields.append(field("处理人", handler_name))
+    value_text = f"**监控值** {' | '.join(value_parts)}" if value_parts else "**监控值** -"
 
-    if fields:
-        elements.append({"tag": "div", "fields": fields})
+    right_lines = []
+    if grafana_folder:
+        right_lines.append(f"**目录** {grafana_folder}")
+    if address:
+        right_lines.append(f"**地址** {address}")
+    if symbol:
+        right_lines.append(f"**币种** {symbol}")
+    if alert_type:
+        right_lines.append(f"**类型** {alert_type}")
+    if ptype:
+        right_lines.append(f"**业务** {ptype}")
+    if instance:
+        right_lines.append(f"**实例** {instance}")
 
-    # ── 动态扩展 labels（排除已知字段后的剩余 labels）──────────────────────────
-    if extra_labels:
-        filtered = {k: v for k, v in extra_labels.items() if k not in SYSTEM_LABEL_KEYS}
-        if filtered:
-            ext_fields = [field(k, str(v)) for k, v in filtered.items()]
-            # 两两分组
-            for i in range(0, len(ext_fields), 2):
-                chunk = ext_fields[i:i+2]
-                elements.append({"tag": "div", "fields": chunk})
+    left_col1 = _col([_md(value_text)], weight=1)
+    right_col1 = _col([_md("  ·  ".join(right_lines) if right_lines else "-")], weight=1)
+    elements.append(_col_set([left_col1, right_col1], flex_mode="bisect", spacing="large"))
 
-    # ── 链接区 ─────────────────────────────────────────────────────────────────
-    links = []
-    if dashboard_url:
-        links.append(f"[📊 Dashboard]({dashboard_url})")
-    if panel_url:
-        links.append(f"[📈 Panel]({panel_url})")
-    if generator_url:
-        links.append(f"[📋 告警详情]({generator_url})")
-    if silence_url:
-        links.append(f"[🔇 静默]({silence_url})")
-    if links:
-        elements.append({
-            "tag": "div",
-            "text": {"tag": "lark_md", "content": "  |  ".join(links)},
-        })
+    # ── Layer 3: 第二行 — 触发时间（左） + 处理人（右），行间距拉开 ──────────
+    time_text = f"🕐 {starts_at}"
+    handler_text = f"👤 {handler_name}" if handler_name else "👤 -"
+    left_col2 = _col([_md(time_text)], weight=1)
+    right_col2 = _col([_md(handler_text)], weight=1)
+    elements.append(_col_set(
+        [left_col2, right_col2],
+        flex_mode="bisect",
+        bg="grey",
+        spacing="large",
+    ))
 
-    # ── 分割线 + 操作按钮 ───────────────────────────────────────────────────────
+    # ── Layer 4: 动态扩展 labels — 已移除，不再显示额外 labels ──────────────
+
+    # ── Layer 5: 多告警明细（有才显示）───────────────────────────────────────
+    if multi_info:
+        elements.append({"tag": "hr"})
+        elements.append(_md(f"**明细**\n{multi_info}"))
+
+    # ── 操作按钮 ───────────────────────────────────────────────────────────────
     if next_states:
         elements.append({"tag": "hr"})
         btns = []

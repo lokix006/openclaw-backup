@@ -12,7 +12,8 @@ class AlertRecord(Base):
     __tablename__ = "alert_records"
 
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
-    fingerprint = Column(String, index=True)          # Grafana fingerprint (唯一标识)
+    fingerprint = Column(String, index=True)          # Grafana fingerprint (第一条，或 groupKey hash)
+    group_key = Column(String, index=True, nullable=True)  # Grafana groupKey，用于合并同源告警
     alertname = Column(String)
     address = Column(String, nullable=True)
     symbol = Column(String, nullable=True)
@@ -24,6 +25,7 @@ class AlertRecord(Base):
     value_b = Column(Float, nullable=True)
     value_c = Column(Float, nullable=True)
     raw_labels = Column(Text, default="{}")           # 完整 labels JSON，用于动态展示
+    alerts_json = Column(Text, default="[]")          # 合并的全部 alert 列表 JSON
     state = Column(String, default="firing")          # firing|processing|restored|resolved|ignored
     lark_message_id = Column(String, nullable=True)  # 卡片消息ID（用于更新）
     handler = Column(String, nullable=True)          # 接管人 open_id
