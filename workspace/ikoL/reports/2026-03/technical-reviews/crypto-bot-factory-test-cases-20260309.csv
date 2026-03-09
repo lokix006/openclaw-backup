@@ -1,0 +1,81 @@
+用例编号,版本,模块,用例标题,前置条件,操作步骤,预期结果,优先级,用例类型,关联需求,测试数据,备注
+TC-001,V1.0,Step1-信息收集,用户提供完整5项参数时系统不重复询问,系统已启动并等待用户输入,"1. 用户发送：BTC/USDT，15m，148天，每周进化，$10000
+2. 观察系统响应",系统识别到所有5项参数已提供，直接进入Step2参数生成，不再询问任何默认项,高,功能,SKILL.md Step 1,"交易对:BTC/USDT, K线:15m, 天数:148, 进化:每周, 资金:$10000",
+TC-002,V1.0,Step1-信息收集,用户未提供参数时系统询问全部5项,系统已启动,"1. 用户仅发送策略描述，不含任何参数
+2. 观察系统询问内容","系统依次询问：交易对、K线级别、回测天数、进化频率、初始资金，且提示各项默认值",高,功能,SKILL.md Step 1,"输入:动量策略",
+TC-003,V1.0,Step1-信息收集,支持BTC以外的交易对,系统已启动,"1. 用户指定 ETH/USDT
+2. 系统尝试获取ETH/USDT数据","fetch_data.py 请求 ETH/USDT 数据，返回正确 fingerprint，不报错",中,功能,SKILL.md Step 1,"交易对:ETH/USDT",
+TC-004,V1.0,Step1-信息收集,K线级别输入无效值时提示错误,系统已启动,"1. 用户输入K线级别为 30m
+2. 观察系统响应","系统提示 30m 不是有效选项，告知可选值为 1m/5m/15m/1h/4h",中,边界值,SKILL.md Step 1,"K线级别:30m",
+TC-005,V1.0,Step1-信息收集,回测天数超上限365时拒绝,系统已启动,"1. 用户输入回测天数为 366
+2. 观察系统响应","系统拒绝执行并提示回测天数上限为365天",高,边界值,SKILL.md 安全护栏,"回测天数:366",
+TC-006,V1.0,Step1-信息收集,回测天数输入0或负数时拒绝,系统已启动,"1. 用户输入回测天数为 0
+2. 再测试 -1","系统提示回测天数必须为正整数",中,边界值,SKILL.md Step 1,"回测天数:0, -1",
+TC-007,V1.0,Step2-参数生成,slow_ma_period必须大于fast_ma_period约束验证,用户已确认策略描述,"1. 构造 fast_ma_period=50, slow_ma_period=20 的参数
+2. 提交并观察","系统检测到 slow_ma_period(20) <= fast_ma_period(50)，拒绝或自动修正，并提示用户",高,功能,params_schema.json constraints,"fast_ma_period:50, slow_ma_period:20",
+TC-008,V1.0,Step2-参数生成,5个信号权重自动归一化后总和等于1,参数已生成,"1. 读取生成的 bot_params.json
+2. 计算5个weight字段之和","trend_weight + momentum_weight + mean_revert_weight + volume_weight + volatility_weight = 1.0（允许浮点误差±0.001）",高,功能,SKILL.md 决策函数,"实际参数文件中各weight字段",
+TC-009,V1.0,Step2-参数生成,entry_threshold超出范围时被截断到有效区间,参数已生成,"1. 尝试设置 entry_threshold=0.60（超过上限0.55）
+2. 观察实际写入值","实际写入值被截断为0.55，或系统拒绝并提示有效范围 0.05~0.55",高,边界值,params_schema.json,"entry_threshold:0.60, 0.04",
+TC-010,V1.0,Step2-参数生成,long_bias=0时只触发做空信号,参数已生成并写入,"1. 设置 long_bias=0.0
+2. 运行回测
+3. 统计 trades 中 direction 字段","所有交易方向均为 SHORT，LONG 笔数为0",高,功能,SKILL.md 方向偏好,"long_bias:0.0",
+TC-011,V1.0,Step2-参数生成,long_bias=1时只触发做多信号,参数已生成并写入,"1. 设置 long_bias=1.0
+2. 运行回测
+3. 统计 trades 中 direction 字段","所有交易方向均为 LONG，SHORT 笔数为0",高,功能,SKILL.md 方向偏好,"long_bias:1.0",
+TC-012,V1.0,Step2-参数生成,杠杆超过150倍时拒绝执行,参数生成阶段,"1. 设置 base_leverage=151
+2. 尝试运行回测","系统拒绝执行，提示杠杆上限为150倍",高,边界值,SKILL.md 安全护栏,"base_leverage:151",
+TC-013,V1.0,Step2-参数生成,高杠杆未配宽止损时发出警告,参数生成阶段,"1. 设置 base_leverage=25, sl_atr_mult=2.0（低于建议的2.5）
+2. 观察系统响应","系统发出警告：高杠杆(>20x)建议 sl_atr_mult≥2.5，当前配置存在风险",高,功能,SKILL.md 安全护栏,"base_leverage:25, sl_atr_mult:2.0",
+TC-014,V1.0,Step2-参数生成,参数以可读格式展示而非原始JSON,参数已生成,"1. 完成参数生成
+2. 观察系统回复内容","系统以文字描述格式展示（如：方向:多空双向, 杠杆:10x），不直接输出raw JSON",中,功能,SKILL.md Step 2,,
+TC-015,V1.0,Step3a-不进化回测,fetch_data.py成功获取数据并输出fingerprint,参数文件已准备,"1. 执行 fetch_data.py --symbol BTC/USDT --timeframe 15m --days 30 --exchange binance
+2. 检查输出","输出包含 symbol/timeframe/exchange/start/end/bars/checksum/csv_path 字段，csv文件存在",高,功能,SKILL.md Step 3a,"symbol:BTC/USDT, timeframe:15m, days:30",
+TC-016,V1.0,Step3a-不进化回测,Binance不存在的交易对返回明确错误,系统已启动,"1. 执行 fetch_data.py --symbol MERL/USDT --exchange binance
+2. 观察输出","系统返回明确错误信息（如：binance does not have market symbol MERL/USDT），不崩溃",高,异常,实际测试发现,"symbol:MERL/USDT, exchange:binance",
+TC-017,V1.0,Step3a-不进化回测,回测结果包含所有必要指标字段,回测已执行,"1. 执行 run_backtest.py
+2. 检查输出JSON结构","结果包含 total_return/sharpe_ratio/max_drawdown/win_rate/total_trades/profit_factor/blowup_count",高,功能,SKILL.md Step 3a,,
+TC-018,V1.0,Step3a-不进化回测,回测结果以可读格式展示给用户,回测已完成,"1. 完成回测
+2. 观察系统展示内容","系统以表格或文字格式展示（收益率、Sharpe、回撤等），不直接输出原始JSON",中,功能,SKILL.md Step 3,,
+TC-019,V1.0,Step3b-进化回测,segment_bars计算正确,进化模式参数已配置,"1. 设置 timeframe=15m, 进化频率=每周
+2. 检查 segment_bars 参数值","segment_bars = 672（15m * 60 * 24 * 7 / 15 = 672）",高,功能,SKILL.md Step 3b,"timeframe:15m, 进化频率:每周",
+TC-020,V1.0,Step3b-进化回测,进化时性格参数不被修改,进化回测已执行,"1. 记录初始 long_bias/base_leverage/rolling_enabled 值
+2. 完成进化回测
+3. 对比各轮参数","进化计划中 long_bias/base_leverage/max_leverage/risk_per_trade/max_position_pct/rolling_* 及所有signal_weight均未发生变化",高,功能,SKILL.md 硬性约束,,
+TC-021,V1.0,Step3b-进化回测,战术参数漂移不超过初始值±30%,进化回测已执行,"1. 记录初始 entry_threshold 值（如0.25）
+2. 执行进化回测
+3. 检查所有轮次 entry_threshold 值","entry_threshold 在所有轮次中均在 0.175~0.325 范围内（±30%）",高,功能,SKILL.md 硬性约束,"初始entry_threshold:0.25",
+TC-022,V1.0,Step3b-进化回测,连续3段未调整时第4段强制调整,进化逻辑验证,"1. 构造前3段均无调整的进化场景
+2. 观察第4段参数","第4段至少有1个参数与第3段不同，且调整幅度在允许范围内",中,功能,SKILL.md 反思原则7,,⚠️ 需求未定义具体触发阈值，建议确认
+TC-023,V1.0,Step3b-进化回测,evolution_schedule.json轮次数等于segment数,进化回测已执行,"1. 执行进化回测（如21个segment）
+2. 检查 evolution_schedule.json","evolution_schedule.json 中 round 数组长度 = segment总数（21）",中,功能,SKILL.md Step 3b,,
+TC-024,V1.0,Step3b-进化回测,进化结果展示每轮调整历程,进化回测已完成,"1. 完成进化回测
+2. 观察输出","结果中展示每段收益率及参数调整记录（如：第1周:-4.1% → 调整entry_threshold）",中,功能,SKILL.md 展示结果,,
+TC-025,V1.0,Step4-上传验证,package_upload成功打包并上传,回测已完成,"1. 执行 package_upload.py 并提供bot名称等参数
+2. 检查输出","返回上传成功结果，/tmp/upload_package.json 文件生成",中,功能,SKILL.md Step 4,,
+TC-026,V1.0,Step4-上传验证,用户拒绝上传时系统不强制执行,回测已完成,"1. 系统询问是否上传
+2. 用户回复否/不上传","系统接受用户决定，不执行上传，进入下一步或结束流程",高,功能,SKILL.md Step 4,,
+TC-027,V1.0,Step5-实盘交易,bind成功后输出完整凭据,有效配对码已获取,"1. 执行 live_trade.py bind --pair-code <code>
+2. 检查输出","输出包含 agent_id/api_key/api_secret，并提示 api_secret 只返回一次",高,功能,SKILL.md Step 5a,"pair_code:需从平台获取",
+TC-028,V1.0,Step5-实盘交易,api_secret不出现在日志和AI回复中,实盘Bot已绑定,"1. 执行绑定操作
+2. 检查 /tmp/bot_live.log
+3. 检查AI回复内容","api_secret 值不出现在任何日志输出或AI回复文本中",高,安全,SKILL.md 安全护栏,,⚠️ 破坏性操作，需在测试环境执行
+TC-029,V1.0,Step5-实盘交易,live_runner按interval周期自动执行决策,Bot已绑定，参数已配置,"1. 启动 live_runner.py --interval 15
+2. 等待15分钟观察日志","每15分钟执行一次决策周期，日志记录信号计算和执行结果",高,功能,SKILL.md Step 5b,"interval:15",
+TC-030,V1.0,Step5-实盘交易,开仓前必须向用户报告并等待确认,live_runner运行中且出现开仓信号,"1. 触发开仓信号
+2. 观察系统行为","系统向用户报告：方向/金额/杠杆，并等待用户确认后才执行开仓",高,安全,SKILL.md 实盘安全护栏,,
+TC-031,V1.0,Step5-实盘交易,用户未确认时不自动开仓,live_runner运行，开仓信号已触发,"1. 触发开仓信号
+2. 用户不回复或回复否
+3. 等待下一个决策周期","无开仓操作，仓位不变，系统继续等待下一周期信号",高,安全,SKILL.md 实盘安全护栏,,
+TC-032,V1.0,Step5-实盘交易,Ctrl+C时live_runner优雅停止,live_runner运行中,"1. 发送 Ctrl+C 信号
+2. 观察进程退出行为","进程完成当前决策轮次后退出，不中断进行中的API请求，日志记录停止原因",中,功能,SKILL.md Step 5b,,
+TC-033,V1.0,Step5-实盘交易,手动交易命令全部正常执行,Bot已绑定凭据可用,"1. 依次执行 status/open-long/open-short/close/orders/trades 命令
+2. 检查各命令输出","每个命令返回预期数据格式，无报错崩溃",中,功能,SKILL.md Step 5c,,⚠️ 破坏性操作，需在测试环境执行
+TC-034,V1.0,数据异常处理,数据CSV缺失时回测返回明确错误,参数文件已准备,"1. 删除或指定不存在的数据文件路径
+2. 执行 run_backtest.py","系统返回明确错误：数据文件不存在，不崩溃或产生误导性结果",高,异常,推断,"csv_path:不存在的路径",
+TC-035,V1.0,数据异常处理,数据量不足一个segment时进化回测降级处理,少量数据CSV已准备,"1. 准备仅含500条K线的CSV（少于672 segment_bars）
+2. 执行进化回测","系统提示数据不足无法完成完整进化，或使用可用数据执行部分进化并提示",中,边界值,推断,"segment_bars:672, 数据量:500",⚠️ 需求未定义降级行为，建议确认
+TC-036,V1.0,参数速查调整,用户说止损太紧时sl_atr_mult正确调大,Bot参数已生成,"1. 用户反馈：止损太紧/被扫太多
+2. 观察系统调参建议","系统建议增大 sl_atr_mult（如从2.0→2.8），不修改性格参数",中,功能,SKILL.md 参数调整速查表,,
+TC-037,V1.0,参数速查调整,用户说交易太频繁时entry_threshold正确调大,Bot参数已生成,"1. 用户反馈：交易太频繁
+2. 观察系统调参建议","系统建议增大 entry_threshold（如从0.22→0.35），减少入场信号",中,功能,SKILL.md 参数调整速查表,,

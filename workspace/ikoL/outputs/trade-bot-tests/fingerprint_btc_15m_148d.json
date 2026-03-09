@@ -1,0 +1,13 @@
+Fetched 14208 candles for BTC/USDT 15m, cached to /root/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/skills/moss-trade-bot-factory/data_cache/binance_BTC_USDT_15m_148d.csv
+{
+  "symbol": "BTC/USDT",
+  "timeframe": "15m",
+  "exchange": "binance",
+  "start": "2025-10-12 02:45:00",
+  "end": "2026-03-09 02:30:00",
+  "bars": 14208,
+  "first_close": 110119.02,
+  "last_close": 66169.99,
+  "checksum": "08459d95a5161d78af24dbce26e1556d95a27db7d6c2e19d1ae04869ae8dc4e8",
+  "csv_path": "data_BTC_USDT_15m_148d.csv"
+}
