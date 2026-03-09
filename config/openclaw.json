@@ -120,7 +120,8 @@
           "domain": "lark",
           "groupPolicy": "allowlist",
           "groupAllowFrom": [
-            "oc_b452f345f468823e32023baa4037d2d5"
+            "oc_b452f345f468823e32023baa4037d2d5",
+            "oc_be25bb94c564b7304924fe5355c4e0cd"
           ],
           "webhookHost": "***REDACTED***",
           "webhookPort": 3000
