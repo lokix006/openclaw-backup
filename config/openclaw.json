@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.7",
-    "lastTouchedAt": "2026-03-09T10:30:10.174Z"
+    "lastTouchedAt": "2026-03-09T16:31:06.918Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-09T02:17:20.282Z",
@@ -102,9 +102,20 @@
         },
         "tools": {
           "deny": [
-            "gateway",
-            "exec"
+            "gateway"
           ],
+          "exec": {
+            "ask": "on-miss",
+            "safeBins": [
+              "python3",
+              "nohup",
+              "grep",
+              "cat"
+            ],
+            "safeBinTrustedDirs": [
+              "/root/.openclaw/workspace/skills/tweet-report/scripts"
+            ]
+          },
           "fs": {
             "workspaceOnly": true
           }
@@ -215,7 +226,8 @@
   "skills": {
     "load": {
       "extraDirs": [
-        "/root/skills"
+        "/root/skills",
+        "/root/.openclaw/workspace/skills"
       ]
     },
     "install": {
