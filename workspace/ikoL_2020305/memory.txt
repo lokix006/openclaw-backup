@@ -1,1 +1,0 @@
-Subagent ikoL spawned. Base config copied from main agent. Logs in /root/.openclaw/workspace/ikoL/logs/ with separate namespace.

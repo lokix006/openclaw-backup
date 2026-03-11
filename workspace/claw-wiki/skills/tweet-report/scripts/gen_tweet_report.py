@@ -21,7 +21,7 @@ def clean(val):
         return ILLEGAL_CHARS_RE.sub('', val)
     return val
 
-MAX_RETRIES = 10      # 最多重试 10 次（共 10 分钟）
+MAX_RETRIES = 20      # 最多重试 20 次（共 20 分钟）
 RETRY_INTERVAL = 60   # 每次间隔 1 分钟
 
 # ── 1. Load keywords ──────────────────────────────────────────────────────────
@@ -70,7 +70,7 @@ for attempt in range(MAX_RETRIES):
         print(f"Error on attempt {attempt + 1}: {e}")
         time.sleep(RETRY_INTERVAL)
 else:
-    print("❌ 推文数据同步超时（等待超过1小时），请稍后重试。")
+    print("❌ 推文数据同步超时（等待超过20分钟），请稍后重试。")
     sys.exit(1)
 
 # ── 3. Build Excel ────────────────────────────────────────────────────────────

@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.7",
-    "lastTouchedAt": "2026-03-09T16:31:06.918Z"
+    "lastTouchedAt": "2026-03-10T16:43:21.510Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-09T02:17:20.282Z",
@@ -21,6 +21,35 @@
     "enabled": true,
     "dispatch": {
       "enabled": true
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "minimax": {
+        "baseUrl": "https://api.minimax.chat/v1",
+        "apiKey": "***REDACTED***",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "MiniMax-M2.5",
+            "name": "MiniMax M2.5",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          }
+        ]
+      }
     }
   },
   "agents": {
@@ -45,6 +74,7 @@
       "compaction": {
         "mode": "safeguard"
       },
+      "timeoutSeconds": 1500,
       "maxConcurrent": 6,
       "subagents": {
         "maxConcurrent": 8
@@ -102,7 +132,13 @@
         },
         "tools": {
           "deny": [
-            "gateway"
+            "gateway",
+            "nodes",
+            "sessions_spawn",
+            "sessions_send",
+            "sessions_history",
+            "sessions_list",
+            "subagents"
           ],
           "exec": {
             "ask": "on-miss",
@@ -113,7 +149,7 @@
               "cat"
             ],
             "safeBinTrustedDirs": [
-              "/root/.openclaw/workspace/skills/tweet-report/scripts"
+              "/root/.openclaw/workspace/claw-wiki/skills/tweet-report/scripts"
             ]
           },
           "fs": {
@@ -183,7 +219,7 @@
           "webhookPort": 3000
         },
         "feishu-wiki": {
-          "appId": "cli_a920167ea3789ed2",
+          "appId": "cli_a92577172bb85ed2",
           "appSecret": "***REDACTED***",
           "connectionMode": "webhook",
           "verificationToken": "***REDACTED***",
@@ -191,8 +227,8 @@
           "domain": "lark",
           "groupPolicy": "allowlist",
           "groupAllowFrom": [
-            "oc_b452f345f468823e32023baa4037d2d5",
-            "oc_6b42de0a1b3e0b470d1e9e05c9c260ce"
+            "oc_0b9d0ab99d212ccb1ba606849975aaf5",
+            "oc_3b6292c9961eaa04c5d9f342fe4ced7e"
           ],
           "webhookHost": "***REDACTED***",
           "webhookPort": 3101
@@ -227,7 +263,8 @@
     "load": {
       "extraDirs": [
         "/root/skills",
-        "/root/.openclaw/workspace/skills"
+        "/root/.openclaw/workspace/claw-wiki/skills",
+        "/root/.openclaw/workspace/ikoL/skills"
       ]
     },
     "install": {

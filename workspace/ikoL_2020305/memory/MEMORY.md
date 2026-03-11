@@ -1,1 +1,0 @@
-# ikoL memory
