@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.7",
-    "lastTouchedAt": "2026-03-10T16:43:21.510Z"
+    "lastTouchedAt": "2026-03-11T04:54:27.230Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-09T02:17:20.282Z",
@@ -26,28 +26,17 @@
   "models": {
     "mode": "merge",
     "providers": {
-      "minimax": {
-        "baseUrl": "https://api.minimax.chat/v1",
+      "kellycloudai": {
+        "baseUrl": "https://www.kellycloudai.com/v1",
         "apiKey": "***REDACTED***",
         "api": "openai-completions",
         "models": [
-          {
-            "id": "MiniMax-M2.5",
-            "name": "MiniMax M2.5",
-            "api": "openai-completions",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.3,
-              "output": 1.2,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 200000,
-            "maxTokens": 8192
-          }
+          {"id": "gpt-5.4", "name": "GPT-5.4"},
+          {"id": "claude-sonnet-4-6-thinking", "name": "Claude Sonnet 4.6 Thinking"},
+          {"id": "claude-sonnet-4-6", "name": "Claude Sonnet 4.6"},
+          {"id": "deepseek-v3.2", "name": "DeepSeek V3.2"},
+          {"id": "gemini-2.5-flash", "name": "Gemini 2.5 Flash"},
+          {"id": "kimi-k2.5", "name": "Kimi K2.5"}
         ]
       }
     }
@@ -55,11 +44,13 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/anthropic/claude-sonnet-4.6",
+        "primary": "kellycloudai/gpt-5.4",
         "fallbacks": [
           "openrouter/auto",
           "openrouter/x-ai/grok-4",
-          "openrouter/anthropic/claude-sonnet-4.6"
+          "openrouter/anthropic/claude-sonnet-4.6",
+          "kellycloudai/claude-sonnet-4-6",
+          "kellycloudai/gpt-5.4"
         ]
       },
       "models": {
@@ -68,7 +59,9 @@
         },
         "openrouter/openrouter/auto": {},
         "openrouter/x-ai/grok-4": {},
-        "openrouter/anthropic/claude-sonnet-4.6": {}
+        "openrouter/anthropic/claude-sonnet-4.6": {},
+        "kellycloudai/claude-sonnet-4-6": {},
+        "kellycloudai/gpt-5.4": {}
       },
       "workspace": "/root/.openclaw/workspace",
       "compaction": {

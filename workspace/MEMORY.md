@@ -41,8 +41,17 @@
 
 ## 待办 / 未完成
 
-- repo-monitor 转化为 ikol 专属 skill（已讨论方案：读=直接，写/触发=cron委托main）
 - feishu-wiki bitable 权限待开通（bitable:app scope 未授权）
+
+## repo-monitor（已完成）
+
+- skill 路径：/root/.openclaw/workspace/ikoL/skills/repo-monitor/
+- 数据文件：/root/.openclaw/workspace/ikoL/projects/repo-monitor/
+  - repos.csv：每行一个仓库:分支，notify_user_ids 分号分隔
+  - 支持 github/gitlab，多分支用多行
+- cron job 2f9aa65b：main agent，每 5 分钟，检测+发飞书通知（markdown 格式）
+- ikol skill：负责对话管理（查列表、增删仓库），读写 CSV 直接操作，不依赖委托
+- 通知走 feishu-loki account 发 DM
 
 ## Loki 偏好
 

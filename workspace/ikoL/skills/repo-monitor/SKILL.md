@@ -10,95 +10,51 @@ Manages a repository monitoring system that detects branch updates and notifies 
 ## Architecture
 
 ```
-ikol (this agent)               main agent (via cron job)
-├── Read operations             ├── Runs monitor.py every 5 min
-│   ├── View repos list         ├── Detects new commits
-│   ├── View latest state       ├── Writes pending_notifications.json
-│   └── View pending queue      └── Sends Feishu DM notifications
-└── Write operations (delegate to main via cron)
-    ├── Add/remove repo
-    └── Manual trigger check
+ikol (this agent)                    main agent cron job (2f9aa65b)
+├── Config management                ├── Runs monitor.py every 5 min
+│   ├── View repos list              ├── Detects new commits
+│   ├── Add repo (write CSV)         ├── Writes pending_notifications.json
+│   └── Remove repo (edit CSV)       └── Sends Feishu DM notifications
+└── Query state
+    ├── View latest commit state
+    └── View pending queue
 ```
+
+**Manual trigger**: Not needed. Cron job runs every 5 minutes automatically. Tell user to wait up to 5 minutes.
 
 ## Data Files
 
-All files live in `/root/.openclaw/workspace/ikoL/projects/repo-monitor/`:
+All files in `/root/.openclaw/workspace/ikoL/projects/repo-monitor/`:
 
 | File | Purpose |
 |------|---------|
-| `repos.csv` | Monitored repo list (platform,repo,branch,notify_user_ids) |
+| `repos.csv` | Monitored repo list |
 | `repo_state.json` | Last known SHA per repo:branch |
-| `pending_notifications.json` | Queue of unsent notifications (sent field) |
-| `.env` | GITHUB_TOKEN, GITLAB_TOKEN, GITLAB_BASE_URL |
+| `pending_notifications.json` | Notification queue |
+| `.env` | API tokens (do not read/display) |
 
-## Read Operations (do directly)
+## Operations
 
 ### View monitoring list
 Read `repos.csv` and format as table. Fields: platform, repo, branch, notify_user_ids (semicolon-separated).
 
+### Add a repo
+1. Confirm: platform (github/gitlab), repo (owner/name), branch, notify_user_ids (feishu open_ids, semicolon-separated)
+2. Append new line to `repos.csv` using `write` tool (read first, then write full file with new line added)
+3. Reply: "已添加，下次检查（最多5分钟）生效"
+
+### Remove a repo
+1. Show current list, confirm which entry to remove
+2. Edit `repos.csv` to remove the specific line using `edit` tool
+3. Reply: "已删除"
+
 ### View latest commit state
-Read `repo_state.json`. Show sha (first 8 chars), checked_at per repo.
+Read `repo_state.json`. Show sha (first 8 chars) and checked_at per repo.
 
 ### View pending queue
 Read `pending_notifications.json`. Show unsent items (sent=false).
 
-## Write Operations (delegate to main agent via cron)
-
-**IMPORTANT**: This agent (ikol) has exec denied. For operations that require running scripts or modifying repos.csv, create a one-shot cron job delegated to main agent.
-
-### Add a repo to monitoring
-1. Confirm with user: platform (github/gitlab), repo (owner/name), branch, notify_user_ids (semicolon-separated feishu user IDs)
-2. Create one-shot cron job:
-```
-cron.add({
-  name: "repo-monitor: add <repo>",
-  agentId: "main",
-  sessionTarget: "isolated",
-  schedule: { kind: "at", at: "<now+10s>" },
-  payload: {
-    kind: "agentTurn",
-    message: "Append this line to /root/.openclaw/workspace/ikoL/projects/repo-monitor/repos.csv (do not overwrite, append only):\n<platform>,<repo>,<branch>,<user_ids>\nThen reply DONE."
-  },
-  delivery: { mode: "none" }
-})
-```
-3. Tell user: "已委托添加，稍后生效"
-
-### Remove a repo from monitoring
-1. Show current list, confirm which line to remove
-2. Create one-shot cron job delegating to main to remove the specific line from repos.csv
-3. Tell user: "已委托删除，稍后生效"
-
-### Manual trigger check
-Create a one-shot cron job:
-```
-cron.add({
-  name: "repo-monitor: manual check",
-  agentId: "main",
-  sessionTarget: "isolated",
-  schedule: { kind: "at", at: "<now+5s>" },
-  payload: {
-    kind: "agentTurn",
-    message: "Run: exec python3 /root/.openclaw/workspace/ikoL/projects/repo-monitor/monitor.py\nThen read pending_notifications.json, send feishu DM for each sent=false item via message tool (channel=feishu, accountId=feishu-loki, target=user:<user_id>), mark sent=true, remove sent items. Reply DONE when finished."
-  },
-  delivery: { mode: "none" }
-})
-```
-Tell user: "已触发手动检查，30秒内完成"
-
-## Notification Format (for reference)
-
-When main agent sends notifications, format:
-```
-📦 仓库更新通知
-仓库：<platform>/<repo>
-分支：<branch>
-提交者：<commit.author>
-提交信息：<commit.message>
-时间：<commit.time>
-链接：<commit.url>
-```
-
-## refs/repos-csv-format.md
-
-See `references/repos-csv-format.md` for CSV format details and examples.
+## Notes
+- `.env` file contains secrets — never read or display its contents
+- CSV format: `platform,repo,branch,notify_user_ids` — see references/repos-csv-format.md
+- Notifications are sent by the main agent cron job, not by this agent

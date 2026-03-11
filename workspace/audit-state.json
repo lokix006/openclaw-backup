@@ -1,10 +1,13 @@
 {
   "ikol": {
-    "file": "9af4868b-2eb7-4f39-887e-ae041dcd7ff5.jsonl",
-    "offset": 168834
+    "file": "5e33b132-82c4-4033-9016-09b6eeeb8114.jsonl",
+    "offset": 162598
   },
   "claw-wiki": {
-    "file": "7356e474-b79a-4fc6-ab46-c3e74dcd3403.jsonl",
-    "offset": 105664
+    "file": "f7122474-a7d4-4401-9cd4-4eddb70c229e.jsonl",
+    "offset": 93770
+  },
+  "_meta": {
+    "last_notified_fingerprint": ""
   }
 }
