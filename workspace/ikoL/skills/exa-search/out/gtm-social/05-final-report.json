@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-03-12T05:33:31.784Z",
+  "profile": "social",
+  "usage": {
+    "inputTokens": 2055,
+    "inputTokenDetails": {
+      "noCacheTokens": 1904,
+      "cacheReadTokens": 151,
+      "cacheWriteTokens": 0
+    },
+    "outputTokens": 1219,
+    "outputTokenDetails": {
+      "textTokens": 583,
+      "reasoningTokens": 636
+    },
+    "totalTokens": 3274,
+    "raw": {
+      "prompt_tokens": 2055,
+      "prompt_tokens_details": {
+        "cached_tokens": 151,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "completion_tokens": 1219,
+      "completion_tokens_details": {
+        "reasoning_tokens": 636,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      },
+      "total_tokens": 3274,
+      "cost": 0.00099785,
+      "cost_details": {
+        "upstream_inference_cost": 0.00099785,
+        "upstream_inference_prompt_cost": 0.00038835,
+        "upstream_inference_completions_cost": 0.0006095
+      },
+      "is_byok": false
+    },
+    "reasoningTokens": 636,
+    "cachedInputTokens": 151
+  },
+  "promptChars": 4616,
+  "text": "🌐 **OpenClaw 社区热度简报** | 2026-03-11\n1. **OpenClaw 3.8 继续炸场，龙虾不睡觉，全球程序员连夜赶工**\n   - 📅 2026-03-11\n   - 📝 OpenClaw 3.8 持续引发全球开发者热议，社区成员夜以继日地改进和扩展其功能，展现出强烈的热情和广泛采用。\n   - 🔗 https://m.36kr.com/p/3715635756691590\n---\n2. **OpenClaw 给豆包手机指了条活路**\n   - 📅 2026-03-11\n   - 📝 OpenClaw 通过支持豆包手机项目，推动AI社区开源协作，为创新AI开发提供路径，增强行业影响力。\n   - 🔗 https://www.36kr.com/p/3712327114617344\n---\n3. **全网都在“养虾”，OpenClaw 到底是什么？**\n   - 📅 2026-03-11\n   - 📝 OpenClaw 在中国科技社区引发“养虾”热议，作为开源AI助手，其任务执行和插件生态促进用户积极参与，成为开发者企业热点工具。\n   - 🔗 https://juejin.cn/post/7615551904539213866\n---\n4. **实战部署 OpenClaw：阿里云 ECS + 千问 + 钉钉**\n   - 📅 2026-03-11\n   - 📝 阿里云上部署 OpenClaw 开源 AI 智能体框架，集成千问模型和钉钉，实现私有化部署和企业工作流自动化，提升 AI 集成效率。\n   - 🔗 https://juejin.cn/post/7615590290816794666\n---\n5. **腾讯把 24 万 Star 的 OpenClaw 塞进了微信：QClaw 全解析，14 亿人的 AI Agent 入口打开了**\n   - 📅 2026-03-10\n   - 📝 腾讯将 OpenClaw 集成至微信和 QQ 推出 QClaw 内测版，为 14 亿用户提供 AI Agent 服务，推动企业级 AI 自动化落地和云端部署。\n   - 🔗 https://juejin.cn/post/7615650902230941737\n---\n6. **OpenClaw 上，正在长出一整个“AI 硬件”生态**\n   - 📅 2026-03-10\n   - 📝 OpenClaw 发展成全面 AI 硬件生态，社区参与度提升，用户对中国 AI 硬件软件采用表现出积极情绪和行业影响。\n   - 🔗 http://www.36kr.com/p/3715194472771968"
+}

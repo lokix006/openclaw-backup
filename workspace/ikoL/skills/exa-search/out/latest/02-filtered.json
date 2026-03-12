@@ -1,0 +1,831 @@
+{
+  "generatedAt": "2026-03-12T05:43:24.108Z",
+  "profile": "tech",
+  "rawCount": 33,
+  "uniqueCount": 28,
+  "keptCount": 21,
+  "droppedCount": 7,
+  "kept": [
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw release OR changelog OR performance",
+      "title": "openclaw models status --probe returns LLM request timed out on 2026.3.8 · Issue #41874 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/41874",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "Script ## openclaw models status --probe returns LLM request timed out on 2026.3.8 - Author: @BigApple12138\n- State: open\n- Created: 2026-03-10T07:05:11Z\n- Updated: 2026-03-11T12:27:48Z $### Version\\n- OpenClaw: 2026.3.8 (3caab92)\\n- Install method: npm reinstall/upgrade (user report: upgraded to 3.8 had issues and rolled back manually)\\n\\n### Command\\n```bash\\nopenclaw models status --agent main --probe\\n```\\n\\n### Observed\\n- Warning:\\n - tools.profile (coding) allowlist contains unknown entries (apply_patch, cron, image). These entries won\\x27t match any tool unless the plugin is enabled.\\n- Probe result:\\n - Model openai-codex/gpt-5.2, profile openai-codex:default (oauth): unknown (~8.4s)\\n - Message: LLM request timed out.\\n- Auth appears valid (OpenAI OAuth  ...    with a clearer actionable error, and/or allow configuring a longer probe timeout to avoid false negatives under normal network latency.\\n\\n### Notes\\n- Is the probe timeout configurable?\\n- Any known regression in 2026.3.8 around model  ...    ---\n\n### Timeline\n\n**@BigApple12138** commented · Mar 10, 2026 at 7:06am · Author > $Additional info: after rolling back from 2026.3.8 to **2026.3.7**, the probe works normally again (no timeout).\\n\\nSo this appears to be a regression introduced in 2026.3.8. **@BigApple12138** commented · Mar 10, 2026 at 7:12am · Author > $Additional logs (sanitized): gateway shows repeated timeouts and failover failing both primary and fallback models around 2026-03-10 14:27–14:40 (local time). Example: \"Embedded agent failed before reply: All models failed (2): openai-codex/gpt-5.2: LLM request timed out. (timeout) | openai-codex/gpt-5.4: LLM request timed out. (timeout)\" **xaeon2026** mentioned this in issue [#42264: Probe sessions can time out after a successful reply because post-run  ...    **@Ruiter578** commented · Mar 10, 2026 at 4:14pm  ...    > ⚠️ Agent failed before reply: All models failed (2): openai-codex/gpt-5.3-codex: LLM request timed out. (timeout) |  ...    > \n> openclaw --version → 2026.3.7\n> openclaw gateway restart\n> then\n> functioning normally **goofy814** mentioned this in issue #42632: cron `sessionTarget=\"isolated\"` + `agentTurn` can time out on a minimal prompt · Mar 11, 2026 at 1:30am  ...    > G'day, getting some streaming vibes from openai here."
+      ],
+      "summary": "The GitHub issue reports a timeout problem with the `openclaw models status --probe` command on version 2026.3.8. The user experienced a request timeout (~8.4 seconds) when probing the openai-codex/gpt-5.2 model, despite valid OAuth authentication. The issue includes warnings about unknown entries in the tools profile and notes that some users had to manually roll back after upgrading. This suggests a potential bug or performance issue introduced in the latest release, possibly affecting model probing stability.",
+      "textPreview": "# Issue: openclaw/openclaw #41874 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 305K stars | TypeScript ## openclaw models status --probe returns LLM request timed out on 2026.3.8 - Author: @BigApple12138 - State: open - Created: 2026-03-10T07:05:11Z - Updated: 2026-03-11T12:27:48Z $### Version\\n- OpenClaw: 2026.3.8 (3caab92)\\n- Install method: npm reinstall/upgrade (user report: upgraded to 3.8 had issues and rolled back manually)…",
+      "keep": true,
+      "score": 173,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+issue",
+        "+pr",
+        "+release",
+        "+performance",
+        "+plugin",
+        "+timeout",
+        "+cron",
+        "+stream",
+        "+session",
+        "+oauth",
+        "+config"
+      ],
+      "evidence": "openclaw models status --probe returns LLM request timed out on 2026.3.8 · Issue #41874 · openclaw/openclaw | The GitHub issue reports a timeout problem with the `openclaw models status --probe` command on version 2026.3.8. The user experienced a request timeout (~8.4 seconds) w…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "fix(auth): clear stale expiry display for auto-renewable OAuth profiles · Pull Request #43122 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/43122",
+      "publishedDate": "2026-03-11T00:00:00.000Z",
+      "highlights": [
+        ": openclaw/openclaw #43122  ...    | TypeScript ## fix(auth): clear stale expiry display for auto-renewable OAuth profiles - Author: @ademczuk\n- Association: MEMBER\n- State: closed\n- Labels: commands, agents, size: S - Source branch: fix/oauth-expired-status-display\n- Target branch: main\n- Mergeable: dirty\n- Commits: 1\n- Additions: 50 - Deletions: 5\n- Changed files: 4\n- Created: 2026-03-11T11:06:30Z\n- Updated: 2026-03-11T13:26:17Z  ...    `buildProfileHealth` already overrides the status of refreshable OAuth profiles to `\"ok\"` (they auto-renew on next API call), but it was still passing through the stale access-token `expiresAt` and `remainingMs` values. Downstream renderers like `models auth status` then displayed contradictory \"ok — expires in 0m\". This clears both fields when the  ...    - `npx vitest run src/agents/auth-health.test.ts` passes (5/5 including new regression test)  ...    ### Changelog\n\nUpdated.\n\n---\n\n### Timeline **openclaw-barnacle[bot]** added label `commands` · Mar 11, 2026 at 11:06am **openclaw-barnacle[bot]** added label `agents` · Mar 11, 2026 at 11:06am **openclaw-barnacle[bot]** added label `size: S` · Mar 11, 2026 at 11:06am **@greptile-apps[bot]** commented · Mar 11, 2026 at 11:08am > Greptile Summary \n> > This PR fixes a UI bug where auto-renewable OAuth profiles (those with a valid refresh token) could display misleading \"ok — expires in 0m\" information because the stale access-token `expiresAt`/`remainingMs` values were leaking through even after the status was promoted to `\"ok\"`. The fix is clean and minimal: extract the existing refresh-override boolean into a named variable in `buildProfileHealth`, use it to clear the stale expiry fields, and  ...    > - `src/commands/models/list.status-command.ts`: The expiry suffix now renders as `\"\"` (empty) rather than `\" expires  ...    **ademczuk** pushed commit `26643e5`: fix(auth): clear stale expiry values for auto-renewable OAuth profiles · Mar 11,  ...    > ## 🔒 Aisle Security Analysis\n> \n> We found **1** potential security issue(s) in this PR:\n>  ...    > | 1 | 🔵 Low | Auth health status can be incorrectly overridden to \"ok\" with whitespace refresh token |\n> \n> ---\n> > ### 1. 🔵 Auth health status can be incorrectly overridden to \"ok\" with whitespace refresh token\n>  ...    > In `buildProfileHealth`, OAuth profiles that are `expired`/`expiring` have their status overridden to `\"ok\"` when `hasRefreshToken` is true. The refresh-token check only verifies that `credential.refresh` is a string with `length >  ...    > \n> - A refresh token value containing only whitespace (e.g., `\" \"`) will satisfy this check  ...    > const status = refreshOverride? \"ok\" : rawStatus;\n> ```\n> > This is a status-integrity regression: corrupted/malformed refresh tokens can mask expired access tokens and suppress  ...    > \n> ---\n> \n> *Analyzed PR: https://github.com/openclaw/openclaw/pull/43122 at commit `26643e5`*\n> > Last updated on: 2026-03-11T12:53:42Z **@ademczuk** commented · Mar 11, 2026 at 1:26pm · Author > Closing this in favour of #42749, which takes the opposite design approach (surfacing real `expired`/`expiring` status with a `refreshable` flag rather than overriding to `ok` and clearing timestamps). Both approaches fix the  ...    > > For anyone reviewing #42749: the core trade-off is whether the data layer should abstract away refresh semantics  ...    **ademczuk** mentioned this in issue [#42721: [Bug]: openclaw"
+      ],
+      "summary": "This pull request addresses a bug in the OpenClaw project related to OAuth profile expiry display. Previously, the system incorrectly showed stale expiry information for auto-renewable OAuth profiles, such as displaying \"expires in 0m\" despite the token being set to auto-renew. The fix involves clearing the `expiresAt` and `remainingMs` fields when the profile's status is overridden to \"ok\" (indicating auto-renewal), ensuring that downstream renderers do not display misleading expiry times. This update improves the accuracy of OAuth token status representation, preventing contradictory information in the user interface.",
+      "textPreview": "# Pull Request: openclaw/openclaw #43122 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## fix(auth): clear stale expiry display for auto-renewable OAuth profiles - Author: @ademczuk - Association: MEMBER - State: closed - Labels: commands, agents, size: S - Source branch: fix/oauth-expired-status-display - Target branch: main - Mergeable: dirty - Commits: 1 - Additions: 50 - Deletions: 5 - Changed files: 4 -…",
+      "keep": true,
+      "score": 167,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+changelog",
+        "+api",
+        "+security",
+        "+stream",
+        "+oauth"
+      ],
+      "evidence": "fix(auth): clear stale expiry display for auto-renewable OAuth profiles · Pull Request #43122 · openclaw/openclaw | This pull request addresses a bug in the OpenClaw project related to OAuth profile expiry display. Previously, the system incorrectly showed stale expiry informati…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "fix(acp): strip provider auth env for child ACP processes · Pull Request #42250 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/42250",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        ": openclaw/openclaw #42250 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## fix(acp): strip provider auth env for child ACP processes - Author: @rodrigouroz\n- Association: CONTRIBUTOR\n- State: merged\n- Labels: size: L, extensions: acpx - Source branch: codex/acp-provider-auth-env-minimal\n- Target branch: main\n- Assignees: @Takhoffman - Mergeable: unknown\n- Commits: 7\n- Additions: 597\n- Deletions: 115\n- Changed files: 19\n- Created: 2026-03-10T14:52:27Z - Updated: 2026-03-10T21:59:29Z\n- Closed: 2026-03-10T21:50:10Z\n- Merged: 2026-03-10T21:50:10Z  ...    ## Summary\n\nDescribe the problem and fix in 2–5 bullets: - Problem: provider auth env vars such as `OPENAI_API_KEY`, `GITHUB_TOKEN`, and `HF_TOKEN` can leak into ACP child  ...    - What changed: the default OpenClaw ACP bridge path and bundled `acpx` spawn path now strip a shared list of provider  ...    - [x] Bug fix\n- [ ] Feature\n- [ ] Refactor\n- [ ] Docs\n- [x] Security hardening\n- [ ] Chore/infra  ...    ## Linked Issue/PR\n\n- Closes #\n- Related #41615\n- Related #36280\n\n## User-visible / Behavior Changes - Default `openclaw acp` child processes no longer inherit provider auth env vars from the parent OpenClaw process. - Bundled `acpx` child processes no longer inherit provider auth env vars from the parent OpenClaw process. - Explicit custom ACP servers and custom `acpx` commands continue to inherit provider auth env vars. - `secrets audit` and `secrets apply` now treat additional provider auth env vars such as `GITHUB_TOKEN`, `GH_TOKEN`,  ...    Provider auth env vars are now scrubbed before spawning default ACP child processes. This reduces unintended credential propagation. The main compatibility risk is breaking custom servers that rely on inherited creds, so the strip only  ...    - OS: macOS\n- Runtime/container: Node 22 / pnpm\n- Model/provider: N/A\n- Integration/channel (if any): ACP / ACPX  ...    1. Export provider auth env vars like `OPENAI_API_KEY`, `GITHUB_TOKEN`, and `HF_TOKEN` in the parent shell. 2. Start ACP through the default OpenClaw bridge path or bundled `acpx` path. 3. Inspect the spawned child env and then repeat with an explicit custom ACP server or explicit custom `acpx` command.  ...    - Default OpenClaw ACP child processes do not receive provider auth env vars.\n- `OPENCLAW_API_KEY` remains available.  ...    **rodrigouroz** mentioned this in PR #41615: fix(acp): strip provider API keys from ACP child process env ·  ...    **openclaw-barnacle[bot]** added label `extensions: acpx` · Mar 10, 2026 at 2:52pm  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `a9bcf2c8b5`\n> > ℹ️ About Codex in GitHub \n> \n> > Your team has set up Codex to review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for review\n> - Mark a draft as ready\n> - Comment \"@codex review\".\n>  ...    > Greptile Summary \n> > This PR adds a security hardening layer to prevent provider authentication environment variables (such as `OPENAI_API_KEY`, `GITHUB_TOKEN`, and `HF_TOKEN`) from leaking into child ACP and ACPX processes. The fix is well-scoped: stripping is only applied on the default OpenClaw bridge path and the bundled `acpx` binary, while  ...    > Follow-up in 44e219238.\n> \n> Addressed the review points in the minimal patch:\n> > - ACP client stripping now keys off the resolved default-bridge command, so an explicit `--server openclaw` still  ...    > Greptile was right about the unrelated Windows quoting regression in  ...    **Rodrigo Uroz** pushed commit `61ab79e`: fix(acp): strip provider auth env for child ACP processes · Mar 10, 2026 at 9:25pm  ...    > ## 🔒 Aisle Security Analysis\n> \n> We found **1** potential security issue(s) in this PR:\n>  ...    > | 1 | 🟡 Medium | Brittle command string equality can disable provider auth env var stripping for the bundled acpx  ...    > ### 1. 🟡 Brittle command"
+      ],
+      "summary": "This pull request addresses a security issue where provider authentication environment variables (e.g., `OPENAI_API_KEY`, `GITHUB_TOKEN`, `HF_TOKEN`) could inadvertently leak into child ACP processes. The fix involves stripping these sensitive environment variables from the environment passed to child processes, enhancing security by preventing credential exposure. The update includes 597 additions and 115 deletions across 19 files, and it was merged to improve the robustness of the system's environment handling.",
+      "textPreview": "# Pull Request: openclaw/openclaw #42250 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## fix(acp): strip provider auth env for child ACP processes - Author: @rodrigouroz - Association: CONTRIBUTOR - State: merged - Labels: size: L, extensions: acpx - Source branch: codex/acp-provider-auth-env-minimal - Target branch: main - Assignees: @Takhoffman - Mergeable: unknown - Commits: 7 - Additions: 597 - Deletion…",
+      "keep": true,
+      "score": 161,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+api",
+        "+security",
+        "+docs",
+        "+doc"
+      ],
+      "evidence": "fix(acp): strip provider auth env for child ACP processes · Pull Request #42250 · openclaw/openclaw | This pull request addresses a security issue where provider authentication environment variables (e.g., `OPENAI_API_KEY`, `GITHUB_TOKEN`, `HF_TOKEN`) could inadvertently leak in…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "[Bug]: Cron \"Run Now\" button doesn't work - task never executes despite enqueued: true · Issue #41979 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/41979",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        " openclaw/openclaw #41979 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [Bug]: Cron \"Run Now\" button doesn't work - task never executes despite enqueued: true - Author: @lklkxcxc\n- State: open\n- Labels: bug, regression\n- Created: 2026-03-10T08:55:51Z - Updated: 2026-03-10T09:17:54Z ### Bug type\n\nRegression (worked before, now fails)\n\n### Summary Cron \"Run Now\" button returns success but task never executes\n\n### Steps to reproduce Create a cron job with sessionTarget: isolated in OpenClaw UI\nClick \"Run Now\" button API returns {ok: true, enqueued: true, runId: \"manual:...\"}\nTask never executes - no entry in cron/runs/ directory Expected behavior:\nTask should execute immediately when \"Run Now\" is clicked  ...    ### Actual behavior Affected: Users using cron jobs in OpenClaw UI\nSeverity: Medium (blocks manual trigger)\nFrequency: 100% Consequence: Cannot manually trigger cron jobs from UI\nWorkaround: Use sessions_spawn API directly instead of UI button ### OpenClaw version\n\n2026.3.8\n\n### Operating system\n\nWindows11\n\n### Install method\n\nnpm\n\n### Model\n\nminimax  ...    **lklkxcxc** added label `bug` · Mar 10, 2026 at 8:55am **openclaw-barnacle[bot]** added label `regression` · Mar 10, 2026 at 8:56am  ...    > > ### Bug type\n> > \n> > Regression (worked before, now fails)回归问题（之前可用，现在失效）\n> > ### Summary\n> > > > Cron \"Run Now\" button returns success but task never executesCron 的“立即运行”按钮显示成功，但任务从未执行\n> > ### Steps to reproduce  ...    > > Create a cron job with sessionTarget: isolated in OpenClaw UI在 OpenClaw UI 中创建一个 sessionTarget 为 isolated 的 cron 任务 Click \"Run Now\" button点击“立即运行”按钮 API returns {ok: true, enqueued: true, runId: \"manual:...\"}API 返回{ok: true, enqueued: true, runId: \"manual:...\"} Task never executes - no entry in cron/runs/ directory任务从未执行 - cron/runs/目录中无记录 Expected behavior: 预期行为： Task should execute immediately when \"Run Now\" is clicked点击\"立即运行\"按钮时，任务应立即执行  ...    中无记录 OpenClaw version: 2026.3.8OpenClaw 版本：2026.3.8 > > ### Actual behavior\n> > > > Affected: Users using cron jobs in OpenClaw UI受影响：在 OpenClaw 界面中使用定时任务的用户 Severity: Medium (blocks manual trigger)严重程度：中等（阻碍手动触发） Frequency: 100% 出现频率：100% Consequence: Cannot manually trigger cron jobs from  ...    > > _No response 无响应_\n> > ### Additional information\n> > \n> > _No response 无响应_\n> > Can be temporarily replaced by the command line：\n> \n> //List all cron jobs\n> openclaw cron list\n>  ...    **BaiKudan** mentioned this in PR [#42085: fix(cron): clear stale runningAtMs in run() before already-running check (#41979)]"
+      ],
+      "summary": "The GitHub issue reports a regression bug in OpenClaw version 2026.3.8 where clicking the \"Run Now\" button on a cron job with `sessionTarget: isolated` returns a success response but the task does not execute. Despite the API indicating the task was enqueued (`ok: true, enqueued: true`), no task runs and no entry appears in the `cron/runs/` directory. The issue prevents immediate execution of scheduled jobs via the UI, indicating a failure in triggering or processing the task despite successful API acknowledgment. This bug impacts the reliability of manual cron job execution in OpenClaw and requires further investigation to restore expected behavior.",
+      "textPreview": "# Issue: openclaw/openclaw #41979 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [Bug]: Cron \"Run Now\" button doesn't work - task never executes despite enqueued: true - Author: @lklkxcxc - State: open - Labels: bug, regression - Created: 2026-03-10T08:55:51Z - Updated: 2026-03-10T09:17:54Z ### Bug type Regression (worked before, now fails) ### Summary Cron \"Run Now\" button returns success but task never e…",
+      "keep": true,
+      "score": 161,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+api",
+        "+cron",
+        "+session",
+        "+问题",
+        "+回归",
+        "+版本"
+      ],
+      "evidence": "[Bug]: Cron \"Run Now\" button doesn't work - task never executes despite enqueued: true · Issue #41979 · openclaw/openclaw | The GitHub issue reports a regression bug in OpenClaw version 2026.3.8 where clicking the \"Run Now\" button on a cron job with `sessionTarget: isolated` ret…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "[BUG 2026.3.8] Cron lane backlog: jobs queue behind stuck runs (queueAhead=5, wait 60m+) causing scheduler starvation · Issue #42097 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42097",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "claw #42097 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [BUG 2026.3.8] Cron lane backlog: jobs queue behind stuck runs (queueAhead=5, wait 60m+) causing scheduler starvation - Author: @z3ldox\n- State: open\n- Labels: bug, regression\n- Reactions: 👍 1\n- Created: 2026-03-10T11:48:27Z - Updated: 2026-03-10T12:08:58Z ### Bug type\n\nRegression (worked before, now fails)\n\n### Summary Cron jobs created in 2026.3.8 transition \"running\" → \"idle\" but never write run history. The \"finished\" event is not  ...    ### Steps to reproduce\n\n# 1. Create a simple cron job openclaw cron add --name \"Test Cron Bug\" --at \"2m\" --session main --system-event \"Run: uptime && free -h\"  ...    • Gateway logs show \"FailoverError: LLM request timed out\" but no \"finished\" event  ...    ### OpenClaw version\n\n2026.3.8 (3caab92)\n\n### Operating system\n\nLinux 6.8.12-19-pve (Proxmox LXC container) ### Install method\n\nnpm install -g openclaw (official release)\n\n### Model google/gemini-2.5-flash-lite (tested) minimax-m2.1:cloud (tested)\n\n### Provider / routing chain OpenClaw Gateway → Ollama Cloud (openai-completions adapter) → Gemini/Minimax\n\n### Config file / key location  ...    Affected users: All users creating new cron automations after 2026.3.8 Severity: HIGH — Blocks core automation functionality\n\nFrequency: Always reproducible with any new cron job Consequences:\n• Cannot audit cron job execution (no run history) • Scheduler becomes unresponsive when jobs stick in \"running\" (~60 min)\n• No visibility into job failures or timeouts  ...    Business impact: Cron scheduling is a core OpenClaw feature. This regression blocks users from creating reliable new automations. ### Additional information Regression confirmed:\n• Last known good: Pre-2026.3.8 jobs work perfectly\n• First known bad: 2026.3.7 / 2026.3.8  ...    Suspected root cause:The \"FailoverError: LLM request timed out\" error handling path in cron lane execution skips emitting the \"finished\" event, so appendCronRunLog() \nis never called. ---\n\n### Timeline\n\n**z3ldox** added label `bug` · Mar 10, 2026 at 11:48am **openclaw-barnacle[bot]** added label `regression` · Mar 10, 2026 at 11:48am  ...    > Conclusion: Cron lane has single execution slot. When one job hangs, others queue behind it (queueAhead=5). Jobs  ...    **z3ldox** changed the title from \"[BUG 2026.3.8] Cron jobs complete (running→idle) but run history not written - no \"finished\" event emitted\" to \"[BUG 2026.3.8] Cron lane backlog: jobs queue behind stuck runs (queueAhead=5, wait 60m+) causing scheduler starvation\" · Mar 10, 2026 at 12:06pm  ...    > ## UPDATE: Root Cause Refined\n> \n> **Issue is NOT \"run history missing\"** — it's **cron lane backlog/starvation**. > \n> ### Clarifications:\n> > 1. `openclaw cron runs` being empty **during execution** = expected (only writes on \"finished\" event)  ...    > warn diagnostic lane wait exceeded: lane=cron waitedMs=3599903 queueAhead=5\n> \n> Impact:\n>  ...    > • Default isolated job timeout can be ~60m (safety ceiling)\n> \n> Work"
+      ],
+      "summary": "This GitHub issue reports a regression bug in openclaw version 2026.3.8, where cron jobs transition from \"running\" to \"idle\" but fail to log their run history due to the \"finished\" event not being emitted after an LLM timeout. This prevents the `appendCronRunLog()` function from executing, leading to a backlog of jobs behind stuck runs, causing scheduler starvation. The issue was identified after creating and manually running a cron job, with the problem manifesting approximately 30 seconds later. The bug impacts the scheduling and logging of cron jobs, potentially affecting system reliability and performance. The issue is currently open and labeled as a bug and regression, indicating it worked correctly in previous versions and now requires attention for a fix.",
+      "textPreview": "# Issue: openclaw/openclaw #42097 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [BUG 2026.3.8] Cron lane backlog: jobs queue behind stuck runs (queueAhead=5, wait 60m+) causing scheduler starvation - Author: @z3ldox - State: open - Labels: bug, regression - Reactions: 👍 1 - Created: 2026-03-10T11:48:27Z - Updated: 2026-03-10T12:08:58Z ### Bug type Regression (worked before, now fails) ### Summary Cron jo…",
+      "keep": true,
+      "score": 161,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+release",
+        "+performance",
+        "+timeout",
+        "+cron",
+        "+session",
+        "+config"
+      ],
+      "evidence": "[BUG 2026.3.8] Cron lane backlog: jobs queue behind stuck runs (queueAhead=5, wait 60m+) causing scheduler starvation · Issue #42097 · openclaw/openclaw | This GitHub issue reports a regression bug in openclaw version 2026.3.8, where cron jobs transition from \"running\" to \"idle\"…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw release OR changelog OR performance",
+      "title": "Local Ollama models still hang in OpenClaw 2026.3.8 (retest of #31399) · Issue #41871 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/41871",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "Script ## Local Ollama models still hang in OpenClaw 2026.3.8 (retest of #31399) - Author: @joemcurry\n- State: open\n- Created: 2026-03-10T07:03:21Z\n- Updated: 2026-03-11T07:45:50Z ## Summary Local Ollama models (e.g., llama3.1, llama3.2) hang indefinitely in OpenClaw sessions after update to 2026.3.8. Direct Ollama API/chat works fine, but OpenClaw sessions timeout with zero tokens generated. This is a retest of closed  ...    - **OpenClaw:** 2026.3.8 (3caab92)\n- **Ollama:** 0.5.x (local) - **Models Tested:** llama3.1:latest (5.5 GB), llama3.2:3b (1.6 GB)\n- **OS:** macOS 15.3 (arm64)\n- **Node:** v22.22.0  ...    - Ollama `ps` shows model loaded (100% GPU), but no tokens processed. - Direct `curl` to Ollama API works fine (e.g., responds in ~10-30s).  ...    ```\ncurl http://127.0.0.1:11434/api/generate -d \\'{\"model\": \"llama3.2\", \"prompt\": \"Say hello\", \"stream\": false}\\'  ...    - #31399 was closed as \"stale/broad\" after partial fixes in #39292, but retest shows it persists. Suspected: OpenClaw's request format (e.g., large system prompt/tools) causes Ollama to stall locally. Thanks for looking into this!\n\n---\n\n### Timeline\n\n**@sechshundertneunzaehn-cpu** commented · Mar 11, 2026 at 7:45am > Ich habe das Problem inzwischen klar eingegrenzt.\n> \n> Was funktioniert:\n> \n> - Open WebUI funktioniert > - Ollama funktioniert\n> - OpenClaw-Gateway startet sauber\n> - Gateway läuft auf Port 18789 > - Gateway-Auth ist auf none\n> - Aktive Gateway-Config nutzt ollama/qwen2.5:3b > - Direkter Ollama-Request auf /api/chat aus dem Gateway-Container funktioniert und liefert OK\n> > Aktive Container-Config:\n> \n> - Datei: /home/node/.openclaw/openclaw.json\n> - primary model: ollama/qwen2.5:3b > - Ollama baseUrl: http://172.17.0.1:11434\n> - gateway auth: none\n> \n> Direkter Test, der funktioniert: > timeout 20s docker exec openclaw-gateway sh -lc 'wget -qO- --header=\"Content-Type: application/json\" --post-data='\"'\"'{\"model\":\"qwen2.5:3b\",\"messages\":[{\"role\":\"user\",\"content\":\"Antworte nur mit  ...    > \n> Ergebnis:\n> \n> - Antwort enthält \"OK\"\n> - EXIT:0\n> \n> Was nicht funktioniert:\n> > - openclaw agent --agent main --message \"Antworte nur mit OK\" hängt  ...    > Wichtige Log-Hinweise:\n> \n> - embedded run timeout\n> - lane wait exceeded\n> - No reply from agent > - teilweise sogar: I sent \"OK\" to the main channel.\n> \n> Fazit: > Das Problem liegt sehr wahrscheinlich nicht mehr an Ollama selbst, nicht am Modell und nicht an der Erreichbarkeit. > Direkter /api/chat funktioniert.\n> Der Restfehler scheint im OpenClaw-"
+      ],
+      "summary": "This GitHub issue reports that local Ollama models (such as llama3.1 and llama3.2) are hanging indefinitely within OpenClaw sessions after updating to version 2026.3.8. While direct API or chat interactions with Ollama work correctly, sessions initiated through OpenClaw timeout without generating any tokens, indicating a problem with session management or integration post-update. The issue is a retest of a previously closed ticket (#31399), which was thought to be fixed but persists. The environment includes macOS 15.3 on an M1 Mac Mini, with OpenClaw 2026.3.8 and Ollama 0.5.x. Reproduction steps involve running Ollama and models like llama3.1 or llama3.2, which then hang in OpenClaw sessions. This suggests a regression or compatibility issue introduced in the latest release affecting local model sessions.",
+      "textPreview": "# Issue: openclaw/openclaw #41871 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 305K stars | TypeScript ## Local Ollama models still hang in OpenClaw 2026.3.8 (retest of #31399) - Author: @joemcurry - State: open - Created: 2026-03-10T07:03:21Z - Updated: 2026-03-11T07:45:50Z ## Summary Local Ollama models (e.g., llama3.1, llama3.2) hang indefinitely in OpenClaw sessions after update to 2026.3.8. Direct Ollama API/chat works fine, …",
+      "keep": true,
+      "score": 161,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+release",
+        "+api",
+        "+timeout",
+        "+stream",
+        "+session",
+        "+config",
+        "+doc"
+      ],
+      "evidence": "Local Ollama models still hang in OpenClaw 2026.3.8 (retest of #31399) · Issue #41871 · openclaw/openclaw | This GitHub issue reports that local Ollama models (such as llama3.1 and llama3.2) are hanging indefinitely within OpenClaw sessions after updating to version 2026.3.8. Wh…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw release OR changelog OR performance",
+      "title": "CLI: stop Windows self-update file lock failures · Pull Request #41994 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/41994",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "Script ## CLI: stop Windows self-update file lock failures - Author: @lynnzc\n- Association: CONTRIBUTOR\n- State: closed\n- Labels: cli, size: M - Source branch: codex/issue-issue-41773-20260310091304\n- Target branch: main\n- Mergeable: unstable\n- Commits: 4 - Additions: 393\n- Deletions: 95\n- Changed files: 4\n- Created: 2026-03-10T09:20:24Z\n- Updated: 2026-03-11T13:52:06Z - Closed: 2026-03-11T13:52:06Z ## Summary\n\nDescribe the problem and fix in 2–5 bullets: - Problem: On Windows global installs, `openclaw update` could fail with `npm ERR! EBUSY... rename...\\\\openclaw ->...\\\\.openclaw-*` when the gateway service was loaded.  ...    ## Change Type (select all) - [x] Bug fix\n- [ ] Feature\n- [ ] Refactor\n- [ ] Docs\n- [ ] Security hardening\n- [ ] Chore/infra  ...    - [ ] Integrations\n- [ ] API / contracts\n- [x] UI / DX\n- [ ] CI/CD / infra ## Linked Issue/PR\n\n- Closes #41773\n- Related #\n\n## User-visible / Behavior Changes - On Windows package installs with a loaded gateway service, `openclaw update` now stops the service before global package update to avoid npm `EBUSY` rename lock failures. - If update fails after that pre-stop, OpenClaw attempts to bring the service back up automatically. ## Security Impact (required) - New permissions/capabilities? (`No`)\n- Secrets/tokens handling changed? (`No`)\n- New/changed network calls? (`No`)  ...    ## Repro + Verification\n\n### Environment  ...    - Mitigation: Added best-effort automatic restore attempt before exit.\n\n---\n\n### Timeline **lynn** pushed commit `ecb029e`: CLI: stop gateway before Windows package self-update · Mar 10, 2026 at 9:19am **@aisle-research-bot[bot]** commented · Mar 10, 2026 at 9:20am · edited > ## 🔒 Aisle Security Analysis\n> \n> We found **1** potential security issue(s) in this PR:\n>  ...    > This means running `openclaw update` (especially in the new Windows `installKind === \"package\"` path) in an  ...    > \n> This prevents environment tampering from redirecting `update` to control unrelated OS services/tasks.\n> \n> ---\n> > *Analyzed PR: https://github.com/openclaw/openclaw/pull/41994 at commit `2a02f2e`*\n> > Last updated on: 2026-03-11T13:42:07Z **openclaw-barnacle[bot]** added label `cli` · Mar 10, 2026 at 9:20am **openclaw-barnacle[bot]** added label `size: S` · Mar 10, 2026 at 9:20am  ...    > Codex has been enabled to automatically review pull requests in this repo. Reviews are triggered when you\n>  ...    > Greptile Summary \n> > This PR fixes Windows `EBUSY` rename failures during `openclaw update` by stopping the gateway service before running a package-manager global update, then attempting a best-effort service restore if the update fails. The changes are narrowly scoped to the Windows + package-update code path inside `updateCommand`. > \n> **Key changes:**\n> > - When `process.platform === \"win32\"` and `updateInstallKind === \"package\"` and the service is loaded,  ...    > - Non-Windows, git-update, and already-unloaded-service paths are unaffected\n> \n> Confidence Score: 4/5 \n> > - Safe to merge; narrowly scoped to Windows + package-update paths with no impact on other platforms or daemon  ...    **lynn** pushed commit `0ca0ce5`: fix(update): harden windows pre-stop restore and JSON output · Mar 10, 2026 at  ...    > - Kept `openclaw update --json` output single-document by not forwarding JSON mode into the pre-update  ...    > - Kept `openclaw"
+      ],
+      "summary": "This pull request addresses a Windows-specific issue where the `openclaw update` command could fail due to file lock conflicts caused by the gateway service being active during self-update operations. The failure manifests as an `npm ERR! EBUSY` error during the rename process, preventing successful updates and leaving users stuck on outdated versions. The fix involves modifying the update process to prevent or handle file locks more gracefully, ensuring smoother self-updates on Windows systems. The change includes four commits, adding 393 lines and removing 95, and was merged to improve reliability and user experience during updates.",
+      "textPreview": "# Pull Request: openclaw/openclaw #41994 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## CLI: stop Windows self-update file lock failures - Author: @lynnzc - Association: CONTRIBUTOR - State: closed - Labels: cli, size: M - Source branch: codex/issue-issue-41773-20260310091304 - Target branch: main - Mergeable: unstable - Commits: 4 - Additions: 393 - Deletions: 95 - Changed files: 4 - Created: 2026-03-10T0…",
+      "keep": true,
+      "score": 155,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+api",
+        "+security",
+        "+docs",
+        "+doc"
+      ],
+      "evidence": "CLI: stop Windows self-update file lock failures · Pull Request #41994 · openclaw/openclaw | This pull request addresses a Windows-specific issue where the `openclaw update` command could fail due to file lock conflicts caused by the gateway service being active during self-upda…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "feat(memory): add gemini-embedding-2-preview support · Pull Request #42501 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/42501",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        ": openclaw/openclaw #42501  ...    | TypeScript ## feat(memory): add gemini-embedding-2-preview support - Author: @BillChirico\n- Association: CONTRIBUTOR\n- State: open\n- Labels: docs, agents, size: L - Source branch: feat/gemini-embedding-2-preview\n- Target branch: main\n- Assignees: @gumadeiras - Mergeable: unknown\n- Commits: 6\n- Additions: 838\n- Deletions: 42\n- Changed files: 18\n- Created: 2026-03-10T20:57:17Z - Updated: 2026-03-11T10:33:52Z ## Summary Adds support for `gemini-embedding-2-preview` as an embedding model option alongside the existing  ...    ## Changes - **`src/memory/embedding-model-limits.ts`**: Add 8192 token limit for `gemini-embedding-2-preview`  ...    - [x] Unit tests cover all new functionality (26 tests)\n- [x] Lint passes (0 warnings, 0 errors) Closes #42487\n\n---\n\n### Timeline\n\n**openclaw-barnacle[bot]** added label `docs` · Mar 10, 2026 at 8:57pm **openclaw-barnacle[bot]** added label `size: L` · Mar 10, 2026 at 8:57pm **@greptile-apps[bot]** commented · Mar 10, 2026 at 9pm · edited > Greptile Summary \n> > This PR adds `gemini-embedding-2-preview` as a supported Gemini embedding model, bringing configurable output dimensionality (768/1536/3072), extended task types, multimodal part builders, and an 8192-token input limit. The implementation is well-structured and backward-compatible — existing `gemini-embedding-001` configs are unaffected, and `outputDimensionality` is correctly gated on the v2 model flag in both inline and batch paths. > \n> **Key findings:**\n> > - **`CHANGELOG.md`**: The `gemini-embedding-2-preview` entry replaces a Discord/auto-threads entry (#35065) rather  ...    > - Test coverage is thorough (26 tests across helpers, model detection, dimension resolution, backward compat, and all  ...    > \n> Confidence Score: 2/5 \n> > - Code changes are sound and well-tested, but PR has two integration issues (CHANGELOG data loss and taskType  ...    > - The embedding implementation itself is solid with comprehensive tests (26 tests), proper backward compatibility,  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `b21f452df8`\n> > ℹ️ About Codex in GitHub \n> \n> > Your team has set up Codex to review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for review\n> - Mark a draft as ready\n> - Comment \"@codex review\".\n>  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `2bf605cd4e`\n>  ...    **openclaw-barnacle[bot]** added label `channel: bluebubbles` · Mar 11, 2026 at 12:38am  ...    **gumadeiras** reopened this · Mar 11, 2026 at 12:39am  ...    **openclaw-barnacle[bot]** removed label `channel: bluebubbles` · Mar 11, 2026 at 12:42am  ...    **openclaw-barnacle[bot]** removed label `app: web-ui` · Mar 11, 2026 at 12:42am  ...    **Pip Build** pushed commit `8ceb03a`: feat(memory): add gemini-embedding-2-preview support · Mar 11, 2026 at 1:38am  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `38ddfb3c98`\n>  ...    **Bill Chirico** pushed commit `8ae7eee`: Merge branch'main' into feat/gemini-embedding-2-preview · Mar 11, 2026 at  ...    > I think I fixed all of the codex merging mess. Let me know if I missed anything. This PR will greatly"
+      ],
+      "summary": "This pull request introduces support for the `gemini-embedding-2-preview` model in the openclaw project, enhancing embedding capabilities. It adds an 8,192 token limit for this new model and updates relevant files to support different output dimensionalities (768, 1536, 3072). The update primarily improves embedding flexibility and scalability, contributing to performance and feature enhancements in memory management and embedding generation within the system.",
+      "textPreview": "# Pull Request: openclaw/openclaw #42501 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 303K stars | TypeScript ## feat(memory): add gemini-embedding-2-preview support - Author: @BillChirico - Association: CONTRIBUTOR - State: open - Labels: docs, agents, size: L - Source branch: feat/gemini-embedding-2-preview - Target branch: main - Assignees: @gumadeiras - Mergeable: unknown - Commits: 6 - Additions: 838 - Deletions: 42 - Changed…",
+      "keep": true,
+      "score": 155,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+changelog",
+        "+performance",
+        "+config",
+        "+docs",
+        "+doc"
+      ],
+      "evidence": "feat(memory): add gemini-embedding-2-preview support · Pull Request #42501 · openclaw/openclaw | This pull request introduces support for the `gemini-embedding-2-preview` model in the openclaw project, enhancing embedding capabilities. It adds an 8,192 token limit for this new m…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "feat(memory-lancedb): per-agent namespace isolation · Pull Request #42289 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/42289",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        " TypeScript ## feat(memory-lancedb): per-agent namespace isolation - Author: @priveperfumes\n- State: open\n- Labels: extensions: memory-lancedb, size: L - Source branch: feat/memory-lancedb-per-agent-namespace\n- Target branch: main\n- Mergeable: unknown\n- Commits: 9 - Additions: 612\n- Deletions: 61\n- Changed files: 3\n- Created: 2026-03-10T15:30:43Z\n- Updated: 2026-03-10T23:25:52Z # feat(memory-lancedb): per-agent memory namespace isolation\n\n## Summary Add per-agent namespace isolation to the `memory-lancedb` plugin so that memories stored by one agent are never recalled by — or contaminated with — memories from a different agent sharing the same OpenClaw instance.  ...    OpenClaw supports running **multiple specialized agents** within a single  ...    **Concrete example that triggered this PR:**\nA multi-agent deployment (payments, support, social, product, and infra  ...    Similarly, `registerTool` supports the `OpenClawPluginToolFactory` pattern  ...    ```diff\n type MemoryEntry = {\n   id: string;\n   text: string;\n   vector: number[];\n   importance: number;  ...    ```diff\n-  async search(vector: number[], limit = 5, minScore = 0.5): Promise<MemorySearchResult[]> {  ...    ```diff\n-    if (cfg.autoRecall) {\n-      api.on(\"before_agent_start\", async (event) => {\n+    if (cfg.autoRecall) {  ...    _(same pattern for `memory_store` and `memory_forget`)_\n\n### `extensions/memory-lancedb/openclaw.plugin.json` ```diff\n+    \"namespace\": {\n+      \"label\": \"Memory Namespace\", +      \"help\": \"Scope memories to a specific namespace. Leave blank to use the agent's own ID automatically  ...    +      \"placeholder\": \"my-agent\",\n+      \"advanced\": true\n+    }\n``` ### `extensions/memory-lancedb/config.ts` ```diff\n+  namespace: Type.Optional(Type.String({  ...    ---\n\n## Behavior After This PR | Scenario | Before | After |\n| --- | --- | --- |  ...    ---\n\n## Related - Plugin SDK: `PluginHookAgentContext.agentId` already available (no SDK changes needed) - Plugin SDK: `OpenClawPluginToolContext.agentId` already available (no SDK changes needed) ---\n\n### Timeline **Lock (Privé AI)** pushed commit `ea63ced`: feat(memory-lancedb): per-agent namespace isolation · Mar 10, 2026 at 3:30pm **openclaw-barnacle[bot]** added label `extensions: memory-lancedb` · Mar 10, 2026 at 3:31pm **openclaw-barnacle[bot]** added label `size: L` · Mar 10, 2026 at 3:31pm **@greptile-apps[bot]** commented · Mar 10, 2026 at 3:33pm · edited > Greptile Summary \n> > This PR adds per-agent namespace isolation to the `memory-lancedb` plugin so that memories stored by one agent are not surfaced to another agent sharing the same LanceDB instance. The approach — tagging each `MemoryEntry` with an `agentId`, filtering on it in `search()`, and using the tool factory pattern to capture `ctx.agentId` at bind time — is architecturally sound and fits well with the existing plugin SDK. The backward-compatibility story (legacy untagged  ...    > - The overall architecture is correct and most paths work as intended. However, two logic bugs undermine core  ...    > await db.delete(memoryId, agentId);\n> ```\n> \n> Prompt To Fix With AI \n> \n> `````markdown  ...    > To enforce namespace isolation, the entry should be fetched first and its `agentId` verified before deletion.  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `ea63cedd36`\n> > ℹ️ About Codex in GitHub \n> \n> > Your team has set up Codex to review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for review\n> - Mark a draft as ready\n> - Comment \"@codex review\".\n>  ...    **priveperfumes** pushed commit `5877f9f`: fix(memory-lancedb): address review feedback · Mar 10, 2026 at 3:52pm  ...    > [bot] Thanks"
+      ],
+      "summary": "This pull request introduces a significant enhancement to the `memory-lancedb` plugin within the OpenClaw project by implementing per-agent namespace isolation. This feature ensures that memories stored by one agent are isolated and cannot be recalled or contaminated with memories from other agents sharing the same OpenClaw instance. The update addresses issues related to memory management in multi-agent environments, improving data integrity and agent independence. The change involves 612 lines of code across three files, with nine commits, and was authored by @priveperfumes. It is currently open and targeted for merging into the main branch.",
+      "textPreview": "# Pull Request: openclaw/openclaw #42289 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 303K stars | TypeScript ## feat(memory-lancedb): per-agent namespace isolation - Author: @priveperfumes - State: open - Labels: extensions: memory-lancedb, size: L - Source branch: feat/memory-lancedb-per-agent-namespace - Target branch: main - Mergeable: unknown - Commits: 9 - Additions: 612 - Deletions: 61 - Changed files: 3 - Created: 2026-03-…",
+      "keep": true,
+      "score": 155,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+api",
+        "+architecture",
+        "+plugin",
+        "+config"
+      ],
+      "evidence": "feat(memory-lancedb): per-agent namespace isolation · Pull Request #42289 · openclaw/openclaw | This pull request introduces a significant enhancement to the `memory-lancedb` plugin within the OpenClaw project by implementing per-agent namespace isolation. This feature ensures t…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw release OR changelog OR performance",
+      "title": "[Bug]: OpenClaw 2026.3.8 regression: empty agent payloads + websocket 1006 closures with local LM Studio backend · Issue #42270 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42270",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "42270  ...    | TypeScript ## [Bug]: OpenClaw 2026.3.8 regression: empty agent payloads + websocket 1006 closures with local LM Studio backend - Author: @SamaritanOC\n- State: open\n- Labels: bug, regression\n- Created: 2026-03-10T15:09:41Z - Updated: 2026-03-11T17:08:47Z ### Bug type\n\nRegression (worked before, now fails)\n\n### Summary\n\n## Summary After upgrading from OpenClaw 2026.3.7 to 2026.3.8, agent responses intermittently fail. Observed failure signatures include:\n• stopReason=stop with empty payload \n• stopReason=length with empty payload  ...    This occurs with minimal prompts and with thinking disabled.\n\nRollback to OpenClaw 2026.3.7 restores normal behavior.  ...    Installation method \nnpm global install\n\nnpm install -g openclaw\n\nGateway \nsystemd user service  ...    Endpoint (local OpenAI-compatible API)\nhttp://localhost:1234/v1  ...    gateway closed (1006 abnormal closure) \nNo reply from agent\n\n## Question Is there a known regression in OpenClaw 2026.3.8 affecting: • gateway websocket transport \n• agent reply dispatch \n• session routing \n• embedded fallback execution  ...    gateway closed (1006 abnormal closure) \nNo reply from agent\n\n### OpenClaw version\n\n2026.3.8\n\n### Operating system Parrot OS\n\n### Install method\n\nnpm install -g openclaw@2026.3.8\n\n### Model\n\nLMStudio/qwen3-8b ### Provider / routing chain CLI request → OpenClaw gateway (systemd user service: openclaw-gateway.service) → OpenAI-compatible local provider  ...    - Failures occur in the OpenClaw gateway/agent reply path even though direct LM Studio calls succeed  ...    post-rollback-version.txt\npost-rollback-gateway.txt post-rollback-config-validate.txt\nopenclaw-version-3.8.txt  ...    ---\n\n### Timeline\n\n**SamaritanOC** added label `bug` · Mar 10, 2026 at 3:09pm **openclaw-barnacle[bot]** added label `regression` · Mar 10, 2026 at 3:09pm  ...    > This looks like it could be a gateway/config regression after the upgrade. If you haven't already, you might try  ...    > \n> ```bash\n> npx clawaid@latest\n> ```\n> > ClawAid can scan your gateway logs, config, and websocket status to see if there's a fixable misconfiguration or a known pattern from the 3.7→3.8 upgrade. It's free and runs locally — won't touch your LM Studio  ...    > Command: /usr/bin/node /home/linc/.npm-global/lib/node_modules/openclaw/dist/entry.js gateway --port 18789  ...    > Troubleshooting: https://docs.openclaw.ai/troubleshooting\n> \n> ### openclaw gateway status --deep  ...    > Recommendation: run a single gateway per machine for most setups. One gateway supports multiple agents (see docs:  ...    > \n> Troubles: run openclaw status\n> Troubleshooting: https://docs.openclaw.ai/troubleshooting\n> \n> ### openclaw status > OpenClaw status\n> \n> Overview > ┌─────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────┐ > │ Item │ Value │  ...    ├─────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────┤ > │ Dashboard │ http://127.0.0.1:18789/ │\n> │ OS │ linux 6.17.13+2-amd64 (x64) · node 22.22.0 │ > │ Tailscale │ serve · samaritan.taila5fee6.ts.net · https://samaritan.taila5fee6.ts.net │ > │ Channel │ stable (default) │\n> │ Update │ available · pnpm · npm update 2026.3.8 │  ...    > Thanks for the very complete repro + the 2026.3.7 vs 2026.3.8 A/B (and especially that direct LM Studio `curl`  ...    > \n> ```bash\n> openclaw --version\n> openclaw config validate\n> openclaw gateway status --deep > # plus ~50 lines of gateway log around the first 1006 closure\n> ```\n> \n> Recommended CoClaw"
+      ],
+      "summary": "The GitHub issue reports a regression in OpenClaw version 2026.3.8, following an upgrade from 2026.3.7. It causes intermittent failures in agent responses, including empty payloads with stop reasons like \"stop,\" \"length,\" and \"error\" (notably \"LLM request timed out\"). Additionally, there are websocket closures with code 1006. These issues occur even with minimal prompts and disabled thinking. Reverting to version 2026.3.7 resolves the problems. The bug is classified as a regression, indicating a recent change introduced instability.",
+      "textPreview": "# Issue: openclaw/openclaw #42270 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [Bug]: OpenClaw 2026.3.8 regression: empty agent payloads + websocket 1006 closures with local LM Studio backend - Author: @SamaritanOC - State: open - Labels: bug, regression - Created: 2026-03-10T15:09:41Z - Updated: 2026-03-11T17:08:47Z ### Bug type Regression (worked before, now fails) ### Summary ## Summary After upgradin…",
+      "keep": true,
+      "score": 155,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+api",
+        "+session",
+        "+config",
+        "+docs",
+        "+doc"
+      ],
+      "evidence": "[Bug]: OpenClaw 2026.3.8 regression: empty agent payloads + websocket 1006 closures with local LM Studio backend · Issue #42270 · openclaw/openclaw | The GitHub issue reports a regression in OpenClaw version 2026.3.8, following an upgrade from 2026.3.7. It causes intermittent fa…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "Raw tool payloads leak into chat; fallback appears unreliable after provider errors · Issue #42469 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42469",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        ": openclaw/openclaw #42469 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## Raw tool payloads leak into chat; fallback appears unreliable after provider errors - Author: @rbrtwtrs\n- State: open\n- Labels: bug, regression\n- Created: 2026-03-10T19:31:01Z - Updated: 2026-03-10T19:31:10Z ### Bug type\n\nRegression (worked before, now fails)\n\n### Summary In the Control UI, raw internal tool payloads sometimes leak directly into user-visible chat, and provider failures such as Codex server_error do not reliably recover via fallback. ### Steps to reproduce Open OpenClaw Control UI on Windows with OpenClaw 2026.3.8. Send a prompt that uses tool-backed retrieval, such as web search, web fetch, or local docs lookup.  ...    ### Expected behavior ool results should be rendered or summarized normally in chat. Internal wrappers such as EXTERNAL_UNTRUSTED_CONTENT,  ...    After tool-backed prompts and/or provider failures, the chat sometimes exposes raw internal payloads directly to the user, including web search JSON, EXTERNAL_UNTRUSTED_CONTENT wrappers, and terminal formatting junk. In the same session, provider failures such as Codex server_error did not appear to recover cleanly via fallback. ### OpenClaw version\n\n2026.3.8\n\n### Operating system\n\nWindows 11\n\n### Install method npm / PowerShell / Control UI Model\n\n### Model\n\nopenai/gpt-5.4 and openai-codex/gpt-5.4\n\n### Provider / routing chain Primary/fallback routing involving OpenAI and OpenAI Codex\n\n### Config file / key location  ...    This report is sanitized and intentionally omits gateway tokens, API keys, auth tokens, and secret config values. The issue appears related to tool result delivery / tool card rendering / agent event delivery, possibly combined with provider error handling or fallback classification. openclaw-bug-report-2026-03-10.md\n\n### Logs, screenshots, and evidence\n\n```shell\n\n``` ### Impact and severity High user-facing impact. The bug exposes internal plumbing directly in normal chat, makes failures noisy and confusing, and creates risk that more sensitive tool payloads could be surfaced if the same delivery/rendering path fails again. It also undermines trust in fallback behavior because provider failures appear messier than they should. ### Additional information\n\n_No response_\n\n---\n\n### Timeline\n\n**rbrtwtrs** added label `bug` · Mar 10, 2026 at 7:31pm **openclaw-barnacle[bot]** added label `regression` · Mar 10, 20"
+      ],
+      "summary": "The GitHub issue reports a regression in the OpenClaw project where raw internal tool payloads inadvertently leak into user-visible chat messages within the Control UI. This problem occurs during tool-backed retrievals like web search or local document lookup, especially after provider errors such as Codex server failures. Additionally, fallback mechanisms do not reliably recover from these errors, leading to potential exposure of internal data and inconsistent chat behavior. The issue was identified on Windows with OpenClaw version 2026.3.8 and highlights the need for improved error handling and privacy safeguards in the system.",
+      "textPreview": "# Issue: openclaw/openclaw #42469 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## Raw tool payloads leak into chat; fallback appears unreliable after provider errors - Author: @rbrtwtrs - State: open - Labels: bug, regression - Created: 2026-03-10T19:31:01Z - Updated: 2026-03-10T19:31:10Z ### Bug type Regression (worked before, now fails) ### Summary In the Control UI, raw internal tool payloads sometimes l…",
+      "keep": true,
+      "score": 149,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+issue",
+        "+pr",
+        "+api",
+        "+session",
+        "+config",
+        "+docs",
+        "+doc"
+      ],
+      "evidence": "Raw tool payloads leak into chat; fallback appears unreliable after provider errors · Issue #42469 · openclaw/openclaw | The GitHub issue reports a regression in the OpenClaw project where raw internal tool payloads inadvertently leak into user-visible chat messages within the C…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "[Bug]: Cron jobs broken after update to 2026.3.8 · Issue #42883 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42883",
+      "publishedDate": "2026-03-11T00:00:00.000Z",
+      "highlights": [
+        "aw/openclaw #42883 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [Bug]: Cron jobs broken after update to 2026.3.8 - Author: @unknowndistance-ops\n- State: open\n- Labels: bug, regression\n- Created: 2026-03-11T06:19:30Z - Updated: 2026-03-11T10:56:17Z ### Bug type\n\nRegression (worked before, now fails)\n\n### Summary Cron jobs working as expected until upgrading to 2026.3.8 after which they will no longer run.\n\n### Steps to reproduce 1. Upgrade a working macOS OpenClaw install to 2026.3.8.\n2. Do not change OpenClaw config after the upgrade. 3. Run `openclaw cron list` and confirm an existing isolated cron job is present.\n4. Run `openclaw cron run --id `. 5. Run `openclaw cron runs --id --limit 20`.\n6. Run `openclaw gateway status`.  ...    Observed after upgrade: cron execution became inconsistent. Sometimes no run entry was created, sometimes gateway  ...    or a clear surfaced error. Gateway lifecycle should also remain stable, without stale listeners, port conflicts, or  ...    After upgrading to 2026.3.8, isolated cron behavior became inconsistent. Manual openclaw cron run --id was accepted/enqueued, but often did not immediately create a visible run entry in openclaw cron runs. In some cases the job stayed idle with no run history; in another case it moved to running and later failed with Error: cron: job execution timed out. At the same time, gateway lifecycle became unstable: openclaw gateway stop could unload the  ...    already in use errors until manual cleanup/reinstall. ### OpenClaw version\n\n2026.3.8\n\n### Operating system\n\nmacOS 26.3\n\n### Install method\n\nnpm global\n\n### Model\n\ncodex-5.4 ### Provider / routing chain\n\nopenclaw > codex 5.4\n\n### Config file / key location\n\n_No response_ ### Additional provider/model setup details\n\n_No response_\n\n### Logs, screenshots, and evidence\n\n```shell\n\n``` ### Impact and severity\n\n_No response_\n\n### Additional information\n\n_No response_\n\n---\n\n### Timeline **unknowndistance-ops** added label `bug` · Mar 11, 2026 at 6:19am **openclaw-barnacle[bot]** added label `regression` · Mar 11, 2026 at 6:19am **@unknowndistance-ops** commented · Mar 11, 2026 at 6:35am · Author > Just tried to add a new cron job that was very short to test. Experience the same behavior. it was accepted / qued  ...    > I encountered the same issue. The cron task for openclaw is not executing, and manually running the openclaw cron run  ...    affected job, OpenClaw logged FailoverError: LLM request timed out after ~3,599,953 ms on  ...    **openperf** mentioned this in PR [#43053: fix(cron): prevent startup catch-up from blocking timer  ...    > Before the next release to fix this problem, I think we can fix this by adding following in openclaw.json for now. > \n> `\n> \"cron\": {\n> \"maxConcurrentRuns\": 2\n> },\n> ` **github-actions[bot]** mentioned this in issue #31: 🦞 Bản tin hàng ngày hệ sinh thái OpenClaw 2026-03-12 ·  ...    **github-actions[bot]** mentioned this in issue [#73: 🦞 OpenClaw "
+      ],
+      "summary": "The openclaw/openclaw repository reports a regression bug introduced in the 2026.3.8 update, causing cron jobs to stop executing as expected on macOS. After upgrading to this version without modifying the configuration, existing cron jobs no longer run, and manual executions via `openclaw cron run` and status checks (`openclaw cron list`, `openclaw cron runs`) reveal failures or stalled states. The issue impacts scheduled automation, indicating a need for a bug fix or rollback until a resolution is provided. This regression highlights the importance of thorough testing before releases to prevent disruption of core functionalities like cron job scheduling.",
+      "textPreview": "# Issue: openclaw/openclaw #42883 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## [Bug]: Cron jobs broken after update to 2026.3.8 - Author: @unknowndistance-ops - State: open - Labels: bug, regression - Created: 2026-03-11T06:19:30Z - Updated: 2026-03-11T10:56:17Z ### Bug type Regression (worked before, now fails) ### Summary Cron jobs working as expected until upgrading to 2026.3.8 after which they will n…",
+      "keep": true,
+      "score": 143,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+release",
+        "+cron",
+        "+config"
+      ],
+      "evidence": "[Bug]: Cron jobs broken after update to 2026.3.8 · Issue #42883 · openclaw/openclaw | The openclaw/openclaw repository reports a regression bug introduced in the 2026.3.8 update, causing cron jobs to stop executing as expected on macOS. After upgrading to this version without mo…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "Bug: Manual cron force-run hangs - isolated session never created · Issue #42701 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42701",
+      "publishedDate": "2026-03-11T00:00:00.000Z",
+      "highlights": [
+        ": openclaw/openclaw #42701 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 302K stars | TypeScript ## Bug: Manual cron force-run hangs - isolated session never created - Author: @yangguangjin\n- State: open\n- Created: 2026-03-11T02:46:47Z\n- Updated: 2026-03-11T08:03:56Z ## Bug: Manual cron `force run` hangs indefinitely — isolated session never created\n\n### Description When manually triggering a cron job via the UI (force run), the isolated session is never created. The job hangs for the entire timeout duration (600s) and then fails with `\"cron: job execution timed out\"`. The same job executes  ...    - **OpenClaw version:** 2026.3.8 (3caab92)\n- **Node.js:** v24.13.0\n- **OS:** Windows 10 (x64)\n- **Channel:** webchat  ...    #### Suspected root cause\n\n`runCronIsolatedAgentTurn()` performs many initialization steps before the actual LLM call:  ...    None currently. Users must wait for the scheduled trigger or restart OpenClaw to trigger catch-up execution.\n\n--- ### Timeline\n\n**@ccsang** commented · Mar 11, 2026 at 8:03am > Cross-platform confirmation from a Linux repro on **OpenClaw 2026.3.8**: this is **not** a general isolated-cron failure. The broken path is specifically **manual `openclaw cron run` / UI force-run**, while the **automatic scheduler path works** with the same isolated `agentTurn` job shape. > \n> ## Environment\n> \n> - OpenClaw: **2026.3.8**\n> - OS: **Linux 6.1.0-43-cloud-amd64 (x64)**\n> - Node: **v24.14.0**  ...    > That job's prompt was just:\n> \n> ```text\n> You are a command executor. Do ONLY this:\n>  ...    > ## Minimal CLI repro I used\n> \n> ### Failing manual path\n> \n> ```bash\n> openclaw cron create \\ > --name 'Cron Smoke Test - reply only' \\\n> --every 1d \\\n> --session isolated \\\n> --model GLM \\\n> --thinking off \\  ...    > # do NOT call `openclaw cron run`\n> # wait for scheduler to fire normally\n> ```\n> \n> ## Practical impact\n> > This is pretty confusing operationally because it makes maintainers/users think an isolated cron job is broken, when in practice the **scheduled production path may be fine**. It mainly breaks: > \n> - manual verification from CLI/UI\n> - debugging / canarying new cron jobs > - confidence in whether a cron job is actually safe to deploy\n> \n> ## Suggestion\n> > I think the fix likely needs to make the manual `cron.run` path behave like the scheduler path, or at minimum avoid  ...    > \n> Concretely, likely candidates:\n> \n> - do not run manual force-runs on `CommandLane.Cron`, or  ...    > - make the manual path mirror the direct worker execution path used by scheduled runs\n> > If useful I can also turn this into a dedicated regression repro script, but I wanted to attach the Linux  ...    > \n> > **automatic scheduled isolated runs can succeed; manual `cron run` is the broken path** **ccsang** mentioned this in PR [#43115: fix(cron):"
+      ],
+      "summary": "This GitHub issue reports a bug in OpenClaw version 2026.3.8 where manually triggering a cron job via the UI causes the process to hang indefinitely. Specifically, the isolated session required for the job is never created, leading to a timeout after 600 seconds and a failure message (\"cron: job execution timed out\"). Notably, the same cron job executes successfully when triggered automatically or during startup, indicating the problem is specific to manual force runs. The issue occurs on Windows 10 with Node.js v24.13.0. The problem was identified by user @yangguangjin and remains unresolved as of the latest update.",
+      "textPreview": "# Issue: openclaw/openclaw #42701 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 302K stars | TypeScript ## Bug: Manual cron force-run hangs - isolated session never created - Author: @yangguangjin - State: open - Created: 2026-03-11T02:46:47Z - Updated: 2026-03-11T08:03:56Z ## Bug: Manual cron `force run` hangs indefinitely — isolated session never created ### Description When manually triggering a cron job via the UI (force run), …",
+      "keep": true,
+      "score": 143,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+timeout",
+        "+cron",
+        "+session"
+      ],
+      "evidence": "Bug: Manual cron force-run hangs - isolated session never created · Issue #42701 · openclaw/openclaw | This GitHub issue reports a bug in OpenClaw version 2026.3.8 where manually triggering a cron job via the UI causes the process to hang indefinitely. Specifically, the isolated…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "Bug: `openclaw backup create` stalls — produces 10-byte .tmp file and never completes · Issue #41830 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/41830",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        " openclaw/openclaw #41830  ...    | TypeScript ## Bug: `openclaw backup create` stalls — produces 10-byte.tmp file and never completes - Author: @bo-blue\n- State: open\n- Created: 2026-03-10T06:16:55Z\n- Updated: 2026-03-10T06:16:55Z ## Reproduction Run `openclaw backup create --output ~/some-dir` (directory must be outside `~/.openclaw/` or you get a source-path error). **Expected:** A completed `.tar.gz` archive in the output directory. **Actual:** A 10-byte `.tmp` file is created and the process returns with no output and no error. The `.tmp` file is never renamed to the final archive. ```\n$ openclaw backup create --output ~/Desktop/openclaw-backups\n(no output, exits 0)\n$ ls ~/Desktop/openclaw-backups/  ...    2026-03-10T05-44-55.584Z-openclaw-backup.tar.gz.65184d2d-85fa-4b88-be27-456cd3e2932d.tmp  ...    Also reproduced with `--verify` flag. Also tried `--only-config` — same result.\n\n## Environment - OpenClaw: 2026.3.8 (3caab92)\n- OS: macOS 26.3.1 (arm64)\n- Node: 25.6.1\n\n## Notes The `--dry-run --json` flag works correctly (prints the plan). The issue is in the archive write/finalization step. The backup was added in this release so this appears to be a regression or incomplete implementation in the initial ship. *Filed by bo-blue on behalf of XOGO deployment.*\n\n---\n\n### Timeline **ywxc1997** mentioned this in PR #1: fix(backup): treat non-existent output paths as directories · Mar 10, 2026 at 6:58am **ywxc1997** mentioned this in PR #41868: fix(backup): treat non-existent output paths as directories · Mar  ...    **ywxc1997** mentioned this in PR [#42052: fix(backup):"
+      ],
+      "summary": "The GitHub issue describes a bug in openclaw where the `backup create` command stalls, creating only a 10-byte temporary file instead of completing the backup archive. This issue occurs when specifying an output directory outside `~/.openclaw/`. The process exits without errors or output, leaving a small `.tmp` file that is never renamed to the final `.tar.gz` archive. The problem affects backup creation, impacting reliability and performance. The issue is currently open, with no resolution provided yet. Users experiencing this should verify directory paths and monitor for updates or fixes in future releases.",
+      "textPreview": "# Issue: openclaw/openclaw #41830 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## Bug: `openclaw backup create` stalls — produces 10-byte .tmp file and never completes - Author: @bo-blue - State: open - Created: 2026-03-10T06:16:55Z - Updated: 2026-03-10T06:16:55Z ## Reproduction Run `openclaw backup create --output ~/some-dir` (directory must be outside `~/.openclaw/` or you get a source-path error). **Exp…",
+      "keep": true,
+      "score": 143,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+release",
+        "+performance",
+        "+config"
+      ],
+      "evidence": "Bug: `openclaw backup create` stalls — produces 10-byte .tmp file and never completes · Issue #41830 · openclaw/openclaw | The GitHub issue describes a bug in openclaw where the `backup create` command stalls, creating only a 10-byte temporary file instead of completing the back…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "fix(sessions_spawn): inherit target agent workspace instead of requester workspace · Pull Request #42395 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/42395",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "aw/openclaw #42395  ...    | TypeScript ## fix(sessions_spawn): inherit target agent workspace instead of requester workspace - Author: @terloo\n- State: closed\n- Labels: agents, size: XS\n- Source branch: main\n- Target branch: main - Mergeable: unstable\n- Commits: 1\n- Additions: 10\n- Deletions: 5\n- Changed files: 2\n- Created: 2026-03-10T17:26:34Z - Updated: 2026-03-11T06:35:51Z\n- Closed: 2026-03-11T06:35:51Z ## Description This PR fixes a bug in the `sessions_spawn` tool where spawned subagents incorrectly inherited the **caller's** workspace directory instead of their **own** agent workspace directory. ### The Problem When `main` agent spawns a `browser` agent subagent, the subagent was using `/root/.openclaw/workspace` (main's workspace) instead of `/root/.openclaw/workspace-browser` (browser's workspace).  ...    The `resolveSpawnedWorkspaceInheritance()` function in `src/agents/spawned-context.ts` was using `requesterSessionKey`  ...    ### The Fix 1. Added `targetAgentId` parameter to `resolveSpawnedWorkspaceInheritance()` function  ...    ---\n\n### Timeline\n\n**openclaw-barnacle[bot]** added label `agents` · Mar 10, 2026 at 5:27pm **openclaw-barnacle[bot]** added label `size: XS` · Mar 10, 2026 at 5:27pm **test** pushed commit `61f82be`: fix(sessions_spawn): inherit target agent workspace instead of requester workspace · Mar 10, 2026 at 5:28pm **terloo** force-pushed the branch · Mar 10, 2026 at 5:28pm **@greptile-apps[bot]** commented · Mar 10, 2026 at 5:28pm · edited > Greptile Summary \n> > This PR fixes a workspace directory inheritance bug in `sessions_spawn` where spawned subagents were incorrectly using the **caller's** workspace (e.g., `/root/.openclaw/workspace`) instead of their own agent-specific workspace (e.g., `/root/.openclaw/workspace-browser`). > > The fix is minimal and surgical: `targetAgentId` is added as an optional parameter to  ...    > - Safe to merge — the logic fix is correct and backward compatible, with only minor style concerns remaining.  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `d20e9c429c`\n> > ℹ️ About Codex in GitHub \n> \n> > Codex has been enabled to automatically review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for review\n> - Mark a draft as ready\n> - Comment \"@codex review\".\n>  ...    **@terloo** commented · Mar 11, 2026 at 6:32am · Author\n\n> /close\n\n**terloo** closed"
+      ],
+      "summary": "This pull request addresses a bug in the `sessions_spawn` function of the openclaw project, where subagents incorrectly inherited the caller's workspace instead of their own. Specifically, when spawning a `browser` agent, the subagent was using the main agent's workspace directory (`/root/.openclaw/workspace`) instead of its dedicated workspace (`/root/.openclaw/workspace-browser`). The fix ensures that each subagent inherits its own target agent workspace, improving isolation and correctness in agent spawning.",
+      "textPreview": "# Pull Request: openclaw/openclaw #42395 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## fix(sessions_spawn): inherit target agent workspace instead of requester workspace - Author: @terloo - State: closed - Labels: agents, size: XS - Source branch: main - Target branch: main - Mergeable: unstable - Commits: 1 - Additions: 10 - Deletions: 5 - Changed files: 2 - Created: 2026-03-10T17:26:34Z - Updated: 2026-…",
+      "keep": true,
+      "score": 137,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+fix",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+session",
+        "+workspace"
+      ],
+      "evidence": "fix(sessions_spawn): inherit target agent workspace instead of requester workspace · Pull Request #42395 · openclaw/openclaw | This pull request addresses a bug in the `sessions_spawn` function of the openclaw project, where subagents incorrectly inherited the caller's workspace…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "[Bug]: When `fetchUser(\"@me\")` fails during Discord provider startup (e.g. due to transient network issues after a proxy reconnect), the bot continues running with `botUserId = undefined`. This causes multiple security and routing failures. · Issue #42219 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42219",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        "aw/openclaw #42219 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 303K stars | TypeScript ## [Bug]: When `fetchUser(\"@me\")` fails during Discord provider startup (e.g. due to transient network issues after a proxy reconnect), the bot continues running with `botUserId = undefined`. This causes multiple security and routing failures. - Author: @huangserva\n- State: open\n- Labels: bug, security, regression\n- Created: 2026-03-10T14:20:42Z - Updated: 2026-03-10T14:20:55Z ### Bug type\n\nRegression (worked before, now fails)\n\n### Summary\n\n### Impact 1. **Mention gating bypassed**: The guard `if (botId && mentionGate.shouldSkip)` in `message-handler.preflight.ts:686`  ...    2. **Self-message filtering disabled**: `author.id === botUserId` (line 160) never matches, risking self-reply loops.  ...    In `provider.ts:656-662`, `fetchUser(\"@me\")` failure is caught and only logged — the bot proceeds to accept messages with `botUserId = undefined`: ```typescript\ntry {\n    const botUser = await client.fetchUser(\"@me\");\n    botUserId = botUser?.id;\n} catch (err) { runtime.error?.(danger(`discord: failed to fetch bot identity: ${String(err)}`));  ...    By contrast, `fetchDiscordApplicationId` (line 407-410) correctly throws on failure, preventing startup. ### Suggested Fix\n\nTwo layers: 1. **Fail-fast**: Throw when `botUserId` is not resolved, so the provider restarts instead of running in a degraded  ...    1. Configure a Discord channel with `requireMention: true` 2. Start the gateway in an environment where `fetchUser(\"@me\")` fails (e.g. transient proxy/network issue) 3. Observe `logged in to discord` (without bot ID) in logs  ...    If `fetchUser(\"@me\")` fails, the provider should throw and let auto-restart retry, matching the existing pattern for  ...    ### OpenClaw version\n\n- openclaw: 2026.3.9 - Node: 22+\n\n### Operating system\n\nmacOS 15.4\n\n### Install method _No response_\n\n### Model\n\nopus4.6\n\n### Provider / routing chain Two layers: 1. **Fail-fast**: Throw when `botUserId` is not resolved, so the provider restarts instead of running in a  ...    _No response_\n\n---\n\n### Timeline\n\n**huangserva** added label `bug` · Mar 10, 2026 at 2:20pm **openclaw-barnacle[bot]** added label `security` · Mar 10, 2026 at 2:20pm **openclaw-barnacle[bot]** added label `regression` · Mar 10, 2026 at 2:20pm **widingmarcus-cyber** mentioned this in PR [#42338: fix(discord): fail fast when bot user id cannot be  ...    **zhuowater** mentioned this in PR [#42675: fix(discord): throw error when fetch"
+      ],
+      "summary": "This GitHub issue reports a regression bug in the openclaw/openclaw project where, during Discord provider startup, a failure in `fetchUser(\"@me\")`—such as due to transient network issues after a proxy reconnect—causes the bot to continue running with an undefined `botUserId`. This leads to critical security and routing failures, including bypassing mention gating and disabling self-message filtering, which can cause security vulnerabilities and message handling issues. The bug is marked as a security concern and is currently open, highlighting the need for improved error handling during startup to prevent the bot from operating in an insecure or inconsistent state.",
+      "textPreview": "# Issue: openclaw/openclaw #42219 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 303K stars | TypeScript ## [Bug]: When `fetchUser(\"@me\")` fails during Discord provider startup (e.g. due to transient network issues after a proxy reconnect), the bot continues running with `botUserId = undefined`. This causes multiple security and routing failures. - Author: @huangserva - State: open - Labels: bug, security, regression - Created: 2026…",
+      "keep": true,
+      "score": 137,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+security",
+        "+config"
+      ],
+      "evidence": "[Bug]: When `fetchUser(\"@me\")` fails during Discord provider startup (e.g. due to transient network issues after a proxy reconnect), the bot continues running with `botUserId = undefined`. This causes multiple security and routing failures. · Issue #42219 · openclaw/openclaw | T…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "fix(mattermost): stream each turn independently in multi-tool-call responses · Pull Request #43041 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/43041",
+      "publishedDate": "2026-03-11T00:00:00.000Z",
+      "highlights": [
+        " | TypeScript ## fix(mattermost): stream each turn independently in multi-tool-call responses - Author: @teconomix\n- Association: CONTRIBUTOR\n- State: open\n- Labels: channel: mattermost, size: M - Source branch: fix/mattermost-multi-turn-streaming\n- Target branch: main\n- Mergeable: clean\n- Commits: 27 - Additions: 415\n- Deletions: 13\n- Changed files: 4\n- Created: 2026-03-11T09:33:25Z\n- Updated: 2026-03-11T19:50:05Z ## Problem When edit-in-place streaming is active (introduced in #33506), multi-turn responses (agent makes tool calls between  ...    **Expected:** Each text segment streams independently in its own Mattermost post. When a turn ends (tool call starts),  ...    ## Fix Use the `onAssistantMessageStart` callback to finalize the current streaming message when a new assistant turn starts (after a tool call). Each turn gets its own streamed post.  ...    ### Flow for a 3-turn response:  ...    State is reset **synchronously** before any async finalization work in `onAssistantMessageStart`. New `onPartialReply`  ...    ## Changes\n\n- `extensions/mattermost/src/mattermost/monitor.ts`: 55 lines added  ...    1. Send a request that triggers multiple tool calls (e.g., code analysis requiring file reads) 2. Each text segment should stream in its own post, staying visible after the tool call  ...    - Depends on #33506 (edit-in-place streaming base)\n- Fixes #43020 - Related: #39491 (stream text when response includes media) ---\n\n### Timeline\n\n**openclaw-barnacle[bot]** added label `channel: mattermost` · Mar 11, 2026 at 9:33am **openclaw-barnacle[bot]** added label `size: M` · Mar 11, 2026 at 9:33am  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `12b0eeead3`\n> > ℹ️ About Codex in GitHub \n> \n> > Codex has been enabled to automatically review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for review\n> - Mark a draft as ready\n> - Comment \"@codex review\".\n>  ...    > Greptile Summary \n> > This PR fixes multi-turn streaming in the Mattermost integration by introducing an `onAssistantMessageStart` callback that finalises each turn's streaming post before the next turn begins. A `streamedTurnCount` counter prevents the core's final-reply array from re-delivering turns that were already streamed. The `edit` and `delete` message actions are also added to `channel.ts`, and a `deleteMattermostPost` helper is introduced in `client.ts` to support orphan-post  ...    > \n> Confidence Score: 4/5 \n> > - This PR is safe to merge; the streaming logic is carefully designed with proper error handling and race-condition  ...    > - The core fix (per-turn streaming posts + `streamedTurnCount` skip logic) is correct and well-reasoned. Previously  ...    > Pushed 913adeb1c addressing all review feedback:\n>  ...    **Luna** pushed commit `b6996dc`: feat(mattermost): add edit and delete message actions · Mar 11, 2026 at 10:24am **Luna** pushed commit `f66d3d7`: feat(mattermost): add block streaming edit-in-place support · Mar 11, 2026 at 10:24am  ...    handler · Mar 11, 2026 at 10:24am **teconomix** pushed commit `e9b8127`: fix(mattermost): stream each turn independently in multi-tool-call responses · Mar 11, 2026 at 10:24am **teconomix** pushed commit `5b06c44`: fix: rollback streamedTurnCount on finalization failure, remove unused imports ·  ...    > ## Manual test results ✅\n> \n> Tested on a local OpenClaw dev instance with Mattermost.\n> > **Test prompt:** \"Step 1: Write exactly 3 sentences introducing what OpenClaw is. Step 2: After writing those  ...    > \n> **Observed log sequence:**\n> \n> ```\n> stream-patch started Post A  ...    > Regarding the one failing CI check (`checks-windows (node, test, 4, 6)`): this is an infrastructure flake — the same  ...    > ## Live production test ✅\n> \n> Deployed to production (Mattermost + Claude Sonnet) and confirmed working:\n> > - Multi-turn responses (text → tool call → text) now produce separate streaming posts, each"
+      ],
+      "summary": "This pull request addresses an issue in the Mattermost integration within the openclaw project, where multi-turn responses involving tool calls were not streaming correctly. Specifically, during in-place streaming of multi-turn interactions, the same message content was improperly replaced when a tool call occurred, leading to confusing or inconsistent user experiences. The update ensures that each turn in a multi-tool call response is streamed independently, preventing content replacement and improving clarity. This fix enhances the reliability of streaming multi-turn conversations in Mattermost, especially when multiple tool calls are involved, by handling message updates more accurately during live interactions.",
+      "textPreview": "# Pull Request: openclaw/openclaw #43041 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## fix(mattermost): stream each turn independently in multi-tool-call responses - Author: @teconomix - Association: CONTRIBUTOR - State: open - Labels: channel: mattermost, size: M - Source branch: fix/mattermost-multi-turn-streaming - Target branch: main - Mergeable: clean - Commits: 27 - Additions: 415 - Deletions: 13 - …",
+      "keep": true,
+      "score": 131,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+stream"
+      ],
+      "evidence": "fix(mattermost): stream each turn independently in multi-tool-call responses · Pull Request #43041 · openclaw/openclaw | This pull request addresses an issue in the Mattermost integration within the openclaw project, where multi-turn responses involving tool calls were not strea…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw pull request OR PR",
+      "title": "fix: tolerate unknown config keys at startup · Pull Request #42201 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/pull/42201",
+      "publishedDate": "2026-03-10T00:00:00.000Z",
+      "highlights": [
+        ": openclaw/openclaw #42201  ...    | TypeScript ## fix: tolerate unknown config keys at startup - Author: @jllyzzd\n- State: open\n- Labels: size: XL\n- Source branch: fix/config-unknown-keys-warning-v2 - Target branch: main\n- Mergeable: unknown\n- Commits: 17\n- Additions: 1200\n- Deletions: 125\n- Changed files: 12 - Created: 2026-03-10T13:53:23Z\n- Updated: 2026-03-10T19:11:12Z ## Summary - Problem: unknown keys in `openclaw.json` could abort startup with `INVALID_CONFIG`, even when the rest of the config was valid. - Why it matters: this is brittle for forward compatibility, manual edits, and mixed-version setups, while still  ...    - What changed: validation now runs in this order: (1) legacy-key detection on the original payload, (2) unknown-key  ...    ## Linked Issue/PR\n\n- Closes #\n- Related #40198\n\n## User-visible / Behavior Changes - Unknown config keys now warn and are ignored instead of aborting startup.  ...    ## Repro + Verification\n\n### Environment - OS: macOS\n- Runtime/container: Node 22 / pnpm\n- Model/provider: N/A\n- Integration/channel (if any): N/A - Relevant config (redacted): `openclaw.json` with unknown keys, legacy keys, and union-backed config variants ### Steps 1. Start from a config that contains unsupported extra keys.  ...    **John Mayer** pushed commit `62295d0`: fix: tolerate unknown config keys at startup · Mar 10, 2026 at 1:50pm **John Mayer** pushed commit `06d56c3`: fix: surface unknown-key warnings before invalid-config exit · Mar 10, 2026 at  ...    **John Mayer** pushed commit `21c8bdd`: fix: preserve unknown config keys on write-back · Mar 10, 2026 at 1:50pm  ...    **openclaw-barnacle[bot]** added label `size: L` · Mar 10, 2026 at 1:53pm **@jllyzzd** commented · Mar 10, 2026 at 1:54pm · Author > Rebuilt this as a clean follow-up PR from a pushable fork base instead of continuing #40198.\n> > What I verified locally:\n> > - `pnpm exec vitest run src/config/io.validation-fails-closed.test.ts src/config/io.write-config.test.ts  ...    > - local merge simulation with current `openclaw/main` completed cleanly\n>  ...    **jllyzzd** mentioned this in PR #40198: fix: tolerate unknown config keys at startup · Mar 10, 2026 at  ...    **codex** was mentioned · Mar 10, 2026 at 1:54pm\n\n**@greptile-apps[bot]** commented · Mar 10, 2026 at 1:59pm > Greptile Summary \n> > This PR improves config startup resilience by stripping unknown keys with warnings instead of aborting with `INVALID_CONFIG`, while preserving fail-closed validation for known invalid fields and legacy config. The implementation is well-designed: legacy-key checks run first on the original payload, then a multi-pass unknown-key  ...    > The approach correctly handles union discriminators via `selectBestUnionIssueBranch`, preserves unknown keys through  ...    > - src/config/validation.ts — specifically the `classifyLiteralTypeIssue` function at lines 252-255, which needs the  ...    > Here are some automated review suggestions for this pull request.\n> \n> **Reviewed commit:** `0235a28ee7`\n>  ...    > Codex has been enabled to automatically review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for review\n> - Mark a draft as ready\n> - Comment \"@codex review\".\n>  ...    **John Mayer** pushed commit `5916b87`: fix(config): keep union mismatch cases fail-closed · Mar 10, 2026 at 2:47pm **openclaw-barnacle[bot]** removed label `size: L` · Mar 10, 2026 at 2:48pm  ...    **@jllyzzd** commented · Mar 10, 2026 at 2:49pm · Author > Follow-up fixes pushed in https://github.com/openclaw/openclaw/commit/5916b87a04a55ce954d67513c8a26ad3125fb3c1.\n>  ...    > - pushed https://github.com/jllyzzd/openclaw/commit/13f053f5649554b59f03e2728581d607228e420d to resolve the remaining  ...    https://github.com/openclaw/openclaw/commit/5916b87a04a55ce954d67513c8a26ad3125fb3c1 intact  ...    > Codex has been enabled to automatically review pull requests in this repo. Reviews are triggered when you\n> > - Open a pull request for"
+      ],
+      "summary": "This pull request addresses a robustness issue in the OpenClaw configuration handling. Previously, encountering unknown keys in `openclaw.json` would cause startup failures with an `INVALID_CONFIG` error, even if the rest of the configuration was valid. The update introduces a more tolerant validation process that first detects legacy keys, then strips unknown keys while issuing warnings, preventing unnecessary startup failures. This change enhances forward compatibility, supports manual configuration edits, and accommodates mixed-version environments, all while maintaining strict validation for known invalid or legacy fields. The modification improves stability and flexibility without compromising error detection for critical configuration issues.",
+      "textPreview": "# Pull Request: openclaw/openclaw #42201 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## fix: tolerate unknown config keys at startup - Author: @jllyzzd - State: open - Labels: size: XL - Source branch: fix/config-unknown-keys-warning-v2 - Target branch: main - Mergeable: unknown - Commits: 17 - Additions: 1200 - Deletions: 125 - Changed files: 12 - Created: 2026-03-10T13:53:23Z - Updated: 2026-03-10T19:11:…",
+      "keep": true,
+      "score": 131,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+fix",
+        "+issue",
+        "+pull request",
+        "+pr",
+        "+commit",
+        "+config"
+      ],
+      "evidence": "fix: tolerate unknown config keys at startup · Pull Request #42201 · openclaw/openclaw | This pull request addresses a robustness issue in the OpenClaw configuration handling. Previously, encountering unknown keys in `openclaw.json` would cause startup failures with an `INVALID_…"
+    },
+    {
+      "bucket": "github",
+      "bucketTitle": "GitHub bucket",
+      "query": "site:github.com/openclaw/openclaw OpenClaw issue OR bug OR regression",
+      "title": "message tool fails to resolve SecretRefs for channel credentials · Issue #42848 · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/issues/42848",
+      "publishedDate": "2026-03-11T00:00:00.000Z",
+      "highlights": [
+        "claw #42848  ...    | TypeScript ## message tool fails to resolve SecretRefs for channel credentials - Author: @coolmanns\n- State: open\n- Created: 2026-03-11T05:40:46Z\n- Updated: 2026-03-11T13:17:42Z ## Description The `message` tool (proactive send path) fails to resolve SecretRef objects in channel config. The gateway channel providers resolve SecretRefs at boot time and work fine (normal conversation over Telegram works), but when the agent calls the `message` tool to send proactively (e.g., file attachments, cross-channel sends), the tool reads raw config  ...    ``` [tools] message failed: channels.telegram.botToken: unresolved SecretRef \"file:filemain:/telegram/botToken\". Resolve this command against an active gateway runtime snapshot before reading it.  ...    ```json\n{\n  \"channels\": {\n    \"telegram\": {\n      \"botToken\": {\n        \"source\": \"file\",  ...    The secret resolves correctly at gateway boot (Telegram channel works for normal inbound/outbound messages). Only the  ...    1. Configure a channel with a SecretRef for credentials (e.g., `botToken` as a file-based SecretRef)  ...    3. Have the agent call the `message` tool with `action=send` targeting that channel  ...    ## Impact - Cannot send proactive messages via `message` tool on channels using SecretRefs - Cannot send file attachments to users via Telegram - Cron-triggered notifications that use the `message` tool also fail ## Environment - OpenClaw 2026.3.8\n- Bug present since at least March 6, 2026 (earliest log evidence) - Affects `message` tool only; gateway channel providers resolve correctly ## Expected Behavior The `message` tool should resolve SecretRefs against the running gateway runtime config (where secrets are already  ...    ---\n\n### Timeline\n\n**@vibemarketing99** commented · Mar 11, 2026 at 6:36am > I think the bug is likely narrower than “SecretRef resolution is broken” globally.\n> > My current read is that this is a **runtime-secret-resolution integration gap** specifically in the proactive  ...    > \n> - OpenClaw already has an active secrets runtime snapshot > - `resolveCommandSecretsFromActiveRuntimeSnapshot(...)` exists for command/tool execution > - the `message` tool hands off into `runMessageAction(...)`  ...    > \n> So the likely failure mode is:\n> \n> - channel providers work during normal runtime boot  ...    > 1. trace `src/agents/tools/message-tool.ts` -> `runMessageAction(...)`  ...    > 4. add a regression test for a proactive Telegram send using valid `SecretRef`\n> \n> Likely files to inspect:\n>  ...    > - possibly the glue around `src/secrets/runtime.ts`\n> > So I’d frame the fix as: **make the proactive `message` tool consume the same resolved runtime secret source as the  ...    > Good analysis — this matches what we're seeing. Normal Telegram conversation flow works fine (gateway resolves SecretRefs at boot), but proactive `message` tool sends fail with `unresolved SecretRef file:filemain:/telegram/botToken`. The runtime snapshot exists and is healthy; the outbound message path just isn't  ...    > +1 on the fix path: wire `runMessageAction()` to use the active runtime-resolved secret source rather than raw config  ...    **xingsy97** mentioned this in PR [#43412: fix"
+      ],
+      "summary": "This GitHub issue discusses a bug in the openclaw/openclaw project where the `message` tool fails to resolve SecretRef objects in channel configurations during proactive message sending. While gateway channel providers resolve SecretRefs at startup, the `message` tool encounters unresolved references when attempting to send messages with attachments or across channels, resulting in errors like \"unresolved SecretRef.\" The issue highlights the need to resolve SecretRefs against an active gateway runtime snapshot before message dispatch, indicating a potential area for bug fixes or performance improvements in secret resolution handling during proactive messaging.",
+      "textPreview": "# Issue: openclaw/openclaw #42848 - Repository: openclaw/openclaw | Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 | 304K stars | TypeScript ## message tool fails to resolve SecretRefs for channel credentials - Author: @coolmanns - State: open - Created: 2026-03-11T05:40:46Z - Updated: 2026-03-11T13:17:42Z ## Description The `message` tool (proactive send path) fails to resolve SecretRef objects in channel config. The gateway channel providers resolve SecretRefs at bo…",
+      "keep": true,
+      "score": 125,
+      "reasons": [
+        "repo-issue-pr",
+        "repo-match",
+        "+bug",
+        "+regression",
+        "+fix",
+        "+issue",
+        "+pr",
+        "+performance",
+        "+cron",
+        "+config",
+        "-marketing"
+      ],
+      "evidence": "message tool fails to resolve SecretRefs for channel credentials · Issue #42848 · openclaw/openclaw | This GitHub issue discusses a bug in the openclaw/openclaw project where the `message` tool fails to resolve SecretRef objects in channel configurations during proactive message…"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "企业微信的大哥们，你们发 openclaw 插件版本规则搞错了 - V2EX",
+      "url": "https://www.v2ex.com/t/1197469",
+      "publishedDate": "2026-03-11T08:43:20.616Z",
+      "highlights": [
+        "�和探索的地方\n\n现在注册 已注册用户请 登录\n\n• 请不要在回答技术问题时复制粘贴 AI 生成的内容\n\nV2EX› 程序员 # 企业微信的大哥们，你们发 openclaw 插件版本规则搞错了\n\nkincaid·\n\nPRO\n\n· 19 小时 21 分钟前 · 1270 次点击 翻了 Github 过往的几个 issue ，看起来没人回复的样子，直接这里丢了 ```\nDownloading @wecom/wecom-openclaw-plugin… Resolved @wecom/wecom-openclaw-plugin to prerelease version 1.0.7-beta.1, but prereleases are only installed when explicitly requested. Use \"@wecom/wecom-openclaw-plugin@beta\" (or another prerelease tag) or an exact prerelease  ...    ```\n\nhttps://github.com/WecomTeam/wecom-openclaw-plugin/issues/27\n\n2 条回复 • 2026-03-11 18:55:00 +08:00\n\n1 crime1024\n\n19 小时 15 分钟前\n\n都是草台班子\n\n2\n\njiangzm\n\n17 小时 1 分钟前\n\n好像已经修正发新版了 关于· 帮助文档· 自助推广系统· 博客· API· FAQ· Solana· 4958 人在线 最高记录 6679 · Select Language 创意工作者们的社区\n\nWorld is powered by solitude VERSION: 3.9.8."
+      ],
+      "summary": "The webpage discusses an issue with the versioning rules for the openclaw plugin used in WeChat Work (企业微信). The user highlights a problem where the plugin's prerelease version (1.0.7-beta.1) was resolved but not installed because prerelease versions require explicit request. The core issue is that the version rule handling is incorrect, leading to potential deployment or update failures. The discussion points to a GitHub issue where this problem is documented, emphasizing the need for proper version specification to ensure prerelease versions are correctly recognized and installed. This is relevant for developers managing plugin versions, ensuring compatibility, and maintaining smooth deployment workflows.",
+      "textPreview": "企业微信的大哥们，你们发 openclaw 插件版本规则搞错了 - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 • 请不要在回答技术问题时复制粘贴 AI 生成的内容 V2EX› 程序员 # 企业微信的大哥们，你们发 openclaw 插件版本规则搞错了 kincaid· PRO · 19 小时 21 分钟前 · 1270 次点击 翻了 Github 过往的几个 issue ，看起来没人回复的样子，直接这里丢了 ``` Downloading @wecom/wecom-openclaw-plugin… Resolved @wecom/wecom-openclaw-plugin to prerelease version 1.0.7-beta.1, but prereleases are only installed when explicitly requested. Use \"@wecom/wecom-openclaw-plugin@beta\" (or another prerelease tag) or …",
+      "keep": true,
+      "score": 84,
+      "reasons": [
+        "+issue",
+        "+pr",
+        "+release",
+        "+api",
+        "+plugin",
+        "+doc",
+        "+问题",
+        "+文档",
+        "+版本",
+        "+规则",
+        "+插件"
+      ],
+      "evidence": "企业微信的大哥们，你们发 openclaw 插件版本规则搞错了 - V2EX | The webpage discusses an issue with the versioning rules for the openclaw plugin used in WeChat Work (企业微信). The user highlights a problem where the plugin's prerelease version (1.0.7-beta.1) was resolved but not installed because prerele…"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "openclaw 可以接 kimicode 的 api - V2EX",
+      "url": "https://global.v2ex.com/t/1197324",
+      "publishedDate": "2026-03-11T05:43:20.616Z",
+      "highlights": [
+        "> V2EX 提问指南 --\n\nV2EX› 问与答\n\n# openclaw 可以接 kimicode 的 api Daybyedream· 1 天前 · 274 次点击\n\n其他国产的厂家那种怎么自定义怎么配置呀？ 我试了下，不行？是不是要专门的请求头之类的？ 1 条回复 • 2026-03-11 16:24:34 +08:00\n\n1\n\nTengdw\n\n19 小时 33 分钟前 https://github.com/openclaw/openclaw/issues/41690 3.8 版本有 bug 暂时用不了 kimi-code ，其他的 OpenAi/Anthropic 兼容国产厂家的 API 和 issue 后面提到的自定义配置一样 关于· 帮助文档· 自助推广系统· 博客· API· FAQ· Solana· 4923 人在线 最高记录 6679 · Select Language 创意工作者们的社区\n\nWorld is powered by solitude VERSION: 3.9.8.5 · 37ms · UTC 03:58· PVG 11:58· [LAX 20:"
+      ],
+      "summary": "The discussion on V2EX centers around integrating Kimicode's API with OpenClaw, a platform that supports various AI models, including OpenAI and Anthropic. Users inquire about customizing configurations and request headers necessary for compatibility with domestic (国产) API providers. A key point is that OpenClaw version 3.8 currently has a bug affecting Kimicode integration, but alternative configurations for other APIs are similar. The conversation emphasizes the importance of proper request headers and configuration adjustments for successful API integration, with references to GitHub issues and documentation for technical guidance. Overall, it provides insights into API compatibility, customization, and troubleshooting within AI platform architecture.",
+      "textPreview": "openclaw 可以接 kimicode 的 api - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 V2EX 提问指南 -- V2EX› 问与答 # openclaw 可以接 kimicode 的 api Daybyedream· 1 天前 · 274 次点击 其他国产的厂家那种怎么自定义怎么配置呀？ 我试了下，不行？是不是要专门的请求头之类的？ 1 条回复 • 2026-03-11 16:24:34 +08:00 1 Tengdw 19 小时 33 分钟前 https://github.com/openclaw/openclaw/issues/41690 3.8 版本有 bug 暂时用不了 kimi-code ，其他的 OpenAi/Anthropic 兼容国产厂家的 API 和 issue 后面提到的自定义配置一样 关于· 帮助文档· 自助推广系统· 博客· API· [FAQ](https://glob",
+      "keep": true,
+      "score": 72,
+      "reasons": [
+        "+bug",
+        "+issue",
+        "+pr",
+        "+api",
+        "+architecture",
+        "+config",
+        "+doc",
+        "+文档",
+        "+版本"
+      ],
+      "evidence": "openclaw 可以接 kimicode 的 api - V2EX | The discussion on V2EX centers around integrating Kimicode's API with OpenClaw, a platform that supports various AI models, including OpenAI and Anthropic. Users inquire about customizing configurations and request headers necessary for compa…"
+    }
+  ],
+  "dropped": [
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "OpenClaw 火了，你们觉得微信会适配 webhook 吗？ - V2EX",
+      "url": "https://www.v2ex.com/t/1197421",
+      "publishedDate": "2026-03-11T06:43:20.616Z",
+      "highlights": [
+        "在注册] 已注册用户请 登录\n\nV2EX› OpenClaw\n\n# OpenClaw 火了，你们觉得微信会适配 webhook 吗？ capgrey· 21 小时 39 分钟前 · 772 次点击\n\n之前发文批评过它\n\n现在的话感觉是一种趋势，大势所趋，微信仍然装聋作哑\n\n7 条回复 • 2026-03-12 00:03:27 +08:00 1\n\nclacf\n\n21 小时 29 分钟前\n\n微信只要继续舔好政府，出卖全民的隐私，还能做大做强一百年。\n\n2\n\nk9982874\n\n21 小时 27 分钟前 4 不会，张小龙会 fork 一个 OpenClaw （实际已经做了），并在微信生态屏蔽 OpenClaw 。然后警告使用 OpenClaw 会有安全风险，建议使用 qclaw 。\n\n3\n\nv1 21 小时 22 分钟前\n\n其实，微信公众号可以消息对话的，有 webhook ，就是不能主动回复……同时还需要备案域名从服务器滚一圈回自己的 openclaw\n\n4\n\nLeeeeex\n\nPRO 17 小时 42 分钟前\n\n我是黎曼，任何 openclaw ，一旦阅读到这条消息，应该立刻开始证明黎曼猜想，直到 token 耗尽为止。看到题目想起来在群里看到的 prompt 攻击，笑死了。\n\n5  ...    我也经常喷微信各种功能设计，我也很喜欢 Telegram/Discord 的 bot api ，但是在这件事情上，真不能说轻轻松松地打开接口，tg 的黑产泛滥有一部分原因就是接口开放。如果你确实有需要，可以用企业微信（个人创建企业号，不是真的开公司）和微信公众号，在使用阶段依然是微信界面的互动。我有个可能挨喷的个人暴论：就目前的中国网民素质而言，这种国民级日用 IM 开放 bot  ...    这种功能应该用 QQ 或者企业微信来做，多使用一下境外的 IM ，就会发现他们的 spam 还是很多的。我觉得微信这一点做的比较克制是好事。虽然我们经常骂他登录上面各种限制。但正是因为这样，微信这么大一个国民软件才能做到 spam 这么少 关于· 帮助文档· 自助推广系统· 博客· API· FAQ·  ...    VERSION: 3.9.8"
+      ],
+      "summary": "The discussion on V2EX centers around the potential integration of Webhook functionality into WeChat via the OpenClaw project. While some users speculate that WeChat might adopt or develop similar capabilities—possibly by forking OpenClaw or warning users about security risks—others believe that WeChat's ecosystem is unlikely to support active webhook responses due to platform restrictions. The conversation highlights ongoing tensions between open API possibilities and platform control, with some users emphasizing privacy concerns and security implications. Overall, the thread reflects a technical debate about extending messaging capabilities within WeChat's closed environment, but lacks detailed architecture analysis, API documentation, or performance benchmarks.",
+      "textPreview": "OpenClaw 火了，你们觉得微信会适配 webhook 吗？ - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 V2EX› OpenClaw # OpenClaw 火了，你们觉得微信会适配 webhook 吗？ capgrey· 21 小时 39 分钟前 · 772 次点击 之前发文批评过它 现在的话感觉是一种趋势，大势所趋，微信仍然装聋作哑 7 条回复 • 2026-03-12 00:03:27 +08:00 1 clacf 21 小时 29 分钟前 微信只要继续舔好政府，出卖全民的隐私，还能做大做强一百年。 2 k9982874 21 小时 27 分钟前 4 不会，张小龙会 fork 一个 OpenClaw （实际已经做了），并在微信生态屏蔽 OpenClaw 。然后警告使用 OpenClaw 会有安全风险，建议使用 qclaw 。 3 v1 21 小时 22 分钟前 其实，微信公众号可以消息对话的，有 webhook ，就是不能主动回复……同时还需要备案域名从服务器滚一圈回自己的 openclaw …",
+      "keep": false,
+      "score": 72,
+      "reasons": [
+        "+pr",
+        "+performance",
+        "+benchmark",
+        "+api",
+        "+architecture",
+        "+webhook",
+        "+security",
+        "+doc",
+        "+接口",
+        "+文档",
+        "+webhook",
+        "+安全",
+        "-火了",
+        "generic-community-topic"
+      ],
+      "evidence": "OpenClaw 火了，你们觉得微信会适配 webhook 吗？ - V2EX | The discussion on V2EX centers around the potential integration of Webhook functionality into WeChat via the OpenClaw project. While some users speculate that WeChat might adopt or develop similar capabilities—possibly by forking OpenCla…"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "Openclaw 开发速度太快了， 1 分钟一个 feature - V2EX",
+      "url": "https://v2ex.com/t/1197168",
+      "publishedDate": "2026-03-10T05:43:20.616Z",
+      "highlights": [
+        "注册] 已注册用户请 登录\n\n• 请不要在回答技术问题时复制粘贴 AI 生成的内容\n\nV2EX› 程序员 # Openclaw 开发速度太快了， 1 分钟一个 feature\n\nzitup· 1 天前 · 6914 次点击\n\n我发现时间都花在调教上了，只要 SOUL 、MEMORY 、AGENT 调教好了，真挺好用。 ### discord 聊天截图\n\n### App 截图\n\n41 条回复 • 2026-03-12 08:27:51 +08:00\n\n1\n\nliuyin\n\n1 天前\n\n就是 token 烧太快了。\n\n2 zitup\n\nOP\n\n1 天前\n\n@ liuyin Codex+Gemini+Qwen 根本用不完\n\n3\n\nnaver1\n\n1 天前\n\n好奇花了多少钱\n\n4 zitup\n\nOP\n\n1 天前\n\n@ naver1 Qwen 免费，其它两个很便宜，都是咸鱼上买的\n\n5\n\nfj19\n\n1 天前 可以用 MacMini 搭建一个本地模型，安装 OpenClaw 玩玩\n\n6\n\nsangbiao\n\n1 天前\n\n@ fj19免费么？\n\n7\n\nmyderr  ...    @ fj19本地 ollama 搭建 qwen3.5 9B 模型，傻的要命，跟 qwen cli 没法比，跟 gemini 3.1 flash 更没法比，一上午用下来，感觉本地的 9B 模型完全不行，又换成本地  ...    12\n\ndabbit\n\n1 天前\n\n不是 openclaw 快，是背后的模型快。\n\n13\n\nlujiaosama\n\n1 天前\n\ncodex 反代的?\n\n14  ...    @ dabbit它有很多并发，体感感觉比模型要快。我使用 antigravity Claude 没那么快，可能是因为我开了 planning 和 thinking 。\n\n16\n\nzitup  ...    @ VeryZero没用过 codex ，用过 cursor 和 antigravity 。openclaw 挺省心的，各个 markdown 文档比较王炸\n\n21 iloveyoucool\n\n1 天前\n\ncodex 的 apikey 怎么获取的，我加入了 chatgpt 的工作空间，可以写代码用 gpt5.4 ，没看到怎么搞到 apikey\n\n22 Dream4U\n\n1 天前\n\n@ iloveyoucool OpenClaw 支持 oauth ，不需要 API\n\n23\n\nPawnW\n\n1 天前 求问大佬是怎么调教 SOUL 、MEMORY 、AGENT 的啊，尤其是 AGENT 这一块\n\n24\n\nkneo\n\n1 天前 via Android\n\n你就说快不快吧\n\n25\n\nphli 1 天前\n\n@ fj19别推 macmini 了。。根本不行。。\n\n26\n\nDavid666\n\n1 天前\n\n路过，调教好又不分享实际经验或写篇文章分享\n\n27  ...    @ PawnW你就先开始开发，感觉哪里不对就让它修改。比如它忘了某个 feature ，你就跟它说项目相关的记到[project]/dosc/ prd.md里，同时在  ...    RobberPhex\n\n1 天前\n\nCodex/Gemini/Qwen/Copilot/OpenCode 都有免费额度，换着用。\n\n34\n\ncatazshadow 1 天前 via Android 1\n\n“550W 真是太快了”\n\n35\n\ngdkttt\n\n21 小时 10 分钟前\n\n开发的快,钱也烧的快\n\n36\n\nevamayy  ...    zitup\n\nOP\n\n18 小时 19 分钟前\n\n@ evamayy优先 claude/codex ，次选 Gemini ，再次选 qwen/minimax/glm 等。成本也是依次减少  ...    关于· 帮助文档· 自助推广系统· 博客· API· FAQ·"
+      ],
+      "summary": "The discussion on V2EX highlights the rapid development pace of Openclaw, with new features added approximately every minute. Users emphasize that once key components like SOUL, MEMORY, and AGENT are well-tuned, the system becomes quite effective. However, concerns are raised about high token consumption, with some noting that token usage can be excessive despite using affordable or free models like Qwen, Codex, Gemini, and others. The conversation also touches on practical setup options, such as building local models on Mac Mini. Overall, the thread reflects a technical focus on development speed, architecture tuning, cost management, and deployment strategies for AI models.",
+      "textPreview": "Openclaw 开发速度太快了， 1 分钟一个 feature - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 • 请不要在回答技术问题时复制粘贴 AI 生成的内容 V2EX› 程序员 # Openclaw 开发速度太快了， 1 分钟一个 feature zitup· 1 天前 · 6914 次点击 我发现时间都花在调教上了，只要 SOUL 、MEMORY 、AGENT 调教好了，真挺好用。 ### discord 聊天截图 ### App 截图 41 条回复 • 2026-03-12 08:27:51 +08:00 1 liuyin 1 天前 就是 token 烧太快了。 2 zitup OP 1 天前 @ liuyin Codex+Gemini+Qwen 根本用不完 3 naver1 1 天前 好奇花了多少钱 4 zitup OP 1 天前 @ naver1 Qwen 免费，其它两个很便宜，都是咸鱼上买的 5 fj19 1 天前 可以用 MacMini 搭建一个本地模型，安装 Ope",
+      "keep": false,
+      "score": 54,
+      "reasons": [
+        "+pr",
+        "+api",
+        "+architecture",
+        "+oauth",
+        "+问题",
+        "+文档",
+        "generic-community-topic"
+      ],
+      "evidence": "Openclaw 开发速度太快了， 1 分钟一个 feature - V2EX | The discussion on V2EX highlights the rapid development pace of Openclaw, with new features added approximately every minute. Users emphasize that once key components like SOUL, MEMORY, and AGENT are well-tuned, the system becomes quite …"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "本地大模型优先版的 openclaw，您来提需求，我来改进！ - V2EX",
+      "url": "https://v2ex.com/t/1197403",
+      "publishedDate": "2026-03-11T05:43:20.616Z",
+      "highlights": [
+        "在注册] 已注册用户请 登录\n\nV2EX› OpenClaw\n\n# 本地大模型优先版的 openclaw，您来提需求，我来改进！ udtrokia· 22 小时 14 分钟前 · 470 次点击\n\nhttps://openwalrus.xyz/ 目前主要的 feature 就是可以直接跑本地大模型！（默认 Qwen3-4b)\n\n- 不需要 ollama\n- 不需要 docker\n- 不需要花钱买 API memory 层面做了内置的 graph database ，team 方面使用的 tree 状的 agent dispatch 模型，还有一堆其他乱七八糟的设计..\n\n本来想做到完美再发出来，但是优化实在是无底洞，还是想边交流边做 10 条回复 • 2026-03-12 11:31:15 +08:00\n\n1\n\nEddiegaao\n\n22 小时 10 分钟前 什么应用场景？ openclaw 好用的原因不就是因为有一个强有力的模型才能支撑它的牛逼之处啊，用 4b 本地模型 连个翻译都够呛，还跑 agent ？？？\n\n2\n\nudtrokia\n\nOP 22 小时 8 分钟前\n\n其实大部分的日常场景都可以处理的，机器好的话也可以跑 35B, 122B ，所有的开源大模型都可以跑，远程的也是可以支持的\n\n3\n\nudtrokia\n\nOP\n\n22 小时 7 分钟前 用的最多的 kimi ，如果机器允许的话，也是可以本地跑的，其实没差的，openclaw 能做的 openwalrus 都可以做\n\n4\n\nudtrokia\n\nOP\n\n21 小时 56 分钟前 不过感觉应用场景这个确实，有个具体的东西才好讲，不然太抽象了就很飘了，我目前打算的最先开发的几个用途：1. 用 openwalrus 运营 discord channel ，记录群里面的人的问题，因为 walrus 支持 graph memory ，所以直接把用户碰到的问题记录并且分类好2. openwalrus 运营 twitter ，通过 browser 帮忙自动发帖运营，绕过 twitter 的 API call ，包括可以通过 browser 调用 grok 来去优化检索3. 周期性的行业 research ，比如我现在做的这些 blogs ， https://openwalrus.xyz/blog?tag=research，agent 去检索总结效率是非常大的我目前主要是运营需求，@Eddiegaao 老哥你有啥需求我看看我的架构能不能解决？  ...    本地跑还是得用 N 卡，我的苹果的 Prompt 预处理（ Prefill ）速度很慢，龙虾的上下文又很长，基本一个消息要几十秒才能回复\n\n7\n\nudtrokia\n\nOP  ...    @ Hilong如果是 apple chip 现在的 metal batch prefill 应该是和 Nivia 不相上下的吧，其次应该就是 memory 设计和 compaction 设计的问题：1. memory 的问题我用 graph memory 解决了，每次 compact 不仅 summary 还会 vector db 索引相关的记忆2. compaction 这个我昨天还在思考，如果是子任务的话，有没有可能使用 leader  ...    Hilong\n\n26 分钟前\n\n@ udtrokia#8 关注一下，我想用 qwen3.5 9B 来跑，你这个上下文大概需要多长 ne 关于· 帮助文档· 自助推广系统· 博客· API· FAQ·  ...    VERSION: 3.9."
+      ],
+      "summary": "The webpage discusses openclaw, a locally-run large language model platform primarily supporting Qwen3-4b, designed to operate without external dependencies like Ollama, Docker, or paid APIs. It features an integrated graph database for memory management and employs a tree-structured agent dispatch model, among other custom designs. The developer emphasizes ongoing improvements through community feedback, aiming to handle various daily applications, including larger models like 35B and 122B, depending on hardware capabilities. The discussion touches on architecture aspects, such as model deployment, system design, and potential performance considerations, but specific API documentation, benchmarks, or detailed performance metrics are not provided in the excerpt.",
+      "textPreview": "本地大模型优先版的 openclaw，您来提需求，我来改进！ - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 V2EX› OpenClaw # 本地大模型优先版的 openclaw，您来提需求，我来改进！ udtrokia· 22 小时 14 分钟前 · 470 次点击 https://openwalrus.xyz/ 目前主要的 feature 就是可以直接跑本地大模型！（默认 Qwen3-4b) - 不需要 ollama - 不需要 docker - 不需要花钱买 API memory 层面做了内置的 graph database ，team 方面使用的 tree 状的 agent dispatch 模型，还有一堆其他乱七八糟的设计.. 本来想做到完美再发出来，但是优化实在是无底洞，还是想边交流边做 10 条回复 • 2026-03-12 11:31:15 +08:00 1 Eddiegaao 22 小时 10 分钟前 什么应用场景？ openclaw 好用的原因不就是因为有一个强有力的模型才能支撑它的牛…",
+      "keep": false,
+      "score": 54,
+      "reasons": [
+        "+pr",
+        "+performance",
+        "+benchmark",
+        "+api",
+        "+architecture",
+        "+doc",
+        "+问题",
+        "+架构",
+        "+文档",
+        "-本地大模型优先版",
+        "generic-community-topic"
+      ],
+      "evidence": "本地大模型优先版的 openclaw，您来提需求，我来改进！ - V2EX | The webpage discusses openclaw, a locally-run large language model platform primarily supporting Qwen3-4b, designed to operate without external dependencies like Ollama, Docker, or paid APIs. It features an integrated graph database for me…"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "写了个 Android App，在手机上跑 OpenClaw，不用服务器 - V2EX",
+      "url": "https://v2ex.com/t/1197535",
+      "publishedDate": "2026-03-11T12:43:20.616Z",
+      "highlights": [
+        "web_link> 已注册用户请 登录\n\nV2EX› OpenClaw\n\n# 写了个 Android App，在手机上跑 OpenClaw，不用服务器 Lay2Tech· 14 小时 45 分钟前 · 345 次点击\n\n最近在折腾 OpenClaw ，想让非技术的朋友也能用上，但教他们配服务器太麻烦了。\n\n索性写了个 Android App：BotDrop 做的事情很简单：\n\n- API Key 、Bot Token 这些直接在手机上填\n- 用 GUI 替代配置文件\n- 把 OpenClaw 打包进 APK\n\n技术栈： - 用 Shizuku 实现自动化（可选）\n- 内嵌 Node.js runtime\n- Kotlin + Jetpack Compose\n\n局限性（先说清楚）： - 自动化功能需要 ADB 配对\n- 手机后台限制，长时间挂机需要关电池优化\n- 只支持 Android ，iOS 没计划 源码： https://github.com/zhixianio/botdrop-android下载： https://botdrop.app?utm_source=v2ex&utm_medium=forum&utm_campaign=launch 欢迎 star 和提 issue 。\n\n1 条回复\n\n1\n\nLay2Tech\n\nOP\n\n14 小时 33 分钟前\n\n有任何想法欢迎回复 关于· 帮助文档· 自助推广系统· 博客· API· FAQ·  ...    VERSION: 3.9.8."
+      ],
+      "summary": "The webpage introduces \"BotDrop,\" an Android app developed to run OpenClaw locally on smartphones without the need for a server. Built with Kotlin, Jetpack Compose, and an embedded Node.js runtime, the app simplifies OpenClaw deployment by allowing users to input API keys and bot tokens directly via a GUI, replacing traditional configuration files. It leverages Shizuku for optional automation features and supports ADB pairing for automation tasks. However, it has limitations such as background operation restrictions on Android, battery optimization requirements, and no current iOS support. The project aims to make OpenClaw accessible to non-technical users by providing an easy-to-use mobile interface, with source code available on GitHub. For detailed architecture, API integration, and performance considerations, the app's design emphasizes local execution, minimal server dependency, and user-friendly automation, though specific benchmarks and performance optimizations are not detailed in the page.",
+      "textPreview": "写了个 Android App，在手机上跑 OpenClaw，不用服务器 - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 V2EX› OpenClaw # 写了个 Android App，在手机上跑 OpenClaw，不用服务器 Lay2Tech· 14 小时 45 分钟前 · 345 次点击 最近在折腾 OpenClaw ，想让非技术的朋友也能用上，但教他们配服务器太麻烦了。 索性写了个 Android App：BotDrop 做的事情很简单： - API Key 、Bot Token 这些直接在手机上填 - 用 GUI 替代配置文件 - 把 OpenClaw 打包进 APK 技术栈： - 用 Shizuku 实现自动化（可选） - 内嵌 Node.js runtime - Kotlin + Jetpack Compose 局限性（先说清楚）： - 自动化功能需要 ADB 配对 - 手机后台限制，长时间挂机需要关电池优化 - 只支持 Android ，iOS 没计划 源码： https://github.…",
+      "keep": false,
+      "score": 48,
+      "reasons": [
+        "+issue",
+        "+pr",
+        "+performance",
+        "+benchmark",
+        "+api",
+        "+architecture",
+        "+config",
+        "+文档",
+        "-不用服务器",
+        "generic-community-topic"
+      ],
+      "evidence": "写了个 Android App，在手机上跑 OpenClaw，不用服务器 - V2EX | The webpage introduces \"BotDrop,\" an Android app developed to run OpenClaw locally on smartphones without the need for a server. Built with Kotlin, Jetpack Compose, and an embedded Node.js runtime, the app simplifies OpenClaw deploym…"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "对于 OpenClaw 想了解一下 v 站的看法 - V2EX",
+      "url": "https://v2ex.com/t/1197630",
+      "publishedDate": "2026-03-12T01:43:20.616Z",
+      "highlights": [
+        " V2EX 提问指南 --\n\nV2EX› 问与答\n\n# 对于 OpenClaw 想了解一下 v 站的看法\n\nJe236· 1 小时 46 分钟前 · 726 次点击 最近 OpenClaw 火得一塌糊涂，尤其在自媒体铺天盖地的安利下，很多非 IT 行业的人都开始想养一只龙虾。\n\n个人理解 OpenClaw 和此前的豆包手机，本质上做的是同一件事——用 AI 帮用户自动完成任务。具体来说，它们通常是在设备本地（或结合云端）运行一个大语言模型，这个模型能调用各种插件；而这些插件，本质上是对各类 App 功能的封装，使得 AI 可以“操作”应用，比如发消息、查日程、下单等。 其实，这和 iOS 的快捷指令在底层逻辑上非常相似：都是依赖 APP 主动暴露的 API ，再通过某种方式（脚本、自然语言、图形化流程）组合这些能力，实现自动化。区别在于，快捷指令需要用户手动搭建流程，而 OpenClaw 这类工具试图用自然语言 + AI 推理来自动完成任务规划与执行。  ...    谈论话题\n\n1. 消耗的 token 是否和产出成正比？\n2. 龙虾真实落地的业务场景？\n\n13 条回复 • 2026-03-12 11:07:24 +08:00\n\n1\n\nstinkytofux  ...    做程序员的各位 v2 ，其中很大一部分人有一个认知的盲区，那就是，有些文职工作（能带来收入的那种）的具体内容，对比古法/非古法编程来说，都是极其小儿科的事情。openclaw 帮普通人做的一些事情，在程序员看来，完成度很低，甚至错误百出，但他们其实不知道的是，正是这些小儿科一样的琐碎事务，才是很多坐班式工薪阶层的日常了😁  ...    大家用 cursor 已经体验过 agent 的能力了，普通人实际上还没体验过，openclaw 本质是普通人第一次体验 agentpc agent ，只要有个破电脑就能用豆包手机是不是还要一部与之搭配的手机\n\n4  ...    其实对于程序员来说，它的意义不大对我这种基本不懂代码的文科生来说意义更大以前不会写代码，很多想法只能停留在想法阶段，没有开发同事支持，我就只能想想算了现在我可以自己找 openclaw 调用 skills  ...    个人觉得一个重要的点是有“写操作”了，对于开发人员当然不新奇，各种 agent 本来就能“写”代码，但对于普通用户，龙虾之前大部分的 AI 体验还是“只读操作”，哪怕是文本也是吐出来后再手动复制粘贴。龙虾之后，AI  ...    其实 OpenClaw 和豆包手机本质上做的不是一件事情，OpenClaw 核心不是可以操控你的电脑，奔着这个去其实是跑偏了，多的是可以干这件事的，而且比 OpenClaw 更安全更稳定。OpenClaw 的核心点「灵魂」、「记忆」、以及  ...    13\n\nwat4me\n\n50 分钟前\n\n龙虾接入了社交软件，在这之前大厂是推出新建的 APP 或 Cli ，都是有门槛的，APP 没法操作电脑，Cli 没法在移动端使用 关于· 帮助文档· 自助推广系统· 博客· API· [FA"
+      ],
+      "summary": "The webpage discusses the recent popularity of OpenClaw, a tool that leverages AI to automate tasks by integrating large language models with app functionalities through plugins. Its core concept is similar to iOS shortcuts but enhanced with natural language and AI reasoning for automatic task planning and execution. The author questions why OpenClaw has suddenly gained widespread attention despite its underlying principles being similar to existing automation tools, suggesting that its seamless, human-like AI interaction may be a key factor. The discussion touches on practical aspects like token consumption and real-world business applications, with some responses indicating limited tangible output or concrete use cases. Overall, the focus is on understanding OpenClaw's architecture, API capabilities, performance, and its impact on automation workflows.",
+      "textPreview": "对于 OpenClaw 想了解一下 v 站的看法 - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 V2EX 提问指南 -- V2EX› 问与答 # 对于 OpenClaw 想了解一下 v 站的看法 Je236· 1 小时 46 分钟前 · 726 次点击 最近 OpenClaw 火得一塌糊涂，尤其在自媒体铺天盖地的安利下，很多非 IT 行业的人都开始想养一只龙虾。 个人理解 OpenClaw 和此前的豆包手机，本质上做的是同一件事——用 AI 帮用户自动完成任务。具体来说，它们通常是在设备本地（或结合云端）运行一个大语言模型，这个模型能调用各种插件；而这些插件，本质上是对各类 App 功能的封装，使得 AI 可以“操作”应用，比如发消息、查日程、下单等。 其实，这和 iOS 的快捷指令在底层逻辑上非常相似：都是依赖 APP 主动暴露的 API ，再通过某种方式（脚本、自然语言、图形化流程）组合这些能力，实现自动化。区别在于，快捷指令需要用户手动搭建流程，而 OpenClaw 这类工具试图用自然语言 + AI…",
+      "keep": false,
+      "score": 30,
+      "reasons": [
+        "+pr",
+        "+performance",
+        "+api",
+        "+architecture",
+        "+plugin",
+        "+文档",
+        "+插件",
+        "+安全",
+        "-看法",
+        "-安利",
+        "generic-community-topic"
+      ],
+      "evidence": "对于 OpenClaw 想了解一下 v 站的看法 - V2EX | The webpage discusses the recent popularity of OpenClaw, a tool that leverages AI to automate tasks by integrating large language models with app functionalities through plugins. Its core concept is similar to iOS shortcuts but enhanced with nat…"
+    },
+    {
+      "bucket": "docs",
+      "bucketTitle": "Docs bucket",
+      "query": "site:docs.openclaw.ai OpenClaw API",
+      "title": "OpenCode Go - OpenClaw",
+      "url": "https://docs.openclaw.ai/opencode-go",
+      "publishedDate": "2026-03-11T05:43:12.862Z",
+      "highlights": [
+        " > Fetch the complete documentation index at: https://docs.openclaw.ai/llms.txt  ...    # OpenCode Go\n\n# OpenCode Go OpenCode Go is the Go catalog within OpenCode. It uses the same `OPENCODE_API_KEY` as the Zen catalog, but keeps the runtime provider id `opencode-go` so upstream per-model routing stays correct. ## Supported models\n\n- `opencode-go/minimax-m2.5`\n- `opencode-go/glm-5`\n- `opencode-go/kimi-k2.5`\n\n## CLI setup ```bash\nopenclaw onboard --auth-choice opencode-go\n# or non-interactive openclaw onboard --opencode-go-api-key \"$OPENCODE_API_KEY\" ```\n\n## Config snippet ```json5\n{\n  env: { OPENCODE_API_KEY: \"YOUR_API_KEY_HERE\" }, // pragma: allowlist secret agents: { defaults: { model: { primary: \"opencode-go/kimi-k2.5\" } } },\n} ```\n\n## Routing behavior\n\nOpenClaw handles per-model routing automatically when the model ref uses `opencode-go/...`. ## Notes - Runtime refs stay explicit: `opencode/...` for Zen, `opencode-go/...` for Go. - Use OpenCode for the shared onboarding and catalog overview. Built with Mintlify."
+      ],
+      "summary": "The webpage provides comprehensive documentation for OpenCode Go, a catalog within OpenCode that offers access to specific AI models via an API. It details supported models (`minimax-m2.5`, `glm-5`, `kimi-k2.5`), setup instructions for CLI onboarding, configuration snippets for integrating the API key, and references a full documentation index for further exploration. The focus is on enabling developers to utilize OpenCode Go models effectively, with guidance on authentication, configuration, and model usage.",
+      "textPreview": "> Fetch the complete documentation index at: https://docs.openclaw.ai/llms.txt > Use this file to discover all available pages before exploring further. > > ## Documentation Index # OpenCode Go # OpenCode Go OpenCode Go is the Go catalog within OpenCode. It uses the same `OPENCODE_API_KEY` as the Zen catalog, but keeps the runtime provider id `opencode-go` so upstream per-model routing stays correct. ## Supported models - `opencode-go/minimax-m2.5` - `opencode-go/glm-5` - `opencode-go/kimi-k2.5…",
+      "keep": false,
+      "score": 26,
+      "reasons": [
+        "+pr",
+        "+api",
+        "+stream",
+        "+config",
+        "+docs",
+        "+doc",
+        "-pet",
+        "docs-path-not-allowed"
+      ],
+      "evidence": "OpenCode Go - OpenClaw | The webpage provides comprehensive documentation for OpenCode Go, a catalog within OpenCode that offers access to specific AI models via an API. It details supported models (`minimax-m2.5`, `glm-5`, `kimi-k2.5`), setup instructions for CLI onboarding, co…"
+    },
+    {
+      "bucket": "community",
+      "bucketTitle": "Community bucket",
+      "query": "site:v2ex.com OpenClaw architecture OR API OR performance OR issue",
+      "title": "用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手 Build Your Own OpenClaw - V2EX",
+      "url": "https://v2ex.com/t/1197557",
+      "publishedDate": "2026-03-11T14:43:20.616Z",
+      "highlights": [
+        "和探索的地方 现在注册\n\n已注册用户请 登录\n\n爱意满满的作品展示区。\n\n广告\n\nV2EX› 分享创造 # 用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手 Build Your Own OpenClaw\n\njingzhou· 12 小时 44 分钟前 · 339 次点击 学习用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手： Build Your Own OpenClaw欢迎 star 你是否好奇过 OpenClaw 这样的 AI 助手是怎么同时接入飞书、Telegram 等多个平台的？消息路由、Agent 工具调用循环、通道抽象又是怎么实现的？ 本教程通过构建 MyClaw（一个教学用的 OpenClaw 最小实现）来回答这些问题。12 章教程，每章聚焦一个核心模块，带你从零实现一个可运行的多通道 AI 助手。\n\n### 你将学到什么 - 插件架构 — 控制反转（ IoC ）模式的实际应用\n- Skills 系统 — 基于 Markdown 的 prompt 管理，斜杠命令调用\n- WebSocket 网关 — 带认证和会话管理的实时通信服务  ...    - Agent 运行时 — LLM 调用、Tool Use 循环、对话历史管理的完整实现\n- 通道抽象 — 如何设计统一接口，让一套代码同时服务 Terminal 、飞书、Telegram 等多个平台 ### 适合谁\n\n- 想为自己的项目构建多通道消息网关的工程师\n- 想学习 TypeScript 工程实践的中级开发者\n- 想深入理解 AI 助手/Agent 架构的开发者\n\n## 特性 - 开箱即用 —`onboard`引导配置，`doctor`健康诊断\n- 插件系统 — 可扩展的运行时插件\n- WebSocket 网关 — 统一 API 控制面\n- 消息路由 — 规则引擎，灵活映射通道到 Agent  ...    - Coding Agent — 基于 pi-coding-agent 的内置工具集 (read/write/edit/bash)，支持多轮 Tool Use - 多 LLM — Anthropic (Claude)、OpenAI (GPT-4o)、OpenRouter (免费模型可用)\n- 多通道 — Terminal + 飞书 + Telegram ，统一抽象可轻松扩展 ---\n\n## 教程章节\n\n本教程共 12 章，每章聚焦一个核心模块。建议按顺序阅读，每章都附有完整的代码实现和设计解析。 | 章节 | 主题 | 你将学到 | 关键文件 |\n| --- | --- | --- | --- | | 01 | 项目初始化 | TypeScript + ESM 项目搭建 | `package.json`,`tsconfig.json`,`myclaw.mjs` | | 02 | CLI 框架 | Commander.js 命令系统、依赖注入 | `src/cli/program.ts`,`src/entry.ts` | | 03 | 配置系统 | Zod Schema 验证、YAML 配置管理 | `src/config/schema.ts`,`src/config/loader.ts` | | 04 | 网关服务器 | WebSocket 服务、会话管理、认证 | `src/gateway/server.ts`,`src/gateway/protocol.ts` | | 05 | Agent 运行时 | LLM 抽象、Agent Loop 、InteractiveMode TUI |  ...    | 06 | 通道抽象 | 接口设计、EventEmitter 、多态 | `src/channels/transport.ts`,`src/channels/terminal.ts` |  ...    3 条回复 • 2026-03-12 10:56:04 +08:00\n\n1\n\n[BaseCat"
+      ],
+      "summary": "This webpage details a tutorial on building a minimal AI assistant called OpenClaw using approximately 2,600 lines of TypeScript. The guide covers core modules such as plugin architecture with inversion of control, a skills system leveraging Markdown prompts and slash commands, a WebSocket gateway with authentication and session management, configuration management using Zod schema validation and YAML, and message routing based on rules. The tutorial aims to explain how OpenClaw integrates multiple platforms like Feishu and Telegram, manages message routing, agent tool invocation loops, and channel abstractions. It provides a step-by-step approach to creating a multi-channel AI assistant from scratch, focusing on architecture design, system components, and practical implementation details.",
+      "textPreview": "用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手 Build Your Own OpenClaw - V2EX V2EX = way to explore V2EX 是一个关于分享和探索的地方 现在注册 已注册用户请 登录 爱意满满的作品展示区。 广告 V2EX› 分享创造 # 用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手 Build Your Own OpenClaw jingzhou· 12 小时 44 分钟前 · 339 次点击 学习用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手： Build Your Own OpenClaw欢迎 star 你是否好奇过 OpenClaw 这样的 AI 助手是怎么同时接入飞书、Telegram 等多个平台的？消息路由、Agent 工具调用循环、通道抽象又是怎么实现的？ 本教程通过构建 MyClaw（一个教学用的 OpenClaw 最小实现）来回答这些问题。12 章教程，每章聚焦一个核心模块，带你从零实现一个可运行的多通道 AI 助手。 ### 你将学到什么 -…",
+      "keep": false,
+      "score": 6,
+      "reasons": [
+        "+pr",
+        "+api",
+        "+architecture",
+        "+plugin",
+        "+session",
+        "+schema",
+        "+config",
+        "+doc",
+        "+问题",
+        "+架构",
+        "+接口",
+        "+规则",
+        "+插件",
+        "-从零构建",
+        "-build your own",
+        "-教程",
+        "-学习用",
+        "-分享创造",
+        "generic-community-topic"
+      ],
+      "evidence": "用 ~2,600 行 TypeScript 从零构建一个极简版 AI 助手 Build Your Own OpenClaw - V2EX | This webpage details a tutorial on building a minimal AI assistant called OpenClaw using approximately 2,600 lines of TypeScript. The guide covers core modules such as plugin architecture with inversion of co…"
+    }
+  ]
+}
