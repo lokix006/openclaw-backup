@@ -5,10 +5,10 @@
 - rawResults: 33
 - keptCandidates: 21
 - clusters: 8
-- llmContextItems: 11
-- totalTokens: 3825
-- inputTokens: 2002
-- outputTokens: 1823
+- llmContextItems: 10
+- totalTokens: 3135
+- inputTokens: 1746
+- outputTokens: 1389
 ## Artifacts
 - 01-raw.json
 - 02-filtered.json

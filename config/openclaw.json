@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.7",
-    "lastTouchedAt": "2026-03-11T04:54:27.230Z"
+    "lastTouchedAt": "2026-03-12T10:57:35.900Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-09T02:17:20.282Z",
@@ -31,12 +31,30 @@
         "apiKey": "***REDACTED***",
         "api": "openai-completions",
         "models": [
-          {"id": "gpt-5.4", "name": "GPT-5.4"},
-          {"id": "claude-sonnet-4-6-thinking", "name": "Claude Sonnet 4.6 Thinking"},
-          {"id": "claude-sonnet-4-6", "name": "Claude Sonnet 4.6"},
-          {"id": "deepseek-v3.2", "name": "DeepSeek V3.2"},
-          {"id": "gemini-2.5-flash", "name": "Gemini 2.5 Flash"},
-          {"id": "kimi-k2.5", "name": "Kimi K2.5"}
+          {
+            "id": "gpt-5.4",
+            "name": "GPT-5.4"
+          },
+          {
+            "id": "claude-sonnet-4-6-thinking",
+            "name": "Claude Sonnet 4.6 Thinking"
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "name": "Claude Sonnet 4.6"
+          },
+          {
+            "id": "deepseek-v3.2",
+            "name": "DeepSeek V3.2"
+          },
+          {
+            "id": "gemini-2.5-flash",
+            "name": "Gemini 2.5 Flash"
+          },
+          {
+            "id": "kimi-k2.5",
+            "name": "Kimi K2.5"
+          }
         ]
       }
     }
@@ -49,15 +67,13 @@
           "openrouter/auto",
           "openrouter/x-ai/grok-4",
           "openrouter/anthropic/claude-sonnet-4.6",
-          "kellycloudai/claude-sonnet-4-6",
-          "kellycloudai/gpt-5.4"
+          "kellycloudai/claude-sonnet-4-6"
         ]
       },
       "models": {
         "openrouter/auto": {
           "alias": "OpenRouter"
         },
-        "openrouter/openrouter/auto": {},
         "openrouter/x-ai/grok-4": {},
         "openrouter/anthropic/claude-sonnet-4.6": {},
         "kellycloudai/claude-sonnet-4-6": {},
@@ -88,8 +104,7 @@
         },
         "tools": {
           "deny": [
-            "gateway",
-            "exec"
+            "gateway"
           ],
           "exec": {
             "ask": "on-miss",
@@ -106,7 +121,14 @@
               "wc",
               "curl",
               "echo",
-              "openclaw"
+              "openclaw",
+              "bun"
+            ],
+            "safeBinTrustedDirs": [
+              "/root/.openclaw/workspace/ikoL/skills/twitter-csv-exporter/scripts",
+              "/root/.openclaw/workspace/ikoL/skills",
+              "/root/.openclaw/workspace/ikoL/projects",
+              "/root/.openclaw/workspace/ikoL/scripts"
             ]
           },
           "fs": {
@@ -142,7 +164,8 @@
               "cat"
             ],
             "safeBinTrustedDirs": [
-              "/root/.openclaw/workspace/claw-wiki/skills/tweet-report/scripts"
+              "/root/.openclaw/workspace/claw-wiki/skills/tweet-report/scripts",
+              "/root/.openclaw/workspace/claw-wiki/skills/twitter-csv-exporter/scripts"
             ]
           },
           "fs": {
@@ -248,14 +271,14 @@
         "screen.record",
         "calendar.add",
         "contacts.add",
-        "reminders.add"
+        "reminders.add",
+        "sms.send"
       ]
     }
   },
   "skills": {
     "load": {
       "extraDirs": [
-        "/root/skills",
         "/root/.openclaw/workspace/claw-wiki/skills",
         "/root/.openclaw/workspace/ikoL/skills"
       ]

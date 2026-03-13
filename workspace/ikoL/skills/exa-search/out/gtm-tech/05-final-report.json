@@ -1,0 +1,172 @@
+{
+  "generatedAt": "2026-03-12T06:10:06.315Z",
+  "profile": "tech",
+  "usage": {
+    "inputTokens": 1898,
+    "inputTokenDetails": {
+      "noCacheTokens": 1747,
+      "cacheReadTokens": 151,
+      "cacheWriteTokens": 0
+    },
+    "outputTokens": 1755,
+    "outputTokenDetails": {
+      "textTokens": 828,
+      "reasoningTokens": 927
+    },
+    "totalTokens": 3653,
+    "raw": {
+      "prompt_tokens": 1898,
+      "prompt_tokens_details": {
+        "cached_tokens": 151,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "completion_tokens": 1755,
+      "completion_tokens_details": {
+        "reasoning_tokens": 927,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      },
+      "total_tokens": 3653,
+      "cost": 0.00123445,
+      "cost_details": {
+        "upstream_inference_cost": 0.00123445,
+        "upstream_inference_prompt_cost": 0.00035695,
+        "upstream_inference_completions_cost": 0.0008775
+      },
+      "is_byok": false
+    },
+    "reasoningTokens": 927,
+    "cachedInputTokens": 151
+  },
+  "promptChars": 6276,
+  "rawText": "{\"items\":[{\"title\":\"修复(auth)：清除自动续订OAuth配置文件的过期显示 · Pull Request #43122\",\"date\":\"2026-03-11\",\"abstract\":\"该拉取请求解决了OpenClaw项目中自动续订OAuth配置文件显示过期信息的错误问题。\",\"url\":\"https://github.com/openclaw/openclaw/pull/43122\"},{\"title\":\"修复(mattermost)：多工具调用响应中独立流式传输每个回合 · Pull Request #43041\",\"date\":\"2026-03-11\",\"abstract\":\"该拉取请求修复了OpenClaw项目中Mattermost集成下多回合工具调用响应无法独立流式传输的问题。\",\"url\":\"https://github.com/openclaw/openclaw/pull/43041\"},{\"title\":\"feat(memory)：添加gemini-embedding-2-preview支持 · Pull Request #42501\",\"date\":\"2026-03-10\",\"abstract\":\"该拉取请求在OpenClaw仓库中引入了对gemini-embedding-2-preview模型的支持，扩展了嵌入选项。\",\"url\":\"https://github.com/openclaw/openclaw/pull/42501\"},{\"title\":\"修复：启动时容忍未知配置键 · Pull Request #42201\",\"date\":\"2026-03-10\",\"abstract\":\"该拉取请求解决了OpenClaw项目中openclaw.json中未知配置键导致应用以INVALID_CONFIG错误中止的问题。\",\"url\":\"https://github.com/openclaw/openclaw/pull/42201\"},{\"title\":\"修复(acp)：为子ACP进程剥离提供商认证环境变量 · Pull Request #42250\",\"date\":\"2026-03-10\",\"abstract\":\"该拉取请求修复了提供商认证环境变量（如OPENAI_API_KEY）在子ACP进程中意外泄露的安全问题。\",\"url\":\"https://github.com/openclaw/openclaw/pull/42250\"},{\"title\":\"CLI：停止Windows自更新文件锁定失败 · Pull Request #41994\",\"date\":\"2026-03-10\",\"abstract\":\"该拉取请求解决了OpenClaw CLI在Windows上因文件锁定冲突导致自更新失败的问题，特别是网关服务激活时。\",\"url\":\"https://github.com/openclaw/openclaw/pull/41994\"},{\"title\":\"原始工具负载泄露到聊天；提供商错误后回退不可靠 · Issue #42469\",\"date\":\"2026-03-10\",\"abstract\":\"该GitHub问题报告了OpenClaw项目中的回归问题，其中内部工具负载泄露到Control UI的用户可见聊天消息中。\",\"url\":\"https://github.com/openclaw/openclaw/issues/42469\"},{\"title\":\"[BUG 2026.3.8] Cron通道积压：作业在卡住运行后排队（queueAhead=5，等待60m+）导致调度器饥饿 · Issue #42097\",\"date\":\"2026-03-10\",\"abstract\":\"该GitHub问题报告了OpenClaw 2026.3.8版本中的回归bug，其中cron作业从运行状态过渡后导致通道积压和调度器饥饿。\",\"url\":\"https://github.com/openclaw/openclaw/issues/42097\"},{\"title\":\"[Bug]：Cron 'Run Now' 按钮无效 - 尽管enqueued: true，任务从未执行 · Issue #41979\",\"date\":\"2026-03-10\",\"abstract\":\"该GitHub问题详细描述了OpenClaw 2026.3.8版本中Cron作业（sessionTarget: isolated）的'Run Now'按钮回归bug。\",\"url\":\"https://github.com/openclaw/openclaw/issues/41979\"},{\"title\":\"openclaw models status --probe 在2026.3.8上返回LLM请求超时 · Issue #41874\",\"date\":\"2026-03-10\",\"abstract\":\"该GitHub问题报告了版本2026.3.8中openclaw models status --probe命令的超时问题，用户遇到约8.4秒的请求超时。\",\"url\":\"https://github.com/openclaw/openclaw/issues/41874\"}]}",
+  "parsed": {
+    "items": [
+      {
+        "title": "修复(auth)：清除自动续订OAuth配置文件的过期显示 · Pull Request #43122",
+        "date": "2026-03-11",
+        "abstract": "该拉取请求解决了OpenClaw项目中自动续订OAuth配置文件显示过期信息的错误问题。",
+        "url": "https://github.com/openclaw/openclaw/pull/43122"
+      },
+      {
+        "title": "修复(mattermost)：多工具调用响应中独立流式传输每个回合 · Pull Request #43041",
+        "date": "2026-03-11",
+        "abstract": "该拉取请求修复了OpenClaw项目中Mattermost集成下多回合工具调用响应无法独立流式传输的问题。",
+        "url": "https://github.com/openclaw/openclaw/pull/43041"
+      },
+      {
+        "title": "feat(memory)：添加gemini-embedding-2-preview支持 · Pull Request #42501",
+        "date": "2026-03-10",
+        "abstract": "该拉取请求在OpenClaw仓库中引入了对gemini-embedding-2-preview模型的支持，扩展了嵌入选项。",
+        "url": "https://github.com/openclaw/openclaw/pull/42501"
+      },
+      {
+        "title": "修复：启动时容忍未知配置键 · Pull Request #42201",
+        "date": "2026-03-10",
+        "abstract": "该拉取请求解决了OpenClaw项目中openclaw.json中未知配置键导致应用以INVALID_CONFIG错误中止的问题。",
+        "url": "https://github.com/openclaw/openclaw/pull/42201"
+      },
+      {
+        "title": "修复(acp)：为子ACP进程剥离提供商认证环境变量 · Pull Request #42250",
+        "date": "2026-03-10",
+        "abstract": "该拉取请求修复了提供商认证环境变量（如OPENAI_API_KEY）在子ACP进程中意外泄露的安全问题。",
+        "url": "https://github.com/openclaw/openclaw/pull/42250"
+      },
+      {
+        "title": "CLI：停止Windows自更新文件锁定失败 · Pull Request #41994",
+        "date": "2026-03-10",
+        "abstract": "该拉取请求解决了OpenClaw CLI在Windows上因文件锁定冲突导致自更新失败的问题，特别是网关服务激活时。",
+        "url": "https://github.com/openclaw/openclaw/pull/41994"
+      },
+      {
+        "title": "原始工具负载泄露到聊天；提供商错误后回退不可靠 · Issue #42469",
+        "date": "2026-03-10",
+        "abstract": "该GitHub问题报告了OpenClaw项目中的回归问题，其中内部工具负载泄露到Control UI的用户可见聊天消息中。",
+        "url": "https://github.com/openclaw/openclaw/issues/42469"
+      },
+      {
+        "title": "[BUG 2026.3.8] Cron通道积压：作业在卡住运行后排队（queueAhead=5，等待60m+）导致调度器饥饿 · Issue #42097",
+        "date": "2026-03-10",
+        "abstract": "该GitHub问题报告了OpenClaw 2026.3.8版本中的回归bug，其中cron作业从运行状态过渡后导致通道积压和调度器饥饿。",
+        "url": "https://github.com/openclaw/openclaw/issues/42097"
+      },
+      {
+        "title": "[Bug]：Cron 'Run Now' 按钮无效 - 尽管enqueued: true，任务从未执行 · Issue #41979",
+        "date": "2026-03-10",
+        "abstract": "该GitHub问题详细描述了OpenClaw 2026.3.8版本中Cron作业（sessionTarget: isolated）的'Run Now'按钮回归bug。",
+        "url": "https://github.com/openclaw/openclaw/issues/41979"
+      },
+      {
+        "title": "openclaw models status --probe 在2026.3.8上返回LLM请求超时 · Issue #41874",
+        "date": "2026-03-10",
+        "abstract": "该GitHub问题报告了版本2026.3.8中openclaw models status --probe命令的超时问题，用户遇到约8.4秒的请求超时。",
+        "url": "https://github.com/openclaw/openclaw/issues/41874"
+      }
+    ]
+  },
+  "items": [
+    {
+      "title": "修复(auth)：清除自动续订OAuth配置文件的过期显示 · Pull Request #43122",
+      "date": "2026-03-11",
+      "abstract": "该拉取请求解决了OpenClaw项目中自动续订OAuth配置文件显示过期信息的错误问题。",
+      "url": "https://github.com/openclaw/openclaw/pull/43122"
+    },
+    {
+      "title": "修复(mattermost)：多工具调用响应中独立流式传输每个回合 · Pull Request #43041",
+      "date": "2026-03-11",
+      "abstract": "该拉取请求修复了OpenClaw项目中Mattermost集成下多回合工具调用响应无法独立流式传输的问题。",
+      "url": "https://github.com/openclaw/openclaw/pull/43041"
+    },
+    {
+      "title": "feat(memory)：添加gemini-embedding-2-preview支持 · Pull Request #42501",
+      "date": "2026-03-10",
+      "abstract": "该拉取请求在OpenClaw仓库中引入了对gemini-embedding-2-preview模型的支持，扩展了嵌入选项。",
+      "url": "https://github.com/openclaw/openclaw/pull/42501"
+    },
+    {
+      "title": "修复：启动时容忍未知配置键 · Pull Request #42201",
+      "date": "2026-03-10",
+      "abstract": "该拉取请求解决了OpenClaw项目中openclaw.json中未知配置键导致应用以INVALID_CONFIG错误中止的问题。",
+      "url": "https://github.com/openclaw/openclaw/pull/42201"
+    },
+    {
+      "title": "修复(acp)：为子ACP进程剥离提供商认证环境变量 · Pull Request #42250",
+      "date": "2026-03-10",
+      "abstract": "该拉取请求修复了提供商认证环境变量（如OPENAI_API_KEY）在子ACP进程中意外泄露的安全问题。",
+      "url": "https://github.com/openclaw/openclaw/pull/42250"
+    },
+    {
+      "title": "CLI：停止Windows自更新文件锁定失败 · Pull Request #41994",
+      "date": "2026-03-10",
+      "abstract": "该拉取请求解决了OpenClaw CLI在Windows上因文件锁定冲突导致自更新失败的问题，特别是网关服务激活时。",
+      "url": "https://github.com/openclaw/openclaw/pull/41994"
+    },
+    {
+      "title": "原始工具负载泄露到聊天；提供商错误后回退不可靠 · Issue #42469",
+      "date": "2026-03-10",
+      "abstract": "该GitHub问题报告了OpenClaw项目中的回归问题，其中内部工具负载泄露到Control UI的用户可见聊天消息中。",
+      "url": "https://github.com/openclaw/openclaw/issues/42469"
+    },
+    {
+      "title": "[BUG 2026.3.8] Cron通道积压：作业在卡住运行后排队（queueAhead=5，等待60m+）导致调度器饥饿 · Issue #42097",
+      "date": "2026-03-10",
+      "abstract": "该GitHub问题报告了OpenClaw 2026.3.8版本中的回归bug，其中cron作业从运行状态过渡后导致通道积压和调度器饥饿。",
+      "url": "https://github.com/openclaw/openclaw/issues/42097"
+    },
+    {
+      "title": "[Bug]：Cron 'Run Now' 按钮无效 - 尽管enqueued: true，任务从未执行 · Issue #41979",
+      "date": "2026-03-10",
+      "abstract": "该GitHub问题详细描述了OpenClaw 2026.3.8版本中Cron作业（sessionTarget: isolated）的'Run Now'按钮回归bug。",
+      "url": "https://github.com/openclaw/openclaw/issues/41979"
+    },
+    {
+      "title": "openclaw models status --probe 在2026.3.8上返回LLM请求超时 · Issue #41874",
+      "date": "2026-03-10",
+      "abstract": "该GitHub问题报告了版本2026.3.8中openclaw models status --probe命令的超时问题，用户遇到约8.4秒的请求超时。",
+      "url": "https://github.com/openclaw/openclaw/issues/41874"
+    }
+  ],
+  "markdown": "📡 **OpenClaw 技术简报** | 2026-03-12\n\n1. **修复(auth)：清除自动续订OAuth配置文件的过期显示 · Pull Request #43122**\n- 📅 2026-03-11\n- 📝 该拉取请求解决了OpenClaw项目中自动续订OAuth配置文件显示过期信息的错误问题。\n- 🔗 https://github.com/openclaw/openclaw/pull/43122\n\n---\n\n2. **修复(mattermost)：多工具调用响应中独立流式传输每个回合 · Pull Request #43041**\n- 📅 2026-03-11\n- 📝 该拉取请求修复了OpenClaw项目中Mattermost集成下多回合工具调用响应无法独立流式传输的问题。\n- 🔗 https://github.com/openclaw/openclaw/pull/43041\n\n---\n\n3. **feat(memory)：添加gemini-embedding-2-preview支持 · Pull Request #42501**\n- 📅 2026-03-10\n- 📝 该拉取请求在OpenClaw仓库中引入了对gemini-embedding-2-preview模型的支持，扩展了嵌入选项。\n- 🔗 https://github.com/openclaw/openclaw/pull/42501\n\n---\n\n4. **修复：启动时容忍未知配置键 · Pull Request #42201**\n- 📅 2026-03-10\n- 📝 该拉取请求解决了OpenClaw项目中openclaw.json中未知配置键导致应用以INVALID_CONFIG错误中止的问题。\n- 🔗 https://github.com/openclaw/openclaw/pull/42201\n\n---\n\n5. **修复(acp)：为子ACP进程剥离提供商认证环境变量 · Pull Request #42250**\n- 📅 2026-03-10\n- 📝 该拉取请求修复了提供商认证环境变量（如OPENAI_API_KEY）在子ACP进程中意外泄露的安全问题。\n- 🔗 https://github.com/openclaw/openclaw/pull/42250\n\n---\n\n6. **CLI：停止Windows自更新文件锁定失败 · Pull Request #41994**\n- 📅 2026-03-10\n- 📝 该拉取请求解决了OpenClaw CLI在Windows上因文件锁定冲突导致自更新失败的问题，特别是网关服务激活时。\n- 🔗 https://github.com/openclaw/openclaw/pull/41994\n\n---\n\n7. **原始工具负载泄露到聊天；提供商错误后回退不可靠 · Issue #42469**\n- 📅 2026-03-10\n- 📝 该GitHub问题报告了OpenClaw项目中的回归问题，其中内部工具负载泄露到Control UI的用户可见聊天消息中。\n- 🔗 https://github.com/openclaw/openclaw/issues/42469\n\n---\n\n8. **[BUG 2026.3.8] Cron通道积压：作业在卡住运行后排队（queueAhead=5，等待60m+）导致调度器饥饿 · Issue #42097**\n- 📅 2026-03-10\n- 📝 该GitHub问题报告了OpenClaw 2026.3.8版本中的回归bug，其中cron作业从运行状态过渡后导致通道积压和调度器饥饿。\n- 🔗 https://github.com/openclaw/openclaw/issues/42097\n\n---\n\n9. **[Bug]：Cron 'Run Now' 按钮无效 - 尽管enqueued: true，任务从未执行 · Issue #41979**\n- 📅 2026-03-10\n- 📝 该GitHub问题详细描述了OpenClaw 2026.3.8版本中Cron作业（sessionTarget: isolated）的'Run Now'按钮回归bug。\n- 🔗 https://github.com/openclaw/openclaw/issues/41979\n\n---\n\n10. **openclaw models status --probe 在2026.3.8上返回LLM请求超时 · Issue #41874**\n- 📅 2026-03-10\n- 📝 该GitHub问题报告了版本2026.3.8中openclaw models status --probe命令的超时问题，用户遇到约8.4秒的请求超时。\n- 🔗 https://github.com/openclaw/openclaw/issues/41874\n"
+}

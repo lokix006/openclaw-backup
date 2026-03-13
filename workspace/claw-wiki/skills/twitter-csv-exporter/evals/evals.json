@@ -1,0 +1,44 @@
+{
+  "skill_name": "twitter-csv-exporter-third-party",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想收集最近关于 Claude AI 的推文，保存到 claude_tweets.csv，帮我导出50条。我的 API key 是 vc3hwhpn6fqnrg3q11bm1jk25ge7wl",
+      "expected_output": "一个名为 claude_tweets.csv 的 CSV 文件，包含50条左右涉及 Claude AI 的推文，有 tweet_id、text、author_handle、created_at、favorite_count 等标准列",
+      "files": [],
+      "assertions": [
+        "输出了一个 CSV 文件（文件名包含 claude 或 tweets）",
+        "CSV 文件包含标准列头：tweet_id、created_at、text、author_handle、favorite_count",
+        "CSV 包含至少 30 行推文数据（不含表头）",
+        "created_at 列的格式为 ISO 8601（含 T 和 Z，例如 2026-03-11T12:00:00.000Z）",
+        "tweet_id 列包含 =HYPERLINK 公式（可点击链接），且同时存在 tweet_id_raw 纯 ID 列"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "帮我爬取 @elonmusk 最近发的推文，用 API key vc3hwhpn6fqnrg3q11bm1jk25ge7wl，只要点赞数超过 1000 的，存到 elon_popular.csv，要按时间排序",
+      "expected_output": "一个名为 elon_popular.csv 的 CSV 文件，包含 Elon Musk 发的且 favorite_count >= 1000 的推文，按时间排序",
+      "files": [],
+      "assertions": [
+        "输出了 CSV 文件（文件名包含 elon 或 popular）",
+        "CSV 中 author_handle 列所有行均为 elonmusk",
+        "CSV 包含 favorite_count 列且所有值大于等于 1000",
+        "CSV 至少包含 5 行推文",
+        "CSV 包含 tweet_id_raw 和 author_url 纯值列"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "API key: vc3hwhpn6fqnrg3q11bm1jk25ge7wl。帮我搜索2026年3月以来的 #bitcoin 热门推文，限制最多100条，保存为 btc_march2026.csv",
+      "expected_output": "一个名为 btc_march2026.csv 的 CSV 文件，包含使用 Top 排序的 #bitcoin 推文，日期在 2026-03-01 之后，最多100条",
+      "files": [],
+      "assertions": [
+        "输出了 CSV 文件（文件名包含 btc 或 bitcoin）",
+        "CSV 的 created_at 列所有日期均在 2026-03-01 之后",
+        "CSV 包含 hashtags 列且所有行中 hashtags 包含 bitcoin（大小写不敏感）",
+        "CSV 行数不超过 105（含表头）",
+        "CSV 文件以 UTF-8 BOM 开头（前三字节为 EF BB BF），方便 Windows Excel 打开"
+      ]
+    }
+  ]
+}

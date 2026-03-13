@@ -3,7 +3,7 @@
 
 import json
 import subprocess
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -23,8 +23,9 @@ def save_pending(items):
 
 def fmt_time(ts: str) -> str:
     try:
-        dt = datetime.fromisoformat(ts.replace('Z', '+00:00')).astimezone(timezone.utc)
-        return dt.strftime('%Y-%m-%d %H:%M UTC')
+        cst = timezone(timedelta(hours=8))
+        dt = datetime.fromisoformat(ts.replace('Z', '+00:00')).astimezone(cst)
+        return dt.strftime('%Y-%m-%d %H:%M CST')
     except Exception:
         return ts
 

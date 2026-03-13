@@ -544,22 +544,106 @@ function buildContextV3(clusters: Cluster[]) {
   return out;
 }
 
+type FinalBriefItem = {
+  title: string;
+  date: string;
+  abstract: string;
+  url: string;
+};
+
+function extractJsonPayload(text: string): any {
+  const raw = String(text || '').trim();
+  try {
+    return JSON.parse(raw);
+  } catch {}
+
+  const fenced = raw.match(/```json\s*([\s\S]*?)\s*```/i) || raw.match(/```\s*([\s\S]*?)\s*```/i);
+  if (fenced) {
+    try {
+      return JSON.parse(fenced[1].trim());
+    } catch {}
+  }
+
+  const first = raw.indexOf('{');
+  const last = raw.lastIndexOf('}');
+  if (first >= 0 && last > first) {
+    const sliced = raw.slice(first, last + 1);
+    return JSON.parse(sliced);
+  }
+
+  throw new Error('LLM did not return valid JSON');
+}
+
+function normalizeDate(value: string) {
+  const s = String(value || '').trim();
+  const m = s.match(/20\d{2}[-/](0[1-9]|1[0-2])[-/](0[1-9]|[12]\d|3[01])/);
+  return m ? m[0].replace(/\//g, '-') : 'N/A';
+}
+
+function cleanTitle(value: string) {
+  let s = String(value || '').trim();
+  s = s.replace(/^\d+[\.、]\s*/, '');
+  s = s.replace(/^[-*]\s*/, '');
+  s = s.replace(/^\*\*(.*?)\*\*$/, '$1');
+  s = s.replace(/^标题[:：]\s*/, '');
+  return s || '未命名条目';
+}
+
+function cleanAbstract(value: string) {
+  let s = String(value || '').trim();
+  s = s.replace(/^摘要[:：]\s*/, '');
+  return clip(s, 120);
+}
+
+function cleanUrl(value: string) {
+  const s = String(value || '').trim();
+  const m = s.match(/https?:\/\/\S+/);
+  return m ? m[0].replace(/[).,，。；;]+$/, '') : 'N/A';
+}
+
+function normalizeFinalItems(payload: any) {
+  const arr = Array.isArray(payload?.items) ? payload.items : [];
+  const items: FinalBriefItem[] = [];
+  for (const row of arr) {
+    const item: FinalBriefItem = {
+      title: cleanTitle(row?.title || row?.titleZh || row?.headline || ''),
+      date: normalizeDate(row?.date || ''),
+      abstract: cleanAbstract(row?.abstract || row?.summary || ''),
+      url: cleanUrl(row?.url || row?.source || row?.link || ''),
+    };
+    if (item.title && item.url !== 'N/A') items.push(item);
+  }
+  return items.slice(0, TARGET_ITEMS);
+}
+
+function renderFinalMarkdown(items: FinalBriefItem[]) {
+  const today = new Date().toISOString().slice(0, 10);
+  const lines: string[] = [`${PROFILE.title} | ${today}`, ''];
+  items.forEach((item, idx) => {
+    if (idx > 0) lines.push('---', '');
+    lines.push(`${idx + 1}. **${item.title}**`);
+    lines.push(`- 📅 ${item.date}`);
+    lines.push(`- 📝 ${item.abstract}`);
+    lines.push(`- 🔗 ${item.url}`);
+    lines.push('');
+  });
+  return lines.join('\n').trimEnd() + '\n';
+}
+
 async function summarizeWithLLM(contextV3: ReturnType<typeof buildContextV3>, openrouterKey: string) {
   const openrouter = createOpenRouter({ apiKey: openrouterKey });
   const prompt = [
     ...PROFILE.systemPrompt,
-    `目标：生成最多 ${TARGET_ITEMS} 条中文简报（如果高质量候选不足，可少于 ${TARGET_ITEMS} 条，绝不编造）。`,
-    '最终输出必须满足：',
-    `1. 最上面先有一个总标题：${PROFILE.title} | <YYYY-MM-DD>`,
-    '2. 每条简报之间必须插入一行分割线：---',
-    '3. 每条必须带阿拉伯数字序号，格式严格如下：',
-    '   1. **中文标题**',
-    '      - 📅 YYYY-MM-DD',
-    '      - 📝 一句话摘要',
-    '      - 🔗 完整原文 URL',
-    '4. 标题必须优先写成自然、简洁的简体中文；如果原始标题是英文，必须翻译成中文。必要时可在中文后保留少量关键英文术语、版本号、Issue/PR 编号。',
-    '5. 排序：最新在前。',
-    '6. 不要输出表格，不要输出前言或结语。',
+    `目标：从候选证据中整理最多 ${TARGET_ITEMS} 条中文简报（如果高质量候选不足，可少于 ${TARGET_ITEMS} 条，绝不编造）。`,
+    '你必须只返回 JSON，不要返回 markdown，不要返回解释，不要使用代码块。',
+    '返回格式严格如下：',
+    '{"items":[{"title":"中文标题","date":"YYYY-MM-DD","abstract":"一句话摘要","url":"https://..."}]}',
+    '要求：',
+    '1. title 必须是自然、简洁的简体中文；如果原始标题是英文，必须翻译成中文。必要时可保留少量关键英文术语、版本号、Issue/PR 编号。',
+    '2. abstract 必须是简洁中文一句话，不要重复 title。',
+    '3. url 必须是完整原文 URL。',
+    '4. 结果按日期从新到旧排序。',
+    '5. 只输出 JSON。',
     '',
     '候选证据如下：',
     ...contextV3.lines,
@@ -568,13 +652,18 @@ async function summarizeWithLLM(contextV3: ReturnType<typeof buildContextV3>, op
   const { text, usage } = await generateText({
     model: openrouter('x-ai/grok-4-fast'),
     prompt,
-    temperature: PROFILE.id === 'social' ? 0.35 : 0.2,
-    maxOutputTokens: 1500,
+    temperature: 0.1,
+    maxOutputTokens: 1200,
   });
 
-  const out = { generatedAt: new Date().toISOString(), profile: PROFILE.id, usage, promptChars: prompt.length, text };
+  const payload = extractJsonPayload(text);
+  const items = normalizeFinalItems(payload);
+  if (!items.length) throw new Error('No valid items parsed from LLM JSON output');
+
+  const markdown = renderFinalMarkdown(items);
+  const out = { generatedAt: new Date().toISOString(), profile: PROFILE.id, usage, promptChars: prompt.length, rawText: text, parsed: payload, items, markdown };
   writeJson('05-final-report.json', out);
-  fs.writeFileSync(path.join(OUT_DIR, '05-final-report.md'), text + '\n');
+  fs.writeFileSync(path.join(OUT_DIR, '05-final-report.md'), markdown);
   return out;
 }
 
