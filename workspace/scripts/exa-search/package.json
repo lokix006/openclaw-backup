@@ -1,0 +1,16 @@
+{
+  "name": "exa-search-skill",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "report": "tsx scripts/run_pipeline.ts",
+    "report:debug": "tsx scripts/run_pipeline.ts --debug"
+  },
+  "dependencies": {
+    "@exalabs/ai-sdk": "^1.0.5",
+    "@openrouter/ai-sdk-provider": "^2.3.0",
+    "ai": "^6.0.116",
+    "tsx": "^4.20.5",
+    "zod": "^4.3.6"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "generatedAt": "2026-03-13T08:00:28.737Z",
+  "profile": "social",
+  "usage": {
+    "inputTokens": 1919,
+    "inputTokenDetails": {
+      "noCacheTokens": 1768,
+      "cacheReadTokens": 151,
+      "cacheWriteTokens": 0
+    },
+    "outputTokens": 1683,
+    "outputTokenDetails": {
+      "textTokens": 567,
+      "reasoningTokens": 1116
+    },
+    "totalTokens": 3602,
+    "raw": {
+      "prompt_tokens": 1919,
+      "prompt_tokens_details": {
+        "cached_tokens": 151,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "completion_tokens": 1683,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1116,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      },
+      "total_tokens": 3602,
+      "cost": 0.00120265,
+      "cost_details": {
+        "upstream_inference_cost": 0.00120265,
+        "upstream_inference_prompt_cost": 0.00036115,
+        "upstream_inference_completions_cost": 0.0008415
+      },
+      "is_byok": false
+    },
+    "reasoningTokens": 1116,
+    "cachedInputTokens": 151
+  },
+  "promptChars": 5073,
+  "rawText": "{\"items\":[{\"title\":\"2026 年值得关注的 20 个 GitHub AI 项目：不只有 OpenClaw\",\"date\":\"2026-03-12\",\"abstract\":\"文章强调OpenClaw在GitHub上的流行度飙升，受社区热议和媒体关注推动，成为AI讨论焦点。\",\"url\":\"https://juejin.cn/post/7615886185001304079\"},{\"title\":\"对于 OpenClaw 想了解一下 v 站的看法\",\"date\":\"2026-03-12\",\"abstract\":\"V2EX用户热议OpenClaw作为AI自动化工具的近期流行，与iOS Shortcuts等工具进行比较。\",\"url\":\"https://v2ex.com/t/1197630\"},{\"title\":\"OpenClaw登顶后，Agent悄悄杀死了“应用”\",\"date\":\"2026-03-12\",\"abstract\":\"OpenClaw在AI开源社区登顶后，战略转向远离传统应用，反映更广泛的开源趋势。\",\"url\":\"https://www.36kr.com/p/3709890881975048\"},{\"title\":\"OpenClaw 上，正在长出一整个“AI 硬件”生态\",\"date\":\"2026-03-11\",\"abstract\":\"OpenClaw正快速发展出全面AI硬件生态，展示其增长潜力和行业影响。\",\"url\":\"https://www.36kr.com/p/3715194472771968\"},{\"title\":\"OpenClaw 实战：我写的 19 个 Skills 源码公开\",\"date\":\"2026-03-11\",\"abstract\":\"作者开源19个OpenClaw Skills，涵盖客户管理、金融、内容和效率等领域，促进社区贡献。\",\"url\":\"https://juejin.cn/post/7615816589226098751\"},{\"title\":\"OpenClaw席卷中国：国产AI正在建立全球竞争的结构性优势\",\"date\":\"2026-03-11\",\"abstract\":\"OpenClaw作为中国AI技术快速崛起，增强全球AI竞争优势并获得广泛认可。\",\"url\":\"https://www.36kr.com/p/3715510747410944\"},{\"title\":\"企业微信的大哥们，你们发 openclaw 插件版本规则搞错了\",\"date\":\"2026-03-11\",\"abstract\":\"V2EX用户反馈企业微信中openclaw插件版本解析过程错误，尤其预发布版本处理不当。\",\"url\":\"https://www.v2ex.com/t/1197469\"},{\"title\":\"我用 OpenClaw 自动发布文章到掘金，省了 80% 时间\",\"date\":\"2026-03-11\",\"abstract\":\"作者通过OpenClaw Python脚本自动化掘金文章发布，将手动时间大幅缩短至原先的20%。\",\"url\":\"https://juejin.cn/post/7615804746406232127\"}]}",
+  "parsed": {
+    "items": [
+      {
+        "title": "2026 年值得关注的 20 个 GitHub AI 项目：不只有 OpenClaw",
+        "date": "2026-03-12",
+        "abstract": "文章强调OpenClaw在GitHub上的流行度飙升，受社区热议和媒体关注推动，成为AI讨论焦点。",
+        "url": "https://juejin.cn/post/7615886185001304079"
+      },
+      {
+        "title": "对于 OpenClaw 想了解一下 v 站的看法",
+        "date": "2026-03-12",
+        "abstract": "V2EX用户热议OpenClaw作为AI自动化工具的近期流行，与iOS Shortcuts等工具进行比较。",
+        "url": "https://v2ex.com/t/1197630"
+      },
+      {
+        "title": "OpenClaw登顶后，Agent悄悄杀死了“应用”",
+        "date": "2026-03-12",
+        "abstract": "OpenClaw在AI开源社区登顶后，战略转向远离传统应用，反映更广泛的开源趋势。",
+        "url": "https://www.36kr.com/p/3709890881975048"
+      },
+      {
+        "title": "OpenClaw 上，正在长出一整个“AI 硬件”生态",
+        "date": "2026-03-11",
+        "abstract": "OpenClaw正快速发展出全面AI硬件生态，展示其增长潜力和行业影响。",
+        "url": "https://www.36kr.com/p/3715194472771968"
+      },
+      {
+        "title": "OpenClaw 实战：我写的 19 个 Skills 源码公开",
+        "date": "2026-03-11",
+        "abstract": "作者开源19个OpenClaw Skills，涵盖客户管理、金融、内容和效率等领域，促进社区贡献。",
+        "url": "https://juejin.cn/post/7615816589226098751"
+      },
+      {
+        "title": "OpenClaw席卷中国：国产AI正在建立全球竞争的结构性优势",
+        "date": "2026-03-11",
+        "abstract": "OpenClaw作为中国AI技术快速崛起，增强全球AI竞争优势并获得广泛认可。",
+        "url": "https://www.36kr.com/p/3715510747410944"
+      },
+      {
+        "title": "企业微信的大哥们，你们发 openclaw 插件版本规则搞错了",
+        "date": "2026-03-11",
+        "abstract": "V2EX用户反馈企业微信中openclaw插件版本解析过程错误，尤其预发布版本处理不当。",
+        "url": "https://www.v2ex.com/t/1197469"
+      },
+      {
+        "title": "我用 OpenClaw 自动发布文章到掘金，省了 80% 时间",
+        "date": "2026-03-11",
+        "abstract": "作者通过OpenClaw Python脚本自动化掘金文章发布，将手动时间大幅缩短至原先的20%。",
+        "url": "https://juejin.cn/post/7615804746406232127"
+      }
+    ]
+  },
+  "items": [
+    {
+      "title": "2026 年值得关注的 20 个 GitHub AI 项目：不只有 OpenClaw",
+      "date": "2026-03-12",
+      "abstract": "文章强调OpenClaw在GitHub上的流行度飙升，受社区热议和媒体关注推动，成为AI讨论焦点。",
+      "url": "https://juejin.cn/post/7615886185001304079"
+    },
+    {
+      "title": "对于 OpenClaw 想了解一下 v 站的看法",
+      "date": "2026-03-12",
+      "abstract": "V2EX用户热议OpenClaw作为AI自动化工具的近期流行，与iOS Shortcuts等工具进行比较。",
+      "url": "https://v2ex.com/t/1197630"
+    },
+    {
+      "title": "OpenClaw登顶后，Agent悄悄杀死了“应用”",
+      "date": "2026-03-12",
+      "abstract": "OpenClaw在AI开源社区登顶后，战略转向远离传统应用，反映更广泛的开源趋势。",
+      "url": "https://www.36kr.com/p/3709890881975048"
+    },
+    {
+      "title": "OpenClaw 上，正在长出一整个“AI 硬件”生态",
+      "date": "2026-03-11",
+      "abstract": "OpenClaw正快速发展出全面AI硬件生态，展示其增长潜力和行业影响。",
+      "url": "https://www.36kr.com/p/3715194472771968"
+    },
+    {
+      "title": "OpenClaw 实战：我写的 19 个 Skills 源码公开",
+      "date": "2026-03-11",
+      "abstract": "作者开源19个OpenClaw Skills，涵盖客户管理、金融、内容和效率等领域，促进社区贡献。",
+      "url": "https://juejin.cn/post/7615816589226098751"
+    },
+    {
+      "title": "OpenClaw席卷中国：国产AI正在建立全球竞争的结构性优势",
+      "date": "2026-03-11",
+      "abstract": "OpenClaw作为中国AI技术快速崛起，增强全球AI竞争优势并获得广泛认可。",
+      "url": "https://www.36kr.com/p/3715510747410944"
+    },
+    {
+      "title": "企业微信的大哥们，你们发 openclaw 插件版本规则搞错了",
+      "date": "2026-03-11",
+      "abstract": "V2EX用户反馈企业微信中openclaw插件版本解析过程错误，尤其预发布版本处理不当。",
+      "url": "https://www.v2ex.com/t/1197469"
+    },
+    {
+      "title": "我用 OpenClaw 自动发布文章到掘金，省了 80% 时间",
+      "date": "2026-03-11",
+      "abstract": "作者通过OpenClaw Python脚本自动化掘金文章发布，将手动时间大幅缩短至原先的20%。",
+      "url": "https://juejin.cn/post/7615804746406232127"
+    }
+  ],
+  "markdown": "🌐 **OpenClaw 社区热度简报** | 2026-03-13\n\n1. **2026 年值得关注的 20 个 GitHub AI 项目：不只有 OpenClaw**\n- 📅 2026-03-12\n- 📝 文章强调OpenClaw在GitHub上的流行度飙升，受社区热议和媒体关注推动，成为AI讨论焦点。\n- 🔗 https://juejin.cn/post/7615886185001304079\n\n---\n\n2. **对于 OpenClaw 想了解一下 v 站的看法**\n- 📅 2026-03-12\n- 📝 V2EX用户热议OpenClaw作为AI自动化工具的近期流行，与iOS Shortcuts等工具进行比较。\n- 🔗 https://v2ex.com/t/1197630\n\n---\n\n3. **OpenClaw登顶后，Agent悄悄杀死了“应用”**\n- 📅 2026-03-12\n- 📝 OpenClaw在AI开源社区登顶后，战略转向远离传统应用，反映更广泛的开源趋势。\n- 🔗 https://www.36kr.com/p/3709890881975048\n\n---\n\n4. **OpenClaw 上，正在长出一整个“AI 硬件”生态**\n- 📅 2026-03-11\n- 📝 OpenClaw正快速发展出全面AI硬件生态，展示其增长潜力和行业影响。\n- 🔗 https://www.36kr.com/p/3715194472771968\n\n---\n\n5. **OpenClaw 实战：我写的 19 个 Skills 源码公开**\n- 📅 2026-03-11\n- 📝 作者开源19个OpenClaw Skills，涵盖客户管理、金融、内容和效率等领域，促进社区贡献。\n- 🔗 https://juejin.cn/post/7615816589226098751\n\n---\n\n6. **OpenClaw席卷中国：国产AI正在建立全球竞争的结构性优势**\n- 📅 2026-03-11\n- 📝 OpenClaw作为中国AI技术快速崛起，增强全球AI竞争优势并获得广泛认可。\n- 🔗 https://www.36kr.com/p/3715510747410944\n\n---\n\n7. **企业微信的大哥们，你们发 openclaw 插件版本规则搞错了**\n- 📅 2026-03-11\n- 📝 V2EX用户反馈企业微信中openclaw插件版本解析过程错误，尤其预发布版本处理不当。\n- 🔗 https://www.v2ex.com/t/1197469\n\n---\n\n8. **我用 OpenClaw 自动发布文章到掘金，省了 80% 时间**\n- 📅 2026-03-11\n- 📝 作者通过OpenClaw Python脚本自动化掘金文章发布，将手动时间大幅缩短至原先的20%。\n- 🔗 https://juejin.cn/post/7615804746406232127\n"
+}

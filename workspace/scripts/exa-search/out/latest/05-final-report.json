@@ -1,0 +1,160 @@
+{
+  "generatedAt": "2026-03-13T08:01:33.756Z",
+  "profile": "tech",
+  "usage": {
+    "inputTokens": 1592,
+    "inputTokenDetails": {
+      "noCacheTokens": 1441,
+      "cacheReadTokens": 151,
+      "cacheWriteTokens": 0
+    },
+    "outputTokens": 1343,
+    "outputTokenDetails": {
+      "textTokens": 758,
+      "reasoningTokens": 585
+    },
+    "totalTokens": 2935,
+    "raw": {
+      "prompt_tokens": 1592,
+      "prompt_tokens_details": {
+        "cached_tokens": 151,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "completion_tokens": 1343,
+      "completion_tokens_details": {
+        "reasoning_tokens": 585,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      },
+      "total_tokens": 2935,
+      "cost": 0.00096725,
+      "cost_details": {
+        "upstream_inference_cost": 0.00096725,
+        "upstream_inference_prompt_cost": 0.00029575,
+        "upstream_inference_completions_cost": 0.0006715
+      },
+      "is_byok": false
+    },
+    "reasoningTokens": 585,
+    "cachedInputTokens": 151
+  },
+  "promptChars": 4965,
+  "rawText": "{\"items\":[{\"title\":\"feat(tts)：添加 CLI 提供商支持（PR #43939）\",\"date\":\"2026-03-12\",\"abstract\":\"该拉取请求为 openclaw 项目引入文本到语音（TTS）的 CLI 提供商支持，解决了用户仅依赖云服务的限制。\",\"url\":\"https://github.com/openclaw/openclaw/pull/43939\"},{\"title\":\"Cron 隔离会话作业在 2026.3.11 版本中仍失败（Issue #44257）\",\"date\":\"2026-03-12\",\"abstract\":\"GitHub 问题报告 openclaw 2026.3.11 版本中引入的回归，配置为 sessionTarget: 'isolated' 的 cron 作业虽被入队但从未执行。\",\"url\":\"https://github.com/openclaw/openclaw/issues/44257\"},{\"title\":\"编辑工具静默将文件清空为 0 字节却报告成功（Issue #43858）\",\"date\":\"2026-03-12\",\"abstract\":\"GitHub 问题报告 openclaw 项目中 Edit 工具意外删除文件全部内容至 0 字节，尽管匹配路径正确。\",\"url\":\"https://github.com/openclaw/openclaw/issues/43858\"},{\"title\":\"隔离 Cron 作业会话使用 kimi-coding/k2p5 模型无法使用工具（Issue #44269）\",\"date\":\"2026-03-12\",\"abstract\":\"GitHub 问题报告 openclaw 2026.3.2 版本中引入的回归，使用 kimi-coding/k2p5 模型的隔离 cron 作业会话无法使用工具。\",\"url\":\"https://github.com/openclaw/openclaw/issues/44269\"},{\"title\":\"运行时：默认使用 Node v24 (LTS) 并保持 Node v22.16+ 兼容（PR #44016）\",\"date\":\"2026-03-12\",\"abstract\":\"该拉取请求更新 openclaw 仓库的默认运行时环境至 Node.js v24 (LTS)，同时确保与 Node v22.16+ 的兼容性。\",\"url\":\"https://github.com/openclaw/openclaw/pull/44016\"},{\"title\":\"macOS 版本发布 - OpenClaw\",\"date\":\"2026-03-11\",\"abstract\":\"网页文档介绍 OpenClaw 的 macOS 版本发布，聚焦基于 Sparkle 的自动更新系统，包括 SwiftPM 获取工具、pnpm 安装依赖和公证设置等前提条件。\",\"url\":\"https://docs.openclaw.ai/platforms/mac/release\"},{\"title\":\"fix(auth)：清除自动续订 OAuth 配置文件中的过期显示（PR #43122）\",\"date\":\"2026-03-11\",\"abstract\":\"该拉取请求修复 OpenClaw 项目中 OAuth 配置文件过期显示的 bug，此前系统错误显示过时过期信息。\",\"url\":\"https://github.com/openclaw/openclaw/pull/43122\"},{\"title\":\"feat(push)：添加 iOS APNs 中继网关（PR #43369）\",\"date\":\"2026-03-11\",\"abstract\":\"该拉取请求为 openclaw 项目添加 iOS APNs 中继网关，提升推送通知系统通过中继支持的 APNs 请求。\",\"url\":\"https://github.com/openclaw/openclaw/pull/43369\"},{\"title\":\"企业微信 openclaw 插件版本规则发布错误 - V2EX\",\"date\":\"2026-03-11\",\"abstract\":\"网页讨论企业微信中 openclaw 插件的版本规则问题，用户指出预发布版本（1.0.7-beta.1）因 npm 要求未默认安装。\",\"url\":\"https://www.v2ex.com/t/1197469\"}]}",
+  "parsed": {
+    "items": [
+      {
+        "title": "feat(tts)：添加 CLI 提供商支持（PR #43939）",
+        "date": "2026-03-12",
+        "abstract": "该拉取请求为 openclaw 项目引入文本到语音（TTS）的 CLI 提供商支持，解决了用户仅依赖云服务的限制。",
+        "url": "https://github.com/openclaw/openclaw/pull/43939"
+      },
+      {
+        "title": "Cron 隔离会话作业在 2026.3.11 版本中仍失败（Issue #44257）",
+        "date": "2026-03-12",
+        "abstract": "GitHub 问题报告 openclaw 2026.3.11 版本中引入的回归，配置为 sessionTarget: 'isolated' 的 cron 作业虽被入队但从未执行。",
+        "url": "https://github.com/openclaw/openclaw/issues/44257"
+      },
+      {
+        "title": "编辑工具静默将文件清空为 0 字节却报告成功（Issue #43858）",
+        "date": "2026-03-12",
+        "abstract": "GitHub 问题报告 openclaw 项目中 Edit 工具意外删除文件全部内容至 0 字节，尽管匹配路径正确。",
+        "url": "https://github.com/openclaw/openclaw/issues/43858"
+      },
+      {
+        "title": "隔离 Cron 作业会话使用 kimi-coding/k2p5 模型无法使用工具（Issue #44269）",
+        "date": "2026-03-12",
+        "abstract": "GitHub 问题报告 openclaw 2026.3.2 版本中引入的回归，使用 kimi-coding/k2p5 模型的隔离 cron 作业会话无法使用工具。",
+        "url": "https://github.com/openclaw/openclaw/issues/44269"
+      },
+      {
+        "title": "运行时：默认使用 Node v24 (LTS) 并保持 Node v22.16+ 兼容（PR #44016）",
+        "date": "2026-03-12",
+        "abstract": "该拉取请求更新 openclaw 仓库的默认运行时环境至 Node.js v24 (LTS)，同时确保与 Node v22.16+ 的兼容性。",
+        "url": "https://github.com/openclaw/openclaw/pull/44016"
+      },
+      {
+        "title": "macOS 版本发布 - OpenClaw",
+        "date": "2026-03-11",
+        "abstract": "网页文档介绍 OpenClaw 的 macOS 版本发布，聚焦基于 Sparkle 的自动更新系统，包括 SwiftPM 获取工具、pnpm 安装依赖和公证设置等前提条件。",
+        "url": "https://docs.openclaw.ai/platforms/mac/release"
+      },
+      {
+        "title": "fix(auth)：清除自动续订 OAuth 配置文件中的过期显示（PR #43122）",
+        "date": "2026-03-11",
+        "abstract": "该拉取请求修复 OpenClaw 项目中 OAuth 配置文件过期显示的 bug，此前系统错误显示过时过期信息。",
+        "url": "https://github.com/openclaw/openclaw/pull/43122"
+      },
+      {
+        "title": "feat(push)：添加 iOS APNs 中继网关（PR #43369）",
+        "date": "2026-03-11",
+        "abstract": "该拉取请求为 openclaw 项目添加 iOS APNs 中继网关，提升推送通知系统通过中继支持的 APNs 请求。",
+        "url": "https://github.com/openclaw/openclaw/pull/43369"
+      },
+      {
+        "title": "企业微信 openclaw 插件版本规则发布错误 - V2EX",
+        "date": "2026-03-11",
+        "abstract": "网页讨论企业微信中 openclaw 插件的版本规则问题，用户指出预发布版本（1.0.7-beta.1）因 npm 要求未默认安装。",
+        "url": "https://www.v2ex.com/t/1197469"
+      }
+    ]
+  },
+  "items": [
+    {
+      "title": "feat(tts)：添加 CLI 提供商支持（PR #43939）",
+      "date": "2026-03-12",
+      "abstract": "该拉取请求为 openclaw 项目引入文本到语音（TTS）的 CLI 提供商支持，解决了用户仅依赖云服务的限制。",
+      "url": "https://github.com/openclaw/openclaw/pull/43939"
+    },
+    {
+      "title": "Cron 隔离会话作业在 2026.3.11 版本中仍失败（Issue #44257）",
+      "date": "2026-03-12",
+      "abstract": "GitHub 问题报告 openclaw 2026.3.11 版本中引入的回归，配置为 sessionTarget: 'isolated' 的 cron 作业虽被入队但从未执行。",
+      "url": "https://github.com/openclaw/openclaw/issues/44257"
+    },
+    {
+      "title": "编辑工具静默将文件清空为 0 字节却报告成功（Issue #43858）",
+      "date": "2026-03-12",
+      "abstract": "GitHub 问题报告 openclaw 项目中 Edit 工具意外删除文件全部内容至 0 字节，尽管匹配路径正确。",
+      "url": "https://github.com/openclaw/openclaw/issues/43858"
+    },
+    {
+      "title": "隔离 Cron 作业会话使用 kimi-coding/k2p5 模型无法使用工具（Issue #44269）",
+      "date": "2026-03-12",
+      "abstract": "GitHub 问题报告 openclaw 2026.3.2 版本中引入的回归，使用 kimi-coding/k2p5 模型的隔离 cron 作业会话无法使用工具。",
+      "url": "https://github.com/openclaw/openclaw/issues/44269"
+    },
+    {
+      "title": "运行时：默认使用 Node v24 (LTS) 并保持 Node v22.16+ 兼容（PR #44016）",
+      "date": "2026-03-12",
+      "abstract": "该拉取请求更新 openclaw 仓库的默认运行时环境至 Node.js v24 (LTS)，同时确保与 Node v22.16+ 的兼容性。",
+      "url": "https://github.com/openclaw/openclaw/pull/44016"
+    },
+    {
+      "title": "macOS 版本发布 - OpenClaw",
+      "date": "2026-03-11",
+      "abstract": "网页文档介绍 OpenClaw 的 macOS 版本发布，聚焦基于 Sparkle 的自动更新系统，包括 SwiftPM 获取工具、pnpm 安装依赖和公证设置等前提条件。",
+      "url": "https://docs.openclaw.ai/platforms/mac/release"
+    },
+    {
+      "title": "fix(auth)：清除自动续订 OAuth 配置文件中的过期显示（PR #43122）",
+      "date": "2026-03-11",
+      "abstract": "该拉取请求修复 OpenClaw 项目中 OAuth 配置文件过期显示的 bug，此前系统错误显示过时过期信息。",
+      "url": "https://github.com/openclaw/openclaw/pull/43122"
+    },
+    {
+      "title": "feat(push)：添加 iOS APNs 中继网关（PR #43369）",
+      "date": "2026-03-11",
+      "abstract": "该拉取请求为 openclaw 项目添加 iOS APNs 中继网关，提升推送通知系统通过中继支持的 APNs 请求。",
+      "url": "https://github.com/openclaw/openclaw/pull/43369"
+    },
+    {
+      "title": "企业微信 openclaw 插件版本规则发布错误 - V2EX",
+      "date": "2026-03-11",
+      "abstract": "网页讨论企业微信中 openclaw 插件的版本规则问题，用户指出预发布版本（1.0.7-beta.1）因 npm 要求未默认安装。",
+      "url": "https://www.v2ex.com/t/1197469"
+    }
+  ],
+  "markdown": "📡 **OpenClaw 技术简报** | 2026-03-13\n\n1. **feat(tts)：添加 CLI 提供商支持（PR #43939）**\n- 📅 2026-03-12\n- 📝 该拉取请求为 openclaw 项目引入文本到语音（TTS）的 CLI 提供商支持，解决了用户仅依赖云服务的限制。\n- 🔗 https://github.com/openclaw/openclaw/pull/43939\n\n---\n\n2. **Cron 隔离会话作业在 2026.3.11 版本中仍失败（Issue #44257）**\n- 📅 2026-03-12\n- 📝 GitHub 问题报告 openclaw 2026.3.11 版本中引入的回归，配置为 sessionTarget: 'isolated' 的 cron 作业虽被入队但从未执行。\n- 🔗 https://github.com/openclaw/openclaw/issues/44257\n\n---\n\n3. **编辑工具静默将文件清空为 0 字节却报告成功（Issue #43858）**\n- 📅 2026-03-12\n- 📝 GitHub 问题报告 openclaw 项目中 Edit 工具意外删除文件全部内容至 0 字节，尽管匹配路径正确。\n- 🔗 https://github.com/openclaw/openclaw/issues/43858\n\n---\n\n4. **隔离 Cron 作业会话使用 kimi-coding/k2p5 模型无法使用工具（Issue #44269）**\n- 📅 2026-03-12\n- 📝 GitHub 问题报告 openclaw 2026.3.2 版本中引入的回归，使用 kimi-coding/k2p5 模型的隔离 cron 作业会话无法使用工具。\n- 🔗 https://github.com/openclaw/openclaw/issues/44269\n\n---\n\n5. **运行时：默认使用 Node v24 (LTS) 并保持 Node v22.16+ 兼容（PR #44016）**\n- 📅 2026-03-12\n- 📝 该拉取请求更新 openclaw 仓库的默认运行时环境至 Node.js v24 (LTS)，同时确保与 Node v22.16+ 的兼容性。\n- 🔗 https://github.com/openclaw/openclaw/pull/44016\n\n---\n\n6. **macOS 版本发布 - OpenClaw**\n- 📅 2026-03-11\n- 📝 网页文档介绍 OpenClaw 的 macOS 版本发布，聚焦基于 Sparkle 的自动更新系统，包括 SwiftPM 获取工具、pnpm 安装依赖和公证设置等前提条件。\n- 🔗 https://docs.openclaw.ai/platforms/mac/release\n\n---\n\n7. **fix(auth)：清除自动续订 OAuth 配置文件中的过期显示（PR #43122）**\n- 📅 2026-03-11\n- 📝 该拉取请求修复 OpenClaw 项目中 OAuth 配置文件过期显示的 bug，此前系统错误显示过时过期信息。\n- 🔗 https://github.com/openclaw/openclaw/pull/43122\n\n---\n\n8. **feat(push)：添加 iOS APNs 中继网关（PR #43369）**\n- 📅 2026-03-11\n- 📝 该拉取请求为 openclaw 项目添加 iOS APNs 中继网关，提升推送通知系统通过中继支持的 APNs 请求。\n- 🔗 https://github.com/openclaw/openclaw/pull/43369\n\n---\n\n9. **企业微信 openclaw 插件版本规则发布错误 - V2EX**\n- 📅 2026-03-11\n- 📝 网页讨论企业微信中 openclaw 插件的版本规则问题，用户指出预发布版本（1.0.7-beta.1）因 npm 要求未默认安装。\n- 🔗 https://www.v2ex.com/t/1197469\n"
+}
