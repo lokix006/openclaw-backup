@@ -1,14 +1,14 @@
 # Exa pipeline summary
-- profile: social
+- profile: tech
 - hoursBack: 48
 - targetItems: 10
-- rawResults: 67
-- keptCandidates: 35
+- rawResults: 35
+- keptCandidates: 30
 - clusters: 5
-- llmContextItems: 10
-- totalTokens: 3241
-- inputTokens: 1977
-- outputTokens: 1264
+- llmContextItems: 9
+- totalTokens: 3657
+- inputTokens: 1641
+- outputTokens: 2016
 ## Artifacts
 - 01-raw.json
 - 02-filtered.json

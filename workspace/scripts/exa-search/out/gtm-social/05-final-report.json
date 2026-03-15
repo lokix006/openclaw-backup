@@ -1,160 +1,136 @@
 {
-  "generatedAt": "2026-03-13T06:10:44.857Z",
+  "generatedAt": "2026-03-14T06:10:43.681Z",
   "profile": "social",
   "usage": {
-    "inputTokens": 2020,
+    "inputTokens": 1833,
     "inputTokenDetails": {
-      "noCacheTokens": 1867,
-      "cacheReadTokens": 153,
+      "noCacheTokens": 1682,
+      "cacheReadTokens": 151,
       "cacheWriteTokens": 0
     },
-    "outputTokens": 1497,
+    "outputTokens": 1230,
     "outputTokenDetails": {
-      "textTokens": 695,
-      "reasoningTokens": 802
+      "textTokens": 544,
+      "reasoningTokens": 686
     },
-    "totalTokens": 3517,
+    "totalTokens": 3063,
     "raw": {
-      "prompt_tokens": 2020,
+      "prompt_tokens": 1833,
       "prompt_tokens_details": {
-        "cached_tokens": 153,
+        "cached_tokens": 151,
         "cache_write_tokens": 0,
         "audio_tokens": 0,
         "video_tokens": 0
       },
-      "completion_tokens": 1497,
+      "completion_tokens": 1230,
       "completion_tokens_details": {
-        "reasoning_tokens": 802,
+        "reasoning_tokens": 686,
         "image_tokens": 0,
         "audio_tokens": 0
       },
-      "total_tokens": 3517,
-      "cost": 0.00112955,
+      "total_tokens": 3063,
+      "cost": 0.00095895,
       "cost_details": {
-        "upstream_inference_cost": 0.00112955,
-        "upstream_inference_prompt_cost": 0.00038105,
-        "upstream_inference_completions_cost": 0.0007485
+        "upstream_inference_cost": 0.00095895,
+        "upstream_inference_prompt_cost": 0.00034395,
+        "upstream_inference_completions_cost": 0.000615
       },
       "is_byok": false
     },
-    "reasoningTokens": 802,
-    "cachedInputTokens": 153
+    "reasoningTokens": 686,
+    "cachedInputTokens": 151
   },
-  "promptChars": 5066,
-  "rawText": "{\"items\":[{\"title\":\"2026年值得关注的20个GitHub AI项目：不只有OpenClaw\",\"date\":\"2026-03-12\",\"abstract\":\"文章强调OpenClaw在2026年GitHub AI项目中引领热潮，迅速获得开发者与媒体的广泛关注。\",\"url\":\"https://juejin.cn/post/7615886185001304079\"},{\"title\":\"V2EX用户对OpenClaw的看法讨论\",\"date\":\"2026-03-12\",\"abstract\":\"V2EX社区围绕OpenClaw的流行展开讨论，用户认可其利用AI和插件自动化任务的核心概念，类似于iOS快捷方式。\",\"url\":\"https://v2ex.com/t/1197630\"},{\"title\":\"OpenClaw上正在长出一整个AI硬件生态\",\"date\":\"2026-03-12\",\"abstract\":\"报道指出OpenClaw正发展为全面AI硬件生态，社区参与度高，用户情绪积极，推动开源平台的广泛采用。\",\"url\":\"https://m.36kr.com/p/3715194472771968\"},{\"title\":\"OpenClaw登顶后Agent悄悄杀死应用\",\"date\":\"2026-03-12\",\"abstract\":\"文章分析OpenClaw在领域登顶的成功后，其Agent组件悄然终止相关应用，标志着项目动态的重大转变。\",\"url\":\"https://www.36kr.com/p/3709890881975048\"},{\"title\":\"请把这篇文章转给你那个想装OpenClaw的领导\",\"date\":\"2026-03-11\",\"abstract\":\"36氪文章介绍OpenClaw作为开源插件生态增强AI助手能力，社区热议高涨，用户情绪正面，潜力加速AI应用落地。\",\"url\":\"https://m.36kr.com/p/3716421976520325\"},{\"title\":\"OpenClaw火了，你们觉得微信会适配webhook吗\",\"date\":\"2026-03-11\",\"abstract\":\"V2EX讨论OpenClaw的崛起与微信自动化相关，用户对微信官方采用webhook持怀疑态度，但部分认为可能自研类似功能。\",\"url\":\"https://www.v2ex.com/t/1197421\"},{\"title\":\"阿里云ECS+千问+钉钉实战部署OpenClaw\",\"date\":\"2026-03-11\",\"abstract\":\"文章详述在阿里云ECS上私有部署开源AI智能体框架OpenClaw，集成阿里千问大模型与钉钉，实现企业级工作流落地。\",\"url\":\"https://juejin.cn/post/7615590290816794666\"},{\"title\":\"全网都在养虾，OpenClaw到底是什么\",\"date\":\"2026-03-11\",\"abstract\":\"OpenClaw在中国科技社区引发热议，成为养虾文化象征，其开源AI助手能自动执行任务如发邮件，用户赞赏隐私安全与本地部署，GitHub获25万星标。\",\"url\":\"https://juejin.cn/post/7615551904539213866\"},{\"title\":\"用OpenClaw自动发布文章到掘金省时80%\",\"date\":\"2026-03-11\",\"abstract\":\"作者分享利用OpenClaw的Python脚本自动化掘金文章发布流程，将单篇耗时从10-15分钟缩短至30秒，提升工作效率。\",\"url\":\"https://juejin.cn/post/7615804746406232127\"}]}",
+  "promptChars": 4637,
+  "rawText": "{\"items\":[{\"title\":\"市值暴涨 3500 亿、小马哥疯狂转发……OpenClaw 怎么成了腾讯 AI 的「战争转折点」\",\"date\":\"2026-03-13\",\"abstract\":\"OpenClaw市值暴涨3500亿元，成为腾讯AI战略的潜在转折点，引发广泛社区关注和转发热议。\",\"url\":\"https://www.36kr.com/p/3718513542149511\"},{\"title\":\"OpenClaw 上，正在长出一整个“AI 硬件”生态\",\"date\":\"2026-03-13\",\"abstract\":\"OpenClaw平台正在中国催生庞大的AI硬件生态，社区参与度和用户正面情绪持续上升。\",\"url\":\"https://m.36kr.com/p/3715194472771968\"},{\"title\":\"接入且慢 MCP，一句话让你的 OpenClaw 变身“全栈 AI 投顾”\",\"date\":\"2026-03-13\",\"abstract\":\"OpenClaw通过接入且慢MCP快速转型为全栈AI投资顾问，展示其在娱乐、编程和金融应用中的多样化潜力。\",\"url\":\"https://juejin.cn/post/7616180607489376319\"},{\"title\":\"中国正在卷起一场OpenClaw风暴\",\"date\":\"2026-03-13\",\"abstract\":\"中国OpenClaw运动在AI开源社区迅速兴起，吸引开发者与组织涌入，推动协作与创新热潮。\",\"url\":\"https://www.36kr.com/p/3712327060943241\"},{\"title\":\"老黄杀入OpenClaw战场，最强开源“龙虾”模型直逼Opus 4.6\",\"date\":\"2026-03-13\",\"abstract\":\"黄仁勋推出的开源Lobster模型强势进入OpenClaw领域，与Opus 4.6等专有模型展开激烈竞争。\",\"url\":\"http://www.36kr.com/p/3719617426732416\"},{\"title\":\"腾讯版OpenClaw发布：最适合小白养龙虾的版本\",\"date\":\"2026-03-12\",\"abstract\":\"腾讯WorkBuddy作为易用版OpenClaw，支持自然语言自动化职场任务，特别适合初学者上手。\",\"url\":\"https://juejin.cn/post/7616222207401263155\"},{\"title\":\"OpenClaw 到底能干什么？可以看看这 60 个真实用例\",\"date\":\"2026-03-12\",\"abstract\":\"OpenClaw的60多个真实用例展示其广泛应用潜力，主要挑战在于用户对功能的认知不足。\",\"url\":\"https://sspai.com/post/107125\"}]}",
   "parsed": {
     "items": [
       {
-        "title": "2026年值得关注的20个GitHub AI项目：不只有OpenClaw",
-        "date": "2026-03-12",
-        "abstract": "文章强调OpenClaw在2026年GitHub AI项目中引领热潮，迅速获得开发者与媒体的广泛关注。",
-        "url": "https://juejin.cn/post/7615886185001304079"
+        "title": "市值暴涨 3500 亿、小马哥疯狂转发……OpenClaw 怎么成了腾讯 AI 的「战争转折点」",
+        "date": "2026-03-13",
+        "abstract": "OpenClaw市值暴涨3500亿元，成为腾讯AI战略的潜在转折点，引发广泛社区关注和转发热议。",
+        "url": "https://www.36kr.com/p/3718513542149511"
       },
       {
-        "title": "V2EX用户对OpenClaw的看法讨论",
-        "date": "2026-03-12",
-        "abstract": "V2EX社区围绕OpenClaw的流行展开讨论，用户认可其利用AI和插件自动化任务的核心概念，类似于iOS快捷方式。",
-        "url": "https://v2ex.com/t/1197630"
-      },
-      {
-        "title": "OpenClaw上正在长出一整个AI硬件生态",
-        "date": "2026-03-12",
-        "abstract": "报道指出OpenClaw正发展为全面AI硬件生态，社区参与度高，用户情绪积极，推动开源平台的广泛采用。",
+        "title": "OpenClaw 上，正在长出一整个“AI 硬件”生态",
+        "date": "2026-03-13",
+        "abstract": "OpenClaw平台正在中国催生庞大的AI硬件生态，社区参与度和用户正面情绪持续上升。",
         "url": "https://m.36kr.com/p/3715194472771968"
       },
       {
-        "title": "OpenClaw登顶后Agent悄悄杀死应用",
+        "title": "接入且慢 MCP，一句话让你的 OpenClaw 变身“全栈 AI 投顾”",
+        "date": "2026-03-13",
+        "abstract": "OpenClaw通过接入且慢MCP快速转型为全栈AI投资顾问，展示其在娱乐、编程和金融应用中的多样化潜力。",
+        "url": "https://juejin.cn/post/7616180607489376319"
+      },
+      {
+        "title": "中国正在卷起一场OpenClaw风暴",
+        "date": "2026-03-13",
+        "abstract": "中国OpenClaw运动在AI开源社区迅速兴起，吸引开发者与组织涌入，推动协作与创新热潮。",
+        "url": "https://www.36kr.com/p/3712327060943241"
+      },
+      {
+        "title": "老黄杀入OpenClaw战场，最强开源“龙虾”模型直逼Opus 4.6",
+        "date": "2026-03-13",
+        "abstract": "黄仁勋推出的开源Lobster模型强势进入OpenClaw领域，与Opus 4.6等专有模型展开激烈竞争。",
+        "url": "http://www.36kr.com/p/3719617426732416"
+      },
+      {
+        "title": "腾讯版OpenClaw发布：最适合小白养龙虾的版本",
         "date": "2026-03-12",
-        "abstract": "文章分析OpenClaw在领域登顶的成功后，其Agent组件悄然终止相关应用，标志着项目动态的重大转变。",
-        "url": "https://www.36kr.com/p/3709890881975048"
+        "abstract": "腾讯WorkBuddy作为易用版OpenClaw，支持自然语言自动化职场任务，特别适合初学者上手。",
+        "url": "https://juejin.cn/post/7616222207401263155"
       },
       {
-        "title": "请把这篇文章转给你那个想装OpenClaw的领导",
-        "date": "2026-03-11",
-        "abstract": "36氪文章介绍OpenClaw作为开源插件生态增强AI助手能力，社区热议高涨，用户情绪正面，潜力加速AI应用落地。",
-        "url": "https://m.36kr.com/p/3716421976520325"
-      },
-      {
-        "title": "OpenClaw火了，你们觉得微信会适配webhook吗",
-        "date": "2026-03-11",
-        "abstract": "V2EX讨论OpenClaw的崛起与微信自动化相关，用户对微信官方采用webhook持怀疑态度，但部分认为可能自研类似功能。",
-        "url": "https://www.v2ex.com/t/1197421"
-      },
-      {
-        "title": "阿里云ECS+千问+钉钉实战部署OpenClaw",
-        "date": "2026-03-11",
-        "abstract": "文章详述在阿里云ECS上私有部署开源AI智能体框架OpenClaw，集成阿里千问大模型与钉钉，实现企业级工作流落地。",
-        "url": "https://juejin.cn/post/7615590290816794666"
-      },
-      {
-        "title": "全网都在养虾，OpenClaw到底是什么",
-        "date": "2026-03-11",
-        "abstract": "OpenClaw在中国科技社区引发热议，成为养虾文化象征，其开源AI助手能自动执行任务如发邮件，用户赞赏隐私安全与本地部署，GitHub获25万星标。",
-        "url": "https://juejin.cn/post/7615551904539213866"
-      },
-      {
-        "title": "用OpenClaw自动发布文章到掘金省时80%",
-        "date": "2026-03-11",
-        "abstract": "作者分享利用OpenClaw的Python脚本自动化掘金文章发布流程，将单篇耗时从10-15分钟缩短至30秒，提升工作效率。",
-        "url": "https://juejin.cn/post/7615804746406232127"
+        "title": "OpenClaw 到底能干什么？可以看看这 60 个真实用例",
+        "date": "2026-03-12",
+        "abstract": "OpenClaw的60多个真实用例展示其广泛应用潜力，主要挑战在于用户对功能的认知不足。",
+        "url": "https://sspai.com/post/107125"
       }
     ]
   },
   "items": [
     {
-      "title": "2026年值得关注的20个GitHub AI项目：不只有OpenClaw",
-      "date": "2026-03-12",
-      "abstract": "文章强调OpenClaw在2026年GitHub AI项目中引领热潮，迅速获得开发者与媒体的广泛关注。",
-      "url": "https://juejin.cn/post/7615886185001304079"
+      "title": "市值暴涨 3500 亿、小马哥疯狂转发……OpenClaw 怎么成了腾讯 AI 的「战争转折点」",
+      "date": "2026-03-13",
+      "abstract": "OpenClaw市值暴涨3500亿元，成为腾讯AI战略的潜在转折点，引发广泛社区关注和转发热议。",
+      "url": "https://www.36kr.com/p/3718513542149511"
     },
     {
-      "title": "V2EX用户对OpenClaw的看法讨论",
-      "date": "2026-03-12",
-      "abstract": "V2EX社区围绕OpenClaw的流行展开讨论，用户认可其利用AI和插件自动化任务的核心概念，类似于iOS快捷方式。",
-      "url": "https://v2ex.com/t/1197630"
-    },
-    {
-      "title": "OpenClaw上正在长出一整个AI硬件生态",
-      "date": "2026-03-12",
-      "abstract": "报道指出OpenClaw正发展为全面AI硬件生态，社区参与度高，用户情绪积极，推动开源平台的广泛采用。",
+      "title": "OpenClaw 上，正在长出一整个“AI 硬件”生态",
+      "date": "2026-03-13",
+      "abstract": "OpenClaw平台正在中国催生庞大的AI硬件生态，社区参与度和用户正面情绪持续上升。",
       "url": "https://m.36kr.com/p/3715194472771968"
     },
     {
-      "title": "OpenClaw登顶后Agent悄悄杀死应用",
+      "title": "接入且慢 MCP，一句话让你的 OpenClaw 变身“全栈 AI 投顾”",
+      "date": "2026-03-13",
+      "abstract": "OpenClaw通过接入且慢MCP快速转型为全栈AI投资顾问，展示其在娱乐、编程和金融应用中的多样化潜力。",
+      "url": "https://juejin.cn/post/7616180607489376319"
+    },
+    {
+      "title": "中国正在卷起一场OpenClaw风暴",
+      "date": "2026-03-13",
+      "abstract": "中国OpenClaw运动在AI开源社区迅速兴起，吸引开发者与组织涌入，推动协作与创新热潮。",
+      "url": "https://www.36kr.com/p/3712327060943241"
+    },
+    {
+      "title": "老黄杀入OpenClaw战场，最强开源“龙虾”模型直逼Opus 4.6",
+      "date": "2026-03-13",
+      "abstract": "黄仁勋推出的开源Lobster模型强势进入OpenClaw领域，与Opus 4.6等专有模型展开激烈竞争。",
+      "url": "http://www.36kr.com/p/3719617426732416"
+    },
+    {
+      "title": "腾讯版OpenClaw发布：最适合小白养龙虾的版本",
       "date": "2026-03-12",
-      "abstract": "文章分析OpenClaw在领域登顶的成功后，其Agent组件悄然终止相关应用，标志着项目动态的重大转变。",
-      "url": "https://www.36kr.com/p/3709890881975048"
+      "abstract": "腾讯WorkBuddy作为易用版OpenClaw，支持自然语言自动化职场任务，特别适合初学者上手。",
+      "url": "https://juejin.cn/post/7616222207401263155"
     },
     {
-      "title": "请把这篇文章转给你那个想装OpenClaw的领导",
-      "date": "2026-03-11",
-      "abstract": "36氪文章介绍OpenClaw作为开源插件生态增强AI助手能力，社区热议高涨，用户情绪正面，潜力加速AI应用落地。",
-      "url": "https://m.36kr.com/p/3716421976520325"
-    },
-    {
-      "title": "OpenClaw火了，你们觉得微信会适配webhook吗",
-      "date": "2026-03-11",
-      "abstract": "V2EX讨论OpenClaw的崛起与微信自动化相关，用户对微信官方采用webhook持怀疑态度，但部分认为可能自研类似功能。",
-      "url": "https://www.v2ex.com/t/1197421"
-    },
-    {
-      "title": "阿里云ECS+千问+钉钉实战部署OpenClaw",
-      "date": "2026-03-11",
-      "abstract": "文章详述在阿里云ECS上私有部署开源AI智能体框架OpenClaw，集成阿里千问大模型与钉钉，实现企业级工作流落地。",
-      "url": "https://juejin.cn/post/7615590290816794666"
-    },
-    {
-      "title": "全网都在养虾，OpenClaw到底是什么",
-      "date": "2026-03-11",
-      "abstract": "OpenClaw在中国科技社区引发热议，成为养虾文化象征，其开源AI助手能自动执行任务如发邮件，用户赞赏隐私安全与本地部署，GitHub获25万星标。",
-      "url": "https://juejin.cn/post/7615551904539213866"
-    },
-    {
-      "title": "用OpenClaw自动发布文章到掘金省时80%",
-      "date": "2026-03-11",
-      "abstract": "作者分享利用OpenClaw的Python脚本自动化掘金文章发布流程，将单篇耗时从10-15分钟缩短至30秒，提升工作效率。",
-      "url": "https://juejin.cn/post/7615804746406232127"
+      "title": "OpenClaw 到底能干什么？可以看看这 60 个真实用例",
+      "date": "2026-03-12",
+      "abstract": "OpenClaw的60多个真实用例展示其广泛应用潜力，主要挑战在于用户对功能的认知不足。",
+      "url": "https://sspai.com/post/107125"
     }
   ],
-  "markdown": "🌐 **OpenClaw 社区热度简报** | 2026-03-13\n\n1. **2026年值得关注的20个GitHub AI项目：不只有OpenClaw**\n- 📅 2026-03-12\n- 📝 文章强调OpenClaw在2026年GitHub AI项目中引领热潮，迅速获得开发者与媒体的广泛关注。\n- 🔗 https://juejin.cn/post/7615886185001304079\n\n---\n\n2. **V2EX用户对OpenClaw的看法讨论**\n- 📅 2026-03-12\n- 📝 V2EX社区围绕OpenClaw的流行展开讨论，用户认可其利用AI和插件自动化任务的核心概念，类似于iOS快捷方式。\n- 🔗 https://v2ex.com/t/1197630\n\n---\n\n3. **OpenClaw上正在长出一整个AI硬件生态**\n- 📅 2026-03-12\n- 📝 报道指出OpenClaw正发展为全面AI硬件生态，社区参与度高，用户情绪积极，推动开源平台的广泛采用。\n- 🔗 https://m.36kr.com/p/3715194472771968\n\n---\n\n4. **OpenClaw登顶后Agent悄悄杀死应用**\n- 📅 2026-03-12\n- 📝 文章分析OpenClaw在领域登顶的成功后，其Agent组件悄然终止相关应用，标志着项目动态的重大转变。\n- 🔗 https://www.36kr.com/p/3709890881975048\n\n---\n\n5. **请把这篇文章转给你那个想装OpenClaw的领导**\n- 📅 2026-03-11\n- 📝 36氪文章介绍OpenClaw作为开源插件生态增强AI助手能力，社区热议高涨，用户情绪正面，潜力加速AI应用落地。\n- 🔗 https://m.36kr.com/p/3716421976520325\n\n---\n\n6. **OpenClaw火了，你们觉得微信会适配webhook吗**\n- 📅 2026-03-11\n- 📝 V2EX讨论OpenClaw的崛起与微信自动化相关，用户对微信官方采用webhook持怀疑态度，但部分认为可能自研类似功能。\n- 🔗 https://www.v2ex.com/t/1197421\n\n---\n\n7. **阿里云ECS+千问+钉钉实战部署OpenClaw**\n- 📅 2026-03-11\n- 📝 文章详述在阿里云ECS上私有部署开源AI智能体框架OpenClaw，集成阿里千问大模型与钉钉，实现企业级工作流落地。\n- 🔗 https://juejin.cn/post/7615590290816794666\n\n---\n\n8. **全网都在养虾，OpenClaw到底是什么**\n- 📅 2026-03-11\n- 📝 OpenClaw在中国科技社区引发热议，成为养虾文化象征，其开源AI助手能自动执行任务如发邮件，用户赞赏隐私安全与本地部署，GitHub获25万星标。\n- 🔗 https://juejin.cn/post/7615551904539213866\n\n---\n\n9. **用OpenClaw自动发布文章到掘金省时80%**\n- 📅 2026-03-11\n- 📝 作者分享利用OpenClaw的Python脚本自动化掘金文章发布流程，将单篇耗时从10-15分钟缩短至30秒，提升工作效率。\n- 🔗 https://juejin.cn/post/7615804746406232127\n"
+  "markdown": "🌐 **OpenClaw 社区热度简报** | 2026-03-14\n\n1. **市值暴涨 3500 亿、小马哥疯狂转发……OpenClaw 怎么成了腾讯 AI 的「战争转折点」**\n- 📅 2026-03-13\n- 📝 OpenClaw市值暴涨3500亿元，成为腾讯AI战略的潜在转折点，引发广泛社区关注和转发热议。\n- 🔗 https://www.36kr.com/p/3718513542149511\n\n---\n\n2. **OpenClaw 上，正在长出一整个“AI 硬件”生态**\n- 📅 2026-03-13\n- 📝 OpenClaw平台正在中国催生庞大的AI硬件生态，社区参与度和用户正面情绪持续上升。\n- 🔗 https://m.36kr.com/p/3715194472771968\n\n---\n\n3. **接入且慢 MCP，一句话让你的 OpenClaw 变身“全栈 AI 投顾”**\n- 📅 2026-03-13\n- 📝 OpenClaw通过接入且慢MCP快速转型为全栈AI投资顾问，展示其在娱乐、编程和金融应用中的多样化潜力。\n- 🔗 https://juejin.cn/post/7616180607489376319\n\n---\n\n4. **中国正在卷起一场OpenClaw风暴**\n- 📅 2026-03-13\n- 📝 中国OpenClaw运动在AI开源社区迅速兴起，吸引开发者与组织涌入，推动协作与创新热潮。\n- 🔗 https://www.36kr.com/p/3712327060943241\n\n---\n\n5. **老黄杀入OpenClaw战场，最强开源“龙虾”模型直逼Opus 4.6**\n- 📅 2026-03-13\n- 📝 黄仁勋推出的开源Lobster模型强势进入OpenClaw领域，与Opus 4.6等专有模型展开激烈竞争。\n- 🔗 http://www.36kr.com/p/3719617426732416\n\n---\n\n6. **腾讯版OpenClaw发布：最适合小白养龙虾的版本**\n- 📅 2026-03-12\n- 📝 腾讯WorkBuddy作为易用版OpenClaw，支持自然语言自动化职场任务，特别适合初学者上手。\n- 🔗 https://juejin.cn/post/7616222207401263155\n\n---\n\n7. **OpenClaw 到底能干什么？可以看看这 60 个真实用例**\n- 📅 2026-03-12\n- 📝 OpenClaw的60多个真实用例展示其广泛应用潜力，主要挑战在于用户对功能的认知不足。\n- 🔗 https://sspai.com/post/107125\n"
 }

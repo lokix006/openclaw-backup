@@ -1,0 +1,160 @@
+{
+  "generatedAt": "2026-03-14T05:58:15.656Z",
+  "profile": "tech",
+  "usage": {
+    "inputTokens": 1641,
+    "inputTokenDetails": {
+      "noCacheTokens": 1490,
+      "cacheReadTokens": 151,
+      "cacheWriteTokens": 0
+    },
+    "outputTokens": 2016,
+    "outputTokenDetails": {
+      "textTokens": 773,
+      "reasoningTokens": 1243
+    },
+    "totalTokens": 3657,
+    "raw": {
+      "prompt_tokens": 1641,
+      "prompt_tokens_details": {
+        "cached_tokens": 151,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "completion_tokens": 2016,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1243,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      },
+      "total_tokens": 3657,
+      "cost": 0.00131355,
+      "cost_details": {
+        "upstream_inference_cost": 0.00131355,
+        "upstream_inference_prompt_cost": 0.00030555,
+        "upstream_inference_completions_cost": 0.001008
+      },
+      "is_byok": false
+    },
+    "reasoningTokens": 1243,
+    "cachedInputTokens": 151
+  },
+  "promptChars": 5102,
+  "rawText": "{\"items\":[{\"title\":\"[Bug]: 2026.3.12 内存泄漏 - 基本命令（gateway status, doctor）导致 OOM · Issue #45064 · openclaw/openclaw\",\"date\":\"2026-03-13\",\"abstract\":\"报告 OpenClaw 2026.3.12 版本中执行基本 CLI 命令如 gateway status 或 doctor 导致应用内存泄漏和 OOM 错误。\",\"url\":\"https://github.com/openclaw/openclaw/issues/45064\"},{\"title\":\"[Bug]: WhatsApp 外发路径中断：自动回复正常，消息工具/CLI 发送失败报“No active WhatsApp Web listener”（2026.3.12） · Issue #45171 · openclaw/openclaw\",\"date\":\"2026-03-13\",\"abstract\":\"报告 openclaw 项目中 WhatsApp 外发消息路径回归问题，CLI 发送失败但自动回复正常。\",\"url\":\"https://github.com/openclaw/openclaw/issues/45171\"},{\"title\":\"feat(exec): 将 NO_DNA 传播到子命令 · Pull Request #44947 · openclaw/openclaw\",\"date\":\"2026-03-13\",\"abstract\":\"该 PR 修复子进程未继承 NO_DNA 标记的问题，用于指示非人类操作并传播到子命令。\",\"url\":\"https://github.com/openclaw/openclaw/pull/44947\"},{\"title\":\"添加 ModelScope API 支持 · Pull Request #44871 · openclaw/openclaw\",\"date\":\"2026-03-13\",\"abstract\":\"引入 ModelScope API 支持，允许用户通过 API 密钥访问社区模型，涉及 3 个提交和 499 行代码添加。\",\"url\":\"https://github.com/openclaw/openclaw/pull/44871\"},{\"title\":\"[Bug]: 2026.3.12 启动崩溃：Cannot access 'ANTHROPIC_MODEL_ALIASES' before initialization · Issue #44781 · openclaw/openclaw\",\"date\":\"2026-03-13\",\"abstract\":\"报告 2026.3.12 版本启动时崩溃，与 Anthropic 配置相关初始化问题。\",\"url\":\"https://github.com/openclaw/openclaw/issues/44781\"},{\"title\":\"[WebUI] 为聊天控件使用响应式 CSS 工具提示 · Pull Request #44953 · openclaw/openclaw\",\"date\":\"2026-03-13\",\"abstract\":\"更新 OpenClaw WebUI，替换聊天控件图标（如 Refresh、Thinking Mode）的原生 title 属性工具提示为响应式 CSS 版本。\",\"url\":\"https://github.com/openclaw/openclaw/pull/44953\"},{\"title\":\"开源了一个 OpenClaw 运维工具 - V2EX\",\"date\":\"2026-03-12\",\"abstract\":\"宣布开源“simple-openclaw”工具，一键自动化 Node.js、构建工具和 OpenClaw 的服务器部署与维护。\",\"url\":\"https://v2ex.com/t/1197851\"},{\"title\":\"fix(wizard): 在 onboarding 期间跳过 auth 时警告用户 · Pull Request #44217 · openclaw/openclaw\",\"date\":\"2026-03-12\",\"abstract\":\"修复 onboarding 跳过认证导致代理不可用无警告的 bug，现在添加用户警告以提升体验。\",\"url\":\"https://github.com/openclaw/openclaw/pull/44217\"},{\"title\":\"[Bug] v2026.3.11: doctor --fix 循环报告虚假的遗留 cron payload kind 规范化问题 · Issue #43796 · openclaw/openclaw\",\"date\":\"2026-03-12\",\"abstract\":\"报告 v2026.3.11 版本中 doctor --fix 反复标记已修复的遗留 cron payload kind 规范化问题。\",\"url\":\"https://github.com/openclaw/openclaw/issues/43796\"}]}",
+  "parsed": {
+    "items": [
+      {
+        "title": "[Bug]: 2026.3.12 内存泄漏 - 基本命令（gateway status, doctor）导致 OOM · Issue #45064 · openclaw/openclaw",
+        "date": "2026-03-13",
+        "abstract": "报告 OpenClaw 2026.3.12 版本中执行基本 CLI 命令如 gateway status 或 doctor 导致应用内存泄漏和 OOM 错误。",
+        "url": "https://github.com/openclaw/openclaw/issues/45064"
+      },
+      {
+        "title": "[Bug]: WhatsApp 外发路径中断：自动回复正常，消息工具/CLI 发送失败报“No active WhatsApp Web listener”（2026.3.12） · Issue #45171 · openclaw/openclaw",
+        "date": "2026-03-13",
+        "abstract": "报告 openclaw 项目中 WhatsApp 外发消息路径回归问题，CLI 发送失败但自动回复正常。",
+        "url": "https://github.com/openclaw/openclaw/issues/45171"
+      },
+      {
+        "title": "feat(exec): 将 NO_DNA 传播到子命令 · Pull Request #44947 · openclaw/openclaw",
+        "date": "2026-03-13",
+        "abstract": "该 PR 修复子进程未继承 NO_DNA 标记的问题，用于指示非人类操作并传播到子命令。",
+        "url": "https://github.com/openclaw/openclaw/pull/44947"
+      },
+      {
+        "title": "添加 ModelScope API 支持 · Pull Request #44871 · openclaw/openclaw",
+        "date": "2026-03-13",
+        "abstract": "引入 ModelScope API 支持，允许用户通过 API 密钥访问社区模型，涉及 3 个提交和 499 行代码添加。",
+        "url": "https://github.com/openclaw/openclaw/pull/44871"
+      },
+      {
+        "title": "[Bug]: 2026.3.12 启动崩溃：Cannot access 'ANTHROPIC_MODEL_ALIASES' before initialization · Issue #44781 · openclaw/openclaw",
+        "date": "2026-03-13",
+        "abstract": "报告 2026.3.12 版本启动时崩溃，与 Anthropic 配置相关初始化问题。",
+        "url": "https://github.com/openclaw/openclaw/issues/44781"
+      },
+      {
+        "title": "[WebUI] 为聊天控件使用响应式 CSS 工具提示 · Pull Request #44953 · openclaw/openclaw",
+        "date": "2026-03-13",
+        "abstract": "更新 OpenClaw WebUI，替换聊天控件图标（如 Refresh、Thinking Mode）的原生 title 属性工具提示为响应式 CSS 版本。",
+        "url": "https://github.com/openclaw/openclaw/pull/44953"
+      },
+      {
+        "title": "开源了一个 OpenClaw 运维工具 - V2EX",
+        "date": "2026-03-12",
+        "abstract": "宣布开源“simple-openclaw”工具，一键自动化 Node.js、构建工具和 OpenClaw 的服务器部署与维护。",
+        "url": "https://v2ex.com/t/1197851"
+      },
+      {
+        "title": "fix(wizard): 在 onboarding 期间跳过 auth 时警告用户 · Pull Request #44217 · openclaw/openclaw",
+        "date": "2026-03-12",
+        "abstract": "修复 onboarding 跳过认证导致代理不可用无警告的 bug，现在添加用户警告以提升体验。",
+        "url": "https://github.com/openclaw/openclaw/pull/44217"
+      },
+      {
+        "title": "[Bug] v2026.3.11: doctor --fix 循环报告虚假的遗留 cron payload kind 规范化问题 · Issue #43796 · openclaw/openclaw",
+        "date": "2026-03-12",
+        "abstract": "报告 v2026.3.11 版本中 doctor --fix 反复标记已修复的遗留 cron payload kind 规范化问题。",
+        "url": "https://github.com/openclaw/openclaw/issues/43796"
+      }
+    ]
+  },
+  "items": [
+    {
+      "title": "[Bug]: 2026.3.12 内存泄漏 - 基本命令（gateway status, doctor）导致 OOM · Issue #45064 · openclaw/openclaw",
+      "date": "2026-03-13",
+      "abstract": "报告 OpenClaw 2026.3.12 版本中执行基本 CLI 命令如 gateway status 或 doctor 导致应用内存泄漏和 OOM 错误。",
+      "url": "https://github.com/openclaw/openclaw/issues/45064"
+    },
+    {
+      "title": "[Bug]: WhatsApp 外发路径中断：自动回复正常，消息工具/CLI 发送失败报“No active WhatsApp Web listener”（2026.3.12） · Issue #45171 · openclaw/openclaw",
+      "date": "2026-03-13",
+      "abstract": "报告 openclaw 项目中 WhatsApp 外发消息路径回归问题，CLI 发送失败但自动回复正常。",
+      "url": "https://github.com/openclaw/openclaw/issues/45171"
+    },
+    {
+      "title": "feat(exec): 将 NO_DNA 传播到子命令 · Pull Request #44947 · openclaw/openclaw",
+      "date": "2026-03-13",
+      "abstract": "该 PR 修复子进程未继承 NO_DNA 标记的问题，用于指示非人类操作并传播到子命令。",
+      "url": "https://github.com/openclaw/openclaw/pull/44947"
+    },
+    {
+      "title": "添加 ModelScope API 支持 · Pull Request #44871 · openclaw/openclaw",
+      "date": "2026-03-13",
+      "abstract": "引入 ModelScope API 支持，允许用户通过 API 密钥访问社区模型，涉及 3 个提交和 499 行代码添加。",
+      "url": "https://github.com/openclaw/openclaw/pull/44871"
+    },
+    {
+      "title": "[Bug]: 2026.3.12 启动崩溃：Cannot access 'ANTHROPIC_MODEL_ALIASES' before initialization · Issue #44781 · openclaw/openclaw",
+      "date": "2026-03-13",
+      "abstract": "报告 2026.3.12 版本启动时崩溃，与 Anthropic 配置相关初始化问题。",
+      "url": "https://github.com/openclaw/openclaw/issues/44781"
+    },
+    {
+      "title": "[WebUI] 为聊天控件使用响应式 CSS 工具提示 · Pull Request #44953 · openclaw/openclaw",
+      "date": "2026-03-13",
+      "abstract": "更新 OpenClaw WebUI，替换聊天控件图标（如 Refresh、Thinking Mode）的原生 title 属性工具提示为响应式 CSS 版本。",
+      "url": "https://github.com/openclaw/openclaw/pull/44953"
+    },
+    {
+      "title": "开源了一个 OpenClaw 运维工具 - V2EX",
+      "date": "2026-03-12",
+      "abstract": "宣布开源“simple-openclaw”工具，一键自动化 Node.js、构建工具和 OpenClaw 的服务器部署与维护。",
+      "url": "https://v2ex.com/t/1197851"
+    },
+    {
+      "title": "fix(wizard): 在 onboarding 期间跳过 auth 时警告用户 · Pull Request #44217 · openclaw/openclaw",
+      "date": "2026-03-12",
+      "abstract": "修复 onboarding 跳过认证导致代理不可用无警告的 bug，现在添加用户警告以提升体验。",
+      "url": "https://github.com/openclaw/openclaw/pull/44217"
+    },
+    {
+      "title": "[Bug] v2026.3.11: doctor --fix 循环报告虚假的遗留 cron payload kind 规范化问题 · Issue #43796 · openclaw/openclaw",
+      "date": "2026-03-12",
+      "abstract": "报告 v2026.3.11 版本中 doctor --fix 反复标记已修复的遗留 cron payload kind 规范化问题。",
+      "url": "https://github.com/openclaw/openclaw/issues/43796"
+    }
+  ],
+  "markdown": "📡 **OpenClaw 技术简报** | 2026-03-14\n\n1. **[Bug]: 2026.3.12 内存泄漏 - 基本命令（gateway status, doctor）导致 OOM · Issue #45064 · openclaw/openclaw**\n- 📅 2026-03-13\n- 📝 报告 OpenClaw 2026.3.12 版本中执行基本 CLI 命令如 gateway status 或 doctor 导致应用内存泄漏和 OOM 错误。\n- 🔗 https://github.com/openclaw/openclaw/issues/45064\n\n---\n\n2. **[Bug]: WhatsApp 外发路径中断：自动回复正常，消息工具/CLI 发送失败报“No active WhatsApp Web listener”（2026.3.12） · Issue #45171 · openclaw/openclaw**\n- 📅 2026-03-13\n- 📝 报告 openclaw 项目中 WhatsApp 外发消息路径回归问题，CLI 发送失败但自动回复正常。\n- 🔗 https://github.com/openclaw/openclaw/issues/45171\n\n---\n\n3. **feat(exec): 将 NO_DNA 传播到子命令 · Pull Request #44947 · openclaw/openclaw**\n- 📅 2026-03-13\n- 📝 该 PR 修复子进程未继承 NO_DNA 标记的问题，用于指示非人类操作并传播到子命令。\n- 🔗 https://github.com/openclaw/openclaw/pull/44947\n\n---\n\n4. **添加 ModelScope API 支持 · Pull Request #44871 · openclaw/openclaw**\n- 📅 2026-03-13\n- 📝 引入 ModelScope API 支持，允许用户通过 API 密钥访问社区模型，涉及 3 个提交和 499 行代码添加。\n- 🔗 https://github.com/openclaw/openclaw/pull/44871\n\n---\n\n5. **[Bug]: 2026.3.12 启动崩溃：Cannot access 'ANTHROPIC_MODEL_ALIASES' before initialization · Issue #44781 · openclaw/openclaw**\n- 📅 2026-03-13\n- 📝 报告 2026.3.12 版本启动时崩溃，与 Anthropic 配置相关初始化问题。\n- 🔗 https://github.com/openclaw/openclaw/issues/44781\n\n---\n\n6. **[WebUI] 为聊天控件使用响应式 CSS 工具提示 · Pull Request #44953 · openclaw/openclaw**\n- 📅 2026-03-13\n- 📝 更新 OpenClaw WebUI，替换聊天控件图标（如 Refresh、Thinking Mode）的原生 title 属性工具提示为响应式 CSS 版本。\n- 🔗 https://github.com/openclaw/openclaw/pull/44953\n\n---\n\n7. **开源了一个 OpenClaw 运维工具 - V2EX**\n- 📅 2026-03-12\n- 📝 宣布开源“simple-openclaw”工具，一键自动化 Node.js、构建工具和 OpenClaw 的服务器部署与维护。\n- 🔗 https://v2ex.com/t/1197851\n\n---\n\n8. **fix(wizard): 在 onboarding 期间跳过 auth 时警告用户 · Pull Request #44217 · openclaw/openclaw**\n- 📅 2026-03-12\n- 📝 修复 onboarding 跳过认证导致代理不可用无警告的 bug，现在添加用户警告以提升体验。\n- 🔗 https://github.com/openclaw/openclaw/pull/44217\n\n---\n\n9. **[Bug] v2026.3.11: doctor --fix 循环报告虚假的遗留 cron payload kind 规范化问题 · Issue #43796 · openclaw/openclaw**\n- 📅 2026-03-12\n- 📝 报告 v2026.3.11 版本中 doctor --fix 反复标记已修复的遗留 cron payload kind 规范化问题。\n- 🔗 https://github.com/openclaw/openclaw/issues/43796\n"
+}

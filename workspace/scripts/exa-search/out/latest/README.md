@@ -2,13 +2,13 @@
 - profile: tech
 - hoursBack: 48
 - targetItems: 10
-- rawResults: 41
-- keptCandidates: 22
+- rawResults: 35
+- keptCandidates: 30
 - clusters: 5
 - llmContextItems: 9
-- totalTokens: 2935
-- inputTokens: 1592
-- outputTokens: 1343
+- totalTokens: 3328
+- inputTokens: 1674
+- outputTokens: 1654
 ## Artifacts
 - 01-raw.json
 - 02-filtered.json

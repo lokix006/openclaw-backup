@@ -3,12 +3,12 @@
 - hoursBack: 48
 - targetItems: 10
 - rawResults: 67
-- keptCandidates: 38
+- keptCandidates: 34
 - clusters: 5
-- llmContextItems: 10
-- totalTokens: 3517
-- inputTokens: 2020
-- outputTokens: 1497
+- llmContextItems: 9
+- totalTokens: 3063
+- inputTokens: 1833
+- outputTokens: 1230
 ## Artifacts
 - 01-raw.json
 - 02-filtered.json

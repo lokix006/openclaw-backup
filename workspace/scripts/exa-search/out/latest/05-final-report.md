@@ -1,62 +1,62 @@
-📡 **OpenClaw 技术简报** | 2026-03-13
+📡 **OpenClaw 技术简报** | 2026-03-14
 
-1. **feat(tts)：添加 CLI 提供商支持（PR #43939）**
+1. **国内厂商云部署 OpenClaw 活动讨论 - V2EX**
+- 📅 2026-03-13
+- 📝 社区讨论中国科技公司推广 OpenClaw 云部署平台的动机，担忧数据收集或云服务销售目的。
+- 🔗 https://v2ex.com/t/1197921
+
+---
+
+2. **feat(exec)：将 NO_DNA 传播到子命令 · Pull Request #44947 · openclaw/openclaw**
+- 📅 2026-03-13
+- 📝 该拉取请求修复 OpenClaw 中子进程未继承 NO_DNA 标记的问题，确保下游工具正确识别非人类执行。
+- 🔗 https://github.com/openclaw/openclaw/pull/44947
+
+---
+
+3. **[Bug]：2026.3.12 版本基本命令内存泄漏 - OOM（gateway status, doctor） · Issue #45064 · openclaw/openclaw**
+- 📅 2026-03-13
+- 📝 GitHub 问题报告 OpenClaw 2026.3.12 版本执行基本 CLI 命令如 gateway status 或 doctor 时导致 JavaScript 堆内存耗尽。
+- 🔗 https://github.com/openclaw/openclaw/issues/45064
+
+---
+
+4. **[Bug]：WhatsApp 外发路径中断：自动回复正常，消息工具/CLI 发送失败（2026.3.12） · Issue #45171 · openclaw/openclaw**
+- 📅 2026-03-13
+- 📝 GitHub 问题报告 OpenClaw 项目中 WhatsApp 外发消息回归问题，CLI 发送失败显示无活跃 WhatsApp Web 监听器。
+- 🔗 https://github.com/openclaw/openclaw/issues/45171
+
+---
+
+5. **添加 ModelScope API 支持 · Pull Request #44871 · openclaw/openclaw**
+- 📅 2026-03-13
+- 📝 该拉取请求为 OpenClaw 项目引入 ModelScope API 支持，用户可通过 API 密钥访问社区模型，涉及 3 个提交和 499 行代码添加。
+- 🔗 https://github.com/openclaw/openclaw/pull/44871
+
+---
+
+6. **[Bug]：OpenClaw 2026.3.11 破坏 moonshotai/kimi-k2.5 模型工具执行 · Issue #44549 · openclaw/openclaw**
+- 📅 2026-03-13
+- 📝 GitHub 问题报告 OpenClaw 2026.3.11 版本通过 openai-completions 使用 moonshotai/kimi-k2.5 模型时所有工具执行失效。
+- 🔗 https://github.com/openclaw/openclaw/issues/44549
+
+---
+
+7. **[WebUI]：为聊天控件使用响应式 CSS 工具提示 · Pull Request #44953 · openclaw/openclaw**
+- 📅 2026-03-13
+- 📝 该拉取请求更新 OpenClaw WebUI，将聊天控件图标的原生 title 属性工具提示替换为自定义 CSS 工具提示，提升响应式设计。
+- 🔗 https://github.com/openclaw/openclaw/pull/44953
+
+---
+
+8. **fix(wizard)：引导过程中跳过认证时警告用户 · Pull Request #44217 · openclaw/openclaw**
 - 📅 2026-03-12
-- 📝 该拉取请求为 openclaw 项目引入文本到语音（TTS）的 CLI 提供商支持，解决了用户仅依赖云服务的限制。
-- 🔗 https://github.com/openclaw/openclaw/pull/43939
+- 📝 该拉取请求修复 OpenClaw 项目中引导过程跳过认证导致代理不可用且无明确反馈的用户体验问题。
+- 🔗 https://github.com/openclaw/openclaw/pull/44217
 
 ---
 
-2. **Cron 隔离会话作业在 2026.3.11 版本中仍失败（Issue #44257）**
+9. **[Bug] v2026.3.11：doctor --fix 循环报告遗留 cron 负载规范化问题 · Issue #43796 · openclaw/openclaw**
 - 📅 2026-03-12
-- 📝 GitHub 问题报告 openclaw 2026.3.11 版本中引入的回归，配置为 sessionTarget: 'isolated' 的 cron 作业虽被入队但从未执行。
-- 🔗 https://github.com/openclaw/openclaw/issues/44257
-
----
-
-3. **编辑工具静默将文件清空为 0 字节却报告成功（Issue #43858）**
-- 📅 2026-03-12
-- 📝 GitHub 问题报告 openclaw 项目中 Edit 工具意外删除文件全部内容至 0 字节，尽管匹配路径正确。
-- 🔗 https://github.com/openclaw/openclaw/issues/43858
-
----
-
-4. **隔离 Cron 作业会话使用 kimi-coding/k2p5 模型无法使用工具（Issue #44269）**
-- 📅 2026-03-12
-- 📝 GitHub 问题报告 openclaw 2026.3.2 版本中引入的回归，使用 kimi-coding/k2p5 模型的隔离 cron 作业会话无法使用工具。
-- 🔗 https://github.com/openclaw/openclaw/issues/44269
-
----
-
-5. **运行时：默认使用 Node v24 (LTS) 并保持 Node v22.16+ 兼容（PR #44016）**
-- 📅 2026-03-12
-- 📝 该拉取请求更新 openclaw 仓库的默认运行时环境至 Node.js v24 (LTS)，同时确保与 Node v22.16+ 的兼容性。
-- 🔗 https://github.com/openclaw/openclaw/pull/44016
-
----
-
-6. **macOS 版本发布 - OpenClaw**
-- 📅 2026-03-11
-- 📝 网页文档介绍 OpenClaw 的 macOS 版本发布，聚焦基于 Sparkle 的自动更新系统，包括 SwiftPM 获取工具、pnpm 安装依赖和公证设置等前提条件。
-- 🔗 https://docs.openclaw.ai/platforms/mac/release
-
----
-
-7. **fix(auth)：清除自动续订 OAuth 配置文件中的过期显示（PR #43122）**
-- 📅 2026-03-11
-- 📝 该拉取请求修复 OpenClaw 项目中 OAuth 配置文件过期显示的 bug，此前系统错误显示过时过期信息。
-- 🔗 https://github.com/openclaw/openclaw/pull/43122
-
----
-
-8. **feat(push)：添加 iOS APNs 中继网关（PR #43369）**
-- 📅 2026-03-11
-- 📝 该拉取请求为 openclaw 项目添加 iOS APNs 中继网关，提升推送通知系统通过中继支持的 APNs 请求。
-- 🔗 https://github.com/openclaw/openclaw/pull/43369
-
----
-
-9. **企业微信 openclaw 插件版本规则发布错误 - V2EX**
-- 📅 2026-03-11
-- 📝 网页讨论企业微信中 openclaw 插件的版本规则问题，用户指出预发布版本（1.0.7-beta.1）因 npm 要求未默认安装。
-- 🔗 https://www.v2ex.com/t/1197469
+- 📝 GitHub 问题报告 OpenClaw v2026.3.11 版本运行 doctor --fix 时反复标记遗留 cron 负载规范化问题，即使所有作业已修复。
+- 🔗 https://github.com/openclaw/openclaw/issues/43796
